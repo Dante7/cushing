@@ -1,0 +1,65 @@
+{% extends "menu.html" %}
+
+{% block child %}
+
+<div class="sub"><h3>1.	Control de la enfermedad</h3></div>
+
+<form action="" method="post" class="form-inline" role="form" id="FrmControl">{% csrf_token %}
+	<p>1.1.	Utilizando la prueba de cortisol libre en orina, ¿Cuáles serían los rangos que considera para determinar cada grado de control? </p>
+	<table class="table table-condensed">
+		<tr>
+			<th colspan="2">Rango de control</th>
+			<th>Medición</th>
+		</tr>
+		<tr>
+			<td>1.1.1</td>
+			<td><label for="{{form.control_alto.id}}">{{form.control_alto.label}}</label></td>
+			<td>Menos de {{form.control_alto}} µg/día</td>
+		</tr>
+		<tr>
+			<td>1.1.2</td>
+			<td><label for="{{form.control_bajo.id}}">{{form.control_bajo.label}}</label></td>
+			<td>Más de {{form.control_bajo}} µg/día</td>
+		</tr>
+		<tr>
+			<td>1.1.3</td>
+			<td><label for="{{form.control_medio.id}}">{{form.control_medio.label}}</label></td>
+			<td>Valor {{form.control_medio}} µg/día</td>
+		</tr>
+	
+	</table>
+	<p>1.2.	¿Qué tan importantes son las siguientes pruebas de laboratorio para determinar el grado de control de un paciente?</p>
+	<table class="table table-condensed">
+
+		<tr>
+			<th colspan="2">Prueba de laboratorio</th>
+			<th>Importancia</th>
+		</tr>
+		<tr>
+			<td>1.2.1</td>
+			<td><label for="{{form.corti_libre_orina.id}}">{{form.corti_libre_orina.label}}</label></td>
+			<td>{{form.corti_libre_orina}}</td>
+		</tr>
+		<tr>
+			<td>1.2.2</td>
+			<td><label for="{{form.hormona_adreno.id}}">{{form.hormona_adreno.label}}</label></td>
+			<td>{{form.hormona_adreno}}</td>
+		</tr>
+		<tr>
+			<td>1.2.3</td>
+			<td><label for="{{form.sintomas_paciente.id}}">{{form.sintomas_paciente.label}}</label></td>
+			<td>{{form.sintomas_paciente}}</td>
+		</tr>
+
+		<tr>
+			<td><input type="submit" value="Guardar" class="btn btn-primary" id="btn_guardar" /></td>
+			<td></td>	
+			<td><input type="submit" value="Siguiente" class="btn btn-success" id="btn_siguiente" /></td>
+		</tr>
+	</table>
+
+
+	
+</form>
+
+{% endblock %}

@@ -1,0 +1,274 @@
+{% extends "menu.html" %}
+
+{% block child %}
+
+<div class="sub"><h3>8	Intervenciones / Enfermedad de Cushing</h3></div>
+
+<form action="" method="post" class="form-inline" role="form" id="FrmIntervenciones">{% csrf_token %}
+	<table class="table table-condensed table-bordered">
+		<tr class="th_principal">
+			<th colspan="2">Intervenciones / Últimos 6 meses</th>
+			<!-- <th></th> -->
+			<th colspan="2" rowspan="2">Complicaciones del tratamiento (En caso de que se presente una complicación marque con una “X”).</th>
+			<!-- <th></th> -->
+			<th>Cirugía exitosa.</th>
+		</tr>
+		<tr class="th_secundario">
+			<th>8.2. Tipo he intervención</th>
+			<th>No. he veces</th>
+			<!-- <th></th>
+			<th></th> -->
+			<th>Si = 1 / No = 2</th>
+		</tr>
+		<tr>
+			<td rowspan="3">8.2.1 Radioterapia fraccionada</td>
+			<td>{{form.rx_hipo_veces_6}}</td>
+			<td>{{form.rx_hipo_comp_6}}</td>
+			<td>i. Hipopituitarismo</td>
+			<td rowspan="3">{{form.rx_si_6}}</td>
+		</tr>
+		<tr>
+			<!-- <td></td> -->
+			<td>{{form.rx_cerebro_veces_6}}</td>
+			<td>{{form.rx_cerebro_comp_6}}</td>
+			<td>ii. Complicaciones cerebrovasculares</td>
+			<!-- <td></td> -->
+		</tr>
+		<tr>
+			<!-- <td></td> -->
+			<td>{{form.rx_otras_veces_6}}</td>
+			<td>{{form.rx_otras_comp_6}}</td>
+			<td>iii. Ninguna de las anteriores</td>
+			<!-- <td></td> -->
+		</tr>
+		<tr>
+			<td rowspan="4">8.2.2 Radiocirugía</td>
+			<td>{{form.radiocirugia_hipo_veces_6}}</td>
+			<td>{{form.radiocirugia_hipo_comp_6}}</td>
+			<td>i. Hipopituitarismo</td>
+			<td rowspan="4">{{form.radiocirugia_si_6}}</td>
+		</tr>
+		<tr>
+			<!-- <td></td> -->
+			<td>{{form.radiocirugia_visual_veces_6}}</td>
+			<td>{{form.radiocirugia_visual_comp_6}}</td>
+			<td>ii. Disfunción visual</td>
+			<!-- <td></td> -->
+		</tr>
+		<tr>
+			<!-- <td></td> -->
+			<td>{{form.radiocirugia_craneal_veces_6}}</td>
+			<td>{{form.radiocirugia_craneal_comp_6}}</td>
+			<td>iii. Disfunción del nervio craneal</td>
+			<!-- <td></td> -->
+		</tr>
+		<tr>
+			<!-- <td></td> -->
+			<td>{{form.radiocirugia_otras_veces_6}}</td>
+			<td>{{form.radiocirugia_otras_comp_6}}</td>
+			<td>iv.	Ninguna de las anteriores</td>
+			<!-- <td></td> -->
+		</tr>
+		<tr>
+			<td rowspan="7">8.2.3 Cirugía transesfenoidal</td>
+			<td>{{form.cirugia_hormo_veces_6}}</td>
+			<td>{{form.cirugia_hormo_comp_6}}</td>
+			<td>i. Necesidad de tratamiento reemplazo hormonal</td>
+			<td rowspan="7">{{form.cirugia_si_6}}</td>
+		</tr>
+		<tr>
+			<!-- <td></td> -->
+			<td>{{form.cirugia_diabetes_veces_6}}</td>
+			<td>{{form.cirugia_diabetes_comp_6}}</td>
+			<td>ii. Diabetes insípida</td>
+			<!-- <td></td> -->
+		</tr>
+		<tr>
+			<!-- <td></td> -->
+			<td>{{form.cirugia_cerebro_veces_6}}</td>
+			<td>{{form.cirugia_cerebro_comp_6}}</td>
+			<td>iii. Accidente cerebrovascular</td>
+			<!-- <td></td> -->
+		</tr>
+		<tr>
+			<!-- <td></td> -->
+			<td>{{form.cirugia_visual_veces_6}}</td>
+			<td>{{form.cirugia_visual_comp_6}}</td>
+			<td>iv.	Disfunción visual</td>
+			<!-- <td></td> -->
+		</tr>
+		<tr>
+			<!-- <td></td> -->
+			<td>{{form.cirugia_menin_veces_6}}</td>
+			<td>{{form.cirugia_menin_comp_6}}</td>
+			<td>v. Meningitis</td>
+			<!-- <td></td> -->
+		</tr>
+		<tr>
+			<!-- <td></td> -->
+			<td>{{form.cirugia_cefalo_veces_6}}</td>
+			<td>{{form.cirugia_cefalo_comp_6}}</td>
+			<td>vi. Perdida de líquido cefalorraquídeo</td>
+			<!-- <td></td> -->
+		</tr>
+		<tr>
+			<!-- <td></td> -->
+			<td>{{form.cirugia_otras_veces_6}}</td>
+			<td>{{form.cirugia_otras_comp_6}}</td>
+			<td>vii. Ninguna de las anteriores</td>
+			<!-- <td></td> -->
+		</tr>
+		<tr>
+			<td rowspan="2">8.2.4 Adrenalectomía bilateral</td>
+			<td>{{form.adrena_nelson_veces_6}}</td>
+			<td>{{form.adrena_nelson_comp_6}}</td>
+			<td>i. Síndrome de Nelson</td>
+			<td rowspan="2">{{form.adrena_si_6}}</td>
+		</tr>
+		<tr>
+			<!-- <td></td> -->
+			<td>{{form.adrena_otras_veces_6}}</td>
+			<td>{{form.adrena_otras_comp_6}}</td>
+			<td>ii.	Ninguna de las anteriores</td>
+			<!-- <td></td> -->
+		</tr>
+		
+	</table>
+
+		<table class="table table-collapsed table-bordered">
+		<tr class="th_principal">
+			<th colspan="2">Intervenciones / Entre 6 y 12 meses.</th>
+			<!-- <th></th> -->
+			<th colspan="2" rowspan="2">Complicaciones del tratamiento (En caso de que se presente una complicación marque con una “X”).</th>
+			<!-- <th></th> -->
+			<th>Cirugía exitosa.</th>
+		</tr>
+		<tr class="th_secundario">
+			<th>8.2. Tipo he intervención</th>
+			<th>No. he veces</th>
+			<!-- <th></th>
+			<th></th> -->
+			<th>Si = 1 / No = 2</th>
+		</tr>
+		<tr>
+			<td rowspan="3">8.2.1 Radioterapia fraccionada</td>
+			<td>{{form.rx_hipo_veces_12}}</td>
+			<td>{{form.rx_hipo_comp_12}}</td>
+			<td>i. Hipopituitarismo</td>
+			<td rowspan="3">{{form.rx_si_12}}</td>
+		</tr>
+		<tr>
+			<!-- <td></td> -->
+			<td>{{form.rx_cerebro_veces_12}}</td>
+			<td>{{form.rx_cerebro_comp_12}}</td>
+			<td>ii. Complicaciones cerebrovasculares</td>
+			<!-- <td></td> -->
+		</tr>
+		<tr>
+			<!-- <td></td> -->
+			<td>{{form.rx_otras_veces_12}}</td>
+			<td>{{form.rx_otras_comp_12}}</td>
+			<td>iii. Ninguna de las anteriores</td>
+			<!-- <td></td> -->
+		</tr>
+		<tr>
+			<td rowspan="4">8.2.2 Radiocirugía</td>
+			<td>{{form.radiocirugia_hipo_veces_12}}</td>
+			<td>{{form.radiocirugia_hipo_comp_12}}</td>
+			<td>i. Hipopituitarismo</td>
+			<td rowspan="4">{{form.radiocirugia_hipo_si_12}}</td>
+		</tr>
+		<tr>
+			<!-- <td></td> -->
+			<td>{{form.radiocirugia_visual_veces_12}}</td>
+			<td>{{form.radiocirugia_visual_comp_12}}</td>
+			<td>ii. Disfunción visual</td>
+			<!-- <td></td> -->
+		</tr>
+		<tr>
+			<!-- <td></td> -->
+			<td>{{form.radiocirugia_craneal_veces_12}}</td>
+			<td>{{form.radiocirugia_craneal_comp_12}}</td>
+			<td>iii. Disfunción del nervio craneal</td>
+			<!-- <td></td> -->
+		</tr>
+		<tr>
+			<!-- <td></td> -->
+			<td>{{form.radiocirugia_otras_veces_12}}</td>
+			<td>{{form.radiocirugia_otras_comp_12}}</td>
+			<td>iv.	Ninguna de las anteriores</td>
+			<!-- <td></td> -->
+		</tr>
+		<tr>
+			<td rowspan="7">8.2.3 Cirugía transesfenoidal</td>
+			<td>{{form.cirugia_hormo_veces_12}}</td>
+			<td>{{form.cirugia_hormo_comp_12}}</td>
+			<td>i. Necesidad de tratamiento reemplazo hormonal</td>
+			<td rowspan="7">{{form.cirugia_si_12}}</td>
+		</tr>
+		<tr>
+			<!-- <td></td> -->
+			<td>{{form.cirugia_diabetes_veces_12}}</td>
+			<td>{{form.cirugia_diabetes_comp_12}}</td>
+			<td>ii. Diabetes insípida</td>
+			<!-- <td></td> -->
+		</tr>
+		<tr>
+			<!-- <td></td> -->
+			<td>{{form.cirugia_cerebro_veces_12}}</td>
+			<td>{{form.cirugia_cerebro_comp_12}}</td>
+			<td>iii. Accidente cerebrovascular</td>
+			<!-- <td></td> -->
+		</tr>
+		<tr>
+			<!-- <td></td> -->
+			<td>{{form.cirugia_visual_veces_12}}</td>
+			<td>{{form.cirugia_visual_comp_12}}</td>
+			<td>iv.	Disfunción visual</td>
+			<!-- <td></td> -->
+		</tr>
+		<tr>
+			<!-- <td></td> -->
+			<td>{{form.cirugia_menin_veces_12}}</td>
+			<td>{{form.cirugia_menin_comp_12}}</td>
+			<td>v. Meningitis</td>
+			<!-- <td></td> -->
+		</tr>
+		<tr>
+			<!-- <td></td> -->
+			<td>{{form.cirugia_cefalo_veces_12}}</td>
+			<td>{{form.cirugia_cefalo_comp_12}}</td>
+			<td>vi. Perdida de líquido cefalorraquídeo</td>
+			<!-- <td></td> -->
+		</tr>
+		<tr>
+			<!-- <td></td> -->
+			<td>{{form.cirugia_otras_veces_12}}</td>
+			<td>{{form.cirugia_otras_comp_12}}</td>
+			<td>vii. Ninguna de las anteriores</td>
+			<!-- <td></td> -->
+		</tr>
+		<tr>
+			<td rowspan="2">8.2.4 Adrenalectomía bilateral</td>
+			<td>{{form.adrena_nelson_veces_12}}</td>
+			<td>{{form.adrena_nelson_comp_12}}</td>
+			<td>i. Síndrome de Nelson</td>
+			<td rowspan="2">{{form.adrena_si_12}}</td>
+		</tr>
+		<tr>
+			<!-- <td></td> -->
+			<td>{{form.adrena_otras_veces_12}}</td>
+			<td>{{form.adrena_otras_comp_12}}</td>
+			<td>ii.	Ninguna de las anteriores</td>
+			<!-- <td></td> -->
+		</tr>
+		<tr>
+			<td colspan="3"><input type="submit" value="Guardar" class="btn btn-primary" id="btn_guardar" /></td>
+			<td colspan="2"><input type="submit" value="Siguiente" class="btn btn-success" id="btn_siguiente" /></td>
+		</tr>
+		
+	</table>
+	
+</form>
+
+{% endblock %}

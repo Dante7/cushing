@@ -1,0 +1,23 @@
+{% extends "menu.html" %}
+
+{% block child %}
+
+<div class="sub"><h3>Selección médicos participantes</h3></div>
+
+<form action="" method="post" class="form-inline" role="form" id="FrmSeleccion">{% csrf_token %}
+	<table class="table table-condensed ">
+		{% for field in form.visible_fields  %}
+			<tr>
+				<td><label class="" for="{{field.name}}">{{field.label}}</label></td>
+				<td>R:{{field}}</td>
+			</tr>
+		{% endfor %}
+
+		<tr>
+			<td><input type="submit" value="Guardar" class="btn btn-primary" id="btn_guardar"/></td>
+			<td><input type="submit" value="Siguiente" class="btn btn-success" id="btn_siguiente"/></td>
+		</tr>
+	</table>
+</form>
+
+{% endblock %}

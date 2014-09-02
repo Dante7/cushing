@@ -1,0 +1,95 @@
+{% extends "menu.html" %}
+
+{% block child %}
+
+<form action="" method="post" class="form-inline" role="form" id="FrmCompl">{% csrf_token %}
+	<table class="table table-condensed">
+		<tr class="th_principal">
+			<th>Evento adversos / Complicación</th>
+			<th>Utilizado (si/no)</th>
+			<th># de eventos usados </th>
+			<th>Duración del evento</th>
+		</tr>
+		<tr>
+			<td colspan="4">1. {{form.cual_1}}</td>
+			<!-- <td></td>
+			<td></td>
+			<td></td> -->
+		</tr>
+		<tr>
+			<td>¿Hospitalización?</td>
+			<td>{{form.hosp_si_1}}</td>
+			<td>{{form.hosp_eventos_1}}</td>
+			<td>{{form.hosp_duracion_1}}</td>
+		</tr>
+		<tr>
+			<td>¿Visitas especialista?</td>
+			<td>{{form.espe_si_1}}</td>
+			<td>{{form.espe_eventos_1}}</td>
+			<td>{{form.espe_duracion_1}}</td>
+		</tr>
+		<tr>
+			<td>¿Otras visitas? Por favor especifique:</td>
+			<td>{{form.otras_visitas_si_1}}</td>
+			<td>{{form.otras_visitas_eventos_1}}</td>
+			<td>{{form.otras_visitas_duracion_1}}</td>
+		</tr>
+		<tr>
+			<td>¿Procedimientos? Especificar</td>
+			<td>{{form.proc_si_1}}</td>
+			<td>{{form.proc_eventos_1}}</td>
+			<td>{{form.proc_duracion_1}}</td>
+		</tr>
+		<tr>
+			<td>¿Tratamiento con medicamentos? Por favor especifique posología: </td>
+			<td>{{form.tx_si_1}}</td>
+			<td>{{form.tx_eventos_1}}</td>
+			<td>{{form.tx_duracion_1}}</td>
+		</tr>
+		<tr>
+			<td colspan="4">2. </td>
+			<!-- <td></td>
+			<td></td>
+			<td></td> -->
+		</tr>
+		<tr>
+			<td>¿Hospitalización?</td>
+			<td>{{form.hosp_si_2}}</td>
+			<td>{{form.hosp_eventos_2}}</td>
+			<td>{{form.hosp_duracion_2}}</td>
+		</tr>
+		<tr>
+			<td>¿Visitas especialista?</td>
+			<td>{{form.espe_si_2}}</td>
+			<td>{{form.espe_eventos_2}}</td>
+			<td>{{form.espe_duracion_2}}</td>
+		</tr>
+		<tr>
+			<td>¿Otras visitas? Por favor especifique:</td>
+			<td>{{form.otras_visitas_si_2}}</td>
+			<td>{{form.otras_visitas_eventos_2}}</td>
+			<td>{{form.otras_visitas_duracion_2}}</td>
+		</tr>
+		<tr>
+			<td>¿Procedimientos? Especificar</td>
+			<td>{{form.proc_si_2}}</td>
+			<td>{{form.proc_eventos_2}}</td>
+			<td>{{form.proc_duracion_2}}</td>
+		</tr>
+		<tr>
+			<td>¿Tratamiento con medicamentos? Por favor especifique posología: </td>
+			<td>{{form.tx_si_2}}</td>
+			<td>{{form.tx_eventos_2}}</td>
+			<td>{{form.tx_duracion_2}}</td>
+		</tr>
+		<tr>
+			<td colspan="2"><input type="submit" value="Guardar" class="btn btn-primary" id="btn_guardar" /></td>
+			<td colspan="2"><input type="submit" value="Siguiente" class="btn btn-success" id="btn_siguiente" /></td>
+		</tr>
+	</table>
+
+
+	
+</form>
+
+{% endblock %}

@@ -1,0 +1,328 @@
+/*Elementos principales*/
+body
+{
+	margin: 1em 3em 1em 3em;
+
+}
+
+header
+{
+	margin: 0 0 1em 0;
+}
+h1 ,h2, h3 ,h4, h5
+{
+	text-align: center;
+}
+p
+{
+	width: 80%;
+	margin: 0 0 1em 1em;
+}
+.sub
+{	
+	vertical-align: middle;
+	color: white;
+	border-radius: 5px;
+	margin: 0.5em 1em 0.5em 1em;
+	background-color: rgba(51,91,116,1);
+}
+
+/*Login*/
+#loginform
+{
+	width: 30%;
+	margin: auto;
+	margin-top: 5em;
+	border-style: groove;
+	border-color: #1F84E8;
+	border-radius: 5px;	
+	padding: 3em 2em 4em 2em;
+}
+
+#loginform input
+{
+	margin: auto;
+}
+
+#loginform div
+{
+	width: 30%;
+	margin: auto;
+}
+
+#logo
+{
+	width: 300px;
+	margin: 0 0 2em 0;
+}
+/*Termina login*/
+
+/*Menu*/
+#menu 
+{
+	margin: 1em 0 1em 0;
+}
+
+#menu a
+{
+	border-style: solid;
+	border-width: 0.2em;
+	border-radius: 5px;
+	margin: 0 0.2em 0 0.2em;
+}
+/*Termina menu*/
+
+
+/*Entrevista*/
+#FrmEntrevista
+{
+	margin: auto;
+	width: 60%;
+}
+
+/*Termina Entrevista*/
+
+/*seleccion*/
+#FrmSeleccion
+{
+	margin: auto;
+	width: 60%;
+}
+
+/*Termina seleccion*/
+
+/*Control*/
+#FrmControl
+{
+	margin: auto;
+	width: 90%;
+}
+#FrmControl table th
+{
+	text-align: center;
+	background-color: rgba(0,32,96,1);
+	color: white;
+}
+#FrmControl ul
+{
+	list-style:none;
+}
+#FrmControl ul li
+{
+	display: inline-block;
+	vertical-align: top;
+	width: 200px;
+}
+/*Termina control*/
+
+/*Generales*/
+#FrmGenerales
+{
+	margin: auto;
+	width: 60%;
+}
+#FrmGenerales input[type="text"]
+{
+	width: 100px;
+}
+#FrmGenerales ul
+{
+	list-style:none;
+}
+#FrmGenerales ul li
+{
+	display: inline-block;
+	vertical-align: top;
+	width: 100px;
+}
+/*Termina generales*/
+
+/*Sintomas*/
+#FrmSintomas
+{
+	margin: auto;
+	width: 60%;
+}
+#FrmSintomas ul
+{
+	list-style:none;
+}
+#FrmSintomas ul li
+{
+	display: inline-block;
+	vertical-align: top;
+	width: 50px;
+}
+/*Termina sintomas*/
+
+/*Comorbilidades*/
+#FrmComorbilidades
+{
+	margin: auto;
+	width: 60%;
+}
+#FrmComorbilidades ul
+{
+	list-style:none;
+}
+#FrmComorbilidades ul li
+{
+	display: inline-block;
+	vertical-align: top;
+	width: 50px;
+}
+/*Termina comorbilidades*/
+
+/*Especialista*/
+#FrmEspe
+{
+	width: 80%;
+	margin: auto;
+}
+/*Termina especialista*/
+
+/*Hospitalizacion*/
+#FrmHospitalizacion
+{
+	width: 70%;
+	margin: auto;
+}
+/*Termina hospitalizacion*/
+
+/*Laboratorio*/
+#FrmLaboratorio
+{
+	width: 100%;
+	margin: auto;
+}
+#FrmLaboratorio input[type="text"]
+{
+	width: 80px;
+}
+#FrmLaboratorio ul
+{
+	list-style:none;
+}
+#FrmLaboratorio ul li
+{
+	display: inline-block;
+	vertical-align: top;
+	width: 50px;
+}
+/*Termina laboratorio*/
+
+/*Intervenciones*/
+#FrmIntervenciones
+{
+	width: 100%;
+	margin: auto;
+}
+#FrmIntervenciones input[type="text"]
+{
+	width: 80px;
+}
+#FrmIntervenciones ul
+{
+	list-style:none;
+}
+#FrmIntervenciones ul li
+{
+	display: inline-block;
+	vertical-align: top;
+	width: 50px;
+}
+/*Termina Intervenciones*/
+
+/*Tratamientos*/
+#FrmTx
+{
+	width: 80%;
+	margin: auto;
+}
+#FrmTx ul
+{
+	list-style:none;
+}
+#FrmTx ul li
+{
+	display: inline-block;
+	vertical-align: top;
+	width: 50px;
+}
+.habilitado
+{
+	width: 50px;
+}
+.tratamiento
+{
+	width: 150px;
+}
+#tratamientos
+{
+	text-align: center;
+}
+/*Termina tratamientos*/
+
+/*Comorbilidades*/
+#FrmComorb
+{
+	width: 80%;
+	margin: auto;
+}
+#FrmComorb ul
+{
+	list-style:none;
+}
+#FrmComorb ul li
+{
+	display: inline-block;
+	vertical-align: top;
+	width: 50px;
+}
+/*Termina comorbilidades*/
+
+/*Complicaciones*/
+#FrmCompl
+{
+	width: 80%;
+	margin: auto;
+}
+#FrmCompl ul
+{
+	list-style:none;
+}
+#FrmCompl ul li
+{
+	display: inline-block;
+	vertical-align: top;
+	width: 50px;
+}
+/*Termina complicaciones*/
+
+/*Manejo de css por id tipo "like"*/
+[id*="cual"]
+{
+	width: 200px;
+}
+
+[id*="mes"]
+{
+	width: 50px;
+}
+
+/*Manejo de clases de encabezado principal y secundario*/
+.th_principal
+{
+	background-color: rgba(0,32,96,1);
+	color: white;
+	text-align: center;
+}
+.th_secundario
+{
+	background-color: rgba(51,91,116,1);
+	color: white;
+}
+.helptext
+{
+	text-align: center;
+}

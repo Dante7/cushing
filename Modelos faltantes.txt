@@ -1,0 +1,35 @@
+
+class Generales(models.Model):
+	"""Datos del Generales"""
+	class Meta:
+		db_table = 'generales'
+
+class Generales(models.Model):
+	"""Datos del Generales"""
+	class Meta:
+		db_table = 'generales'
+
+class Generales(models.Model):
+	"""Datos del Generales"""
+	class Meta:
+		db_table = 'generales'
+
+class Generales(models.Model):
+	"""Datos del Generales"""
+	class Meta:
+		db_table = 'generales'
+
+class Generales(models.Model):
+	"""Datos del Generales"""
+	class Meta:
+		db_table = 'generales'
+
+class Generales(models.Model):
+	"""Datos del Generales"""
+	class Meta:
+		db_table = 'generales'
+
+class Generales(models.Model):
+	"""Datos del Generales"""
+	class Meta:
+		db_table = 'generales'

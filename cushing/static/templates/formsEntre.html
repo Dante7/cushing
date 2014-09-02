@@ -1,0 +1,29 @@
+{% extends "menu.html" %}
+
+{% block child %}
+
+<div class="main"><h2>Carga de la enfermedad de Cushing </h2></div>
+
+<div class="sub"><h5>SELECCIÓN DE MÉDICOS PARTICIPANTES</h5></div>
+<div class="sub"><h5>Datos del entrevistado</h5></div>
+
+<form action="" method="post" class="form-horizontal" role="form" id="FrmEntrevista">{% csrf_token %}
+	<table class="table table-condensed ">
+		{% for field in form.visible_fields  %}
+			<tr>
+				<td><label class="" for="{{field.name}}">{{field.label}}</label></td>
+				<td>{{field}}
+				{% for error in field.errors %}
+					<span class="label label-danger">{{error}}</span>
+				{% endfor %}
+			</tr>
+		{% endfor %}
+
+		<tr>
+			<td><input type="submit" value="Guardar" class="btn btn-primary" id="btn_guardar"/></td>
+			<td><input type="submit" value="Siguiente" class="btn btn-success" id="btn_siguiente"/></td>
+		</tr>
+	</table>
+</form>
+
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends "menu.html" %}
+
+{% block child %}
+
+<div class="sub"><h3>9	Tratamiento farmacológico </h3></div>
+
+<form action="" method="post" class="form-inline" role="form" id="FrmComorb">{% csrf_token %}
+	<table class="table table-condensed">
+		<tr class="th_principal">
+			<th>Comorbilidades</th>
+			<th>En los últimos 6 meses</th>
+			<th>Entre 6 y 12 meses</th>
+		</tr>
+		<tr class="th_secundario">
+			<th>9.6	Mentales</th>
+			<th>Si = 1 / No = 2</th>
+			<th>Si = 1 / No = 2</th>
+		</tr>
+		<tr>
+			<td>9.6.1 Depresión. ¿Cuál?{{form.depre_cual}}</td>
+			<td>{{form.depre_6}}</td>
+			<td>{{form.depre_12}}</td>
+		</tr>
+		<tr>
+			<td>9.6.2 Ansiedad. ¿Cuál?{{form.ansi_cual}}</td>
+			<td>{{form.ansi_6}}</td>
+			<td>{{form.ansi_12}}</td>
+		</tr>
+		<tr>
+			<td>9.6.3 Psicosis. ¿Cuál?{{form.psico_cual}}</td>
+			<td>{{form.psico_6}}</td>
+			<td>{{form.psico_12}}</td>
+		</tr>
+		<tr class="th_secundario">
+			<th>9.7	Otras</th>
+			<th>Si = 1 / No = 2</th>
+			<th>Si = 1 / No = 2</th>
+		</tr>
+		<tr>
+			<td>9.7.1 Cálculos renales. ¿Cuál?{{form.cr_cual}}</td>
+			<td>{{form.cr_6}}</td>
+			<td>{{form.cr_12}}</td>
+		</tr>
+		<tr>
+			<td>9.7.2 Otro ¿Cuál?{{form.otra1_cual}}</td>
+			<td>{{form.otra1_6}}</td>
+			<td>{{form.otra1_12}}</td>
+		</tr>
+		<tr>
+			<td>9.7.3 Otro ¿Cuál?{{form.otra2_cual}}</td>
+			<td>{{form.otra2_6}}</td>
+			<td>{{form.otra2_12}}</td>
+		</tr>
+		<tr>
+			<td colspan="2"><input type="submit" value="Guardar" class="btn btn-primary" id="btn_guardar" /></td>
+			<td><input type="submit" value="Siguiente" class="btn btn-success" id="btn_siguiente" /></td>
+		</tr>
+	</table>
+
+
+	
+</form>
+
+{% endblock %}

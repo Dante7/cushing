@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	{% load static %}
+	{% get_static_prefix as STATIC_PREFIX %}
+	<meta charset="UTF-8">
+	<title>Inicio</title>
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="{{STATIC_PREFIX}}css/ui-lightness/jquery-ui-1.9.2.custom.css">
+	<link rel="stylesheet" href="{{STATIC_PREFIX}}css/bootstrap.min.css">
+	<link rel="stylesheet" href="{{STATIC_PREFIX}}css/estilos.css">
+	<script src="{{STATIC_PREFIX}}js/jquery.js"></script>
+	<script src="{{STATIC_PREFIX}}js/bootstrap.min.js"></script>
+	<script src="{{STATIC_PREFIX}}js/codigo.js"></script>
+
+	<!-- UI -->
+	<script src="{{STATIC_PREFIX}}js/jquery-ui-1.9.2.custom.js"></script>
+
+	<script>
+		$(document).ready(function() {
+			$( "#id_fecha_diag" ).datepicker();
+			$( "#id_fecha_llenado" ).datepicker();
+		})
+	</script>
+</head>
+<body onload="botones({{msg}})">
+
+{% block menu  %}
+{% endblock %}
+
+</body>
+</html>
