@@ -18,14 +18,6 @@ p
 	width: 80%;
 	margin: 0 0 1em 1em;
 }
-.sub
-{	
-	vertical-align: middle;
-	color: white;
-	border-radius: 5px;
-	margin: 0.5em 1em 0.5em 1em;
-	background-color: rgba(51,91,116,1);
-}
 
 /*Login*/
 #loginform
@@ -96,12 +88,6 @@ p
 {
 	margin: auto;
 	width: 90%;
-}
-#FrmControl table th
-{
-	text-align: center;
-	background-color: rgba(0,32,96,1);
-	color: white;
 }
 #FrmControl ul
 {
@@ -313,16 +299,25 @@ p
 /*Manejo de clases de encabezado principal y secundario*/
 .th_principal
 {
-	background-color: rgba(0,32,96,1);
-	color: white;
+	background-color: rgba(0,32,96,0.4);
+	color: black;
 	text-align: center;
 }
 .th_secundario
 {
-	background-color: rgba(51,91,116,1);
-	color: white;
+	background-color: rgba(51,91,116,0.2);
+	color: black;
 }
 .helptext
 {
 	text-align: center;
+}
+
+.sub
+{	
+	vertical-align: middle;
+	color: black;
+	border-radius: 5px;
+	margin: 0.5em 1em 0.5em 1em;
+	background-color: rgba(51,91,116,.2);
 }

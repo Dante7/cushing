@@ -13,6 +13,24 @@ from django.views.decorators.csrf import csrf_protect
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 import time
+import simplejson as json
+
+def GuardaTratamientos(tx, folio):
+	tx = json.loads(tx)
+	for item in tx:
+		farma = TxCompleto()
+		farma.folio = folio
+		farma.tratamiento = item['tx']
+		farma.meses = item['temp']
+		farma.dosis = item['dosis']
+		farma.ciclo = item['ciclo']
+		farma.intervalos = item['inter']
+		farma.ciclos = item['ciclos']
+		farma.cateterismo = item['cateter']
+		farma.save()
+	pass
+
+		
 
 # Vista principal
 @csrf_protect
@@ -223,7 +241,9 @@ def CapTx(request):
 	template = 'forms9.html'
 	msg = 'false'
 	if request.method=='POST':
+		# print request.POST['valores']
 		formulario = FrmTratamiento(request.POST)
+		GuardaTratamientos(request.POST['valores'], request.POST['folio'])
 		if formulario.is_valid():
 			formulario.save()
 			msg = 'true'

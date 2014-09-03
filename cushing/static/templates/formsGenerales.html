@@ -5,7 +5,7 @@
 <div class="sub"><h3>2	Datos generales del paciente</h3></div>
 
 <form action="" method="post" class="form-inline" role="form" id="FrmGenerales">{% csrf_token %}
-	<table class="table table-condensed">
+	<table class="table table-condensed table-striped table-bordered">
 		<tr>
 			<td><label for="{{form.edad.id}}">{{form.edad.label}}</label></td>
 			<td>{{form.edad}}</td>
@@ -33,7 +33,7 @@
 
 		<tr>
 			<td><input type="submit" value="Guardar" class="btn btn-primary" id="btn_guardar"/></td>
-			<td><input type="submit" value="Siguiente" class="btn btn-success" id="btn_siguiente"/></td>
+			<td><input type="button" value="Siguiente" class="btn btn-success" id="btn_siguiente" onclick="window.location.href='/sintomas'" /></td>
 		</tr>
 	</table>
 </form>

@@ -5,17 +5,19 @@
 <div class="sub"><h3>4	Comorbilidades / Enfermedad de Cushing</h3></div>
 
 <form action="" method="post" class="form-inline" role="form" id="FrmComorbilidades">{% csrf_token %}
-	<table class="table table-condensed">
-		<tr class="th_principal">
-			<th>Comorbilidades</th>
-			<th>En los ultimos 6 meses</th>
-			<th>Entre 6 y 12 meses</td>
-		</tr>
-		<tr class="th_secundario">
-			<th>4.1	Metabólicas</th>
-			<th>Si = 1 / No = 2</th>
-			<th>Si = 1 / No = 2</td>
-		</tr>
+	<table class="table table-condensed table-striped table-bordered">
+		<thead>
+			<tr class="th_principal">
+				<th>Comorbilidades</th>
+				<th>En los ultimos 6 meses</th>
+				<th>Entre 6 y 12 meses</td>
+			</tr>
+			<tr class="th_secundario">
+				<th>4.1	Metabólicas</th>
+				<th>Si = 1 / No = 2</th>
+				<th>Si = 1 / No = 2</td>
+			</tr>
+		</thead>
 		<tr>
 			<th><label for="{{form.dm1_6.id}}">{{form.dm1_6.label}}</label></th>
 			<th>{{form.dm1_6}}</th>
@@ -41,7 +43,7 @@
 			<th>{{form.obeisdad_6}}</th>
 			<th>{{form.obeisdad_12}}</th>
 		</tr>
-		<tr class="th_secundario">
+		<tr class="th_principal">
 			<th>4.2	Cardiovasculares</th>
 			<th>Si = 1 / No = 2</th>
 			<th>Si = 1 / No = 2</td>
@@ -86,7 +88,7 @@
 			<th>{{form.isquemia_6}}</th>
 			<th>{{form.isquemia_12}}</th>
 		</tr>
-		<tr class="th_secundario">
+		<tr class="th_principal">
 			<th>4.3	Infecciones</th>
 			<th>Si = 1 / No = 2</th>
 			<th>Si = 1 / No = 2</td>
@@ -116,7 +118,7 @@
 			<th>{{form.fungicas_6}}</th>
 			<th>{{form.fungicas_12}}</th>
 		</tr>
-		<tr class="th_secundario">
+		<tr class="th_principal">
 			<th>4.4	Mentales</th>
 			<th>Si = 1 / No = 2</th>
 			<th>Si = 1 / No = 2</td>
@@ -136,7 +138,7 @@
 			<th>{{form.psicosis_6}}</th>
 			<th>{{form.psicosis_12}}</th>
 		</tr>
-		<tr class="th_secundario">
+		<tr class="th_principal">
 			<th>4.5	Otras</th>
 			<th>Si = 1 / No = 2</th>
 			<th>Si = 1 / No = 2</td>
@@ -159,7 +161,7 @@
 		<tr>
 			<td><input type="submit" value="Guardar" class="btn btn-primary" id="btn_guardar" /></td>
 			<td></td>	
-			<td><input type="submit" value="Siguiente" class="btn btn-success" id="btn_siguiente" /></td>
+			<td><input type="button" value="Siguiente" class="btn btn-success" id="btn_siguiente" onclick="window.location.href='/especialista'" /></td>
 		</tr>
 	</table>
 

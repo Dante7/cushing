@@ -5,7 +5,7 @@
 <div class="sub"><h3>Selección médicos participantes</h3></div>
 
 <form action="" method="post" class="form-inline" role="form" id="FrmSeleccion">{% csrf_token %}
-	<table class="table table-condensed ">
+	<table class="table table-condensed table-striped table-bordered">
 		{% for field in form.visible_fields  %}
 			<tr>
 				<td><label class="" for="{{field.name}}">{{field.label}}</label></td>
@@ -15,7 +15,7 @@
 
 		<tr>
 			<td><input type="submit" value="Guardar" class="btn btn-primary" id="btn_guardar"/></td>
-			<td><input type="submit" value="Siguiente" class="btn btn-success" id="btn_siguiente"/></td>
+			<td><input type="button" value="Siguiente" class="btn btn-success" id="btn_siguiente" onclick="window.location.href='/control'"/></td>
 		</tr>
 	</table>
 </form>

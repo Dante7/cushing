@@ -5,7 +5,10 @@
 <div class="sub"><h3>9	Tratamiento farmacológico </h3></div>
 
 <form action="" method="post" class="form-inline" role="form" id="FrmTx">{% csrf_token %}
-	<table class="table table-condensed">
+	<input type="hidden" id="folio" name="folio">
+	<input type="hidden" id="valores" name="valores">
+	<table class="table table-condensed table-striped table-bordered">
+		<thead>
 		<tr class="th_principal">
 			<th>Tratamientos</th>
 			<th>En los últimos 6 meses</th>
@@ -16,6 +19,7 @@
 			<th>Si = 1 / No = 2</th>
 			<th>Si = 1 / No = 2</th>
 		</tr>
+		</thead>
 		<tr>
 			<td>9.2.1 Ketoconazol</td>
 			<td>{{form.keto_6}}</td>
@@ -46,11 +50,13 @@
 			<td>{{form.otro3_6}}</td>
 			<td>{{form.otro3_12}}</td>
 		</tr>
+		<thead>
 		<tr class="th_secundario">
 			<th>9.3	Diabetes</th>
 			<th>Si = 1 / No = 2</th>
 			<th>Si = 1 / No = 2</th>
 		</tr>
+		</thead>
 		<tr>
 			<td>9.3.1 Metforminas</td>
 			<td>{{form.metfo_6}}</td>
@@ -188,7 +194,7 @@
 		</tr>
 		<tr>
 			<td colspan="2"><input type="submit" value="Guardar" class="btn btn-primary" id="btn_guardar" /></td>
-			<td><input type="submit" value="Siguiente" class="btn btn-success" id="btn_siguiente" /></td>
+			<td><input type="button" value="Siguiente" class="btn btn-success" id="btn_siguiente"  onclick="window.location.href='/comorb_tx'" /></td>
 		</tr>
 	</table>
 </form>
@@ -216,7 +222,7 @@
 				</table>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal" id="CierraModal">Cerrar</button>
 				<button type="button" class="btn btn-primary" id="GuardarModal">Guardar</button>
 			</div>
 		</div><!-- /.modal-content -->

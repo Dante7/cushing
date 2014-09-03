@@ -6,11 +6,13 @@
 
 <form action="" method="post" class="form-inline" role="form" id="FrmControl">{% csrf_token %}
 	<p>1.1.	Utilizando la prueba de cortisol libre en orina, ¿Cuáles serían los rangos que considera para determinar cada grado de control? </p>
-	<table class="table table-condensed">
-		<tr>
-			<th colspan="2">Rango de control</th>
-			<th>Medición</th>
-		</tr>
+	<table class="table table-condensed table-striped table-bordered">
+		<thead>
+			<tr class="th_principal">
+				<th colspan="2">Rango de control</th>
+				<th>Medición</th>
+			</tr>
+		</thead>
 		<tr>
 			<td>1.1.1</td>
 			<td><label for="{{form.control_alto.id}}">{{form.control_alto.label}}</label></td>
@@ -26,15 +28,15 @@
 			<td><label for="{{form.control_medio.id}}">{{form.control_medio.label}}</label></td>
 			<td>Valor {{form.control_medio}} µg/día</td>
 		</tr>
-	
 	</table>
 	<p>1.2.	¿Qué tan importantes son las siguientes pruebas de laboratorio para determinar el grado de control de un paciente?</p>
-	<table class="table table-condensed">
-
-		<tr>
-			<th colspan="2">Prueba de laboratorio</th>
-			<th>Importancia</th>
-		</tr>
+	<table class="table table-condensed table-striped table-bordered">
+		<thead>
+			<tr class="th_principal">
+				<th colspan="2">Prueba de laboratorio</th>
+				<th>Importancia</th>
+			</tr>
+		</thead>
 		<tr>
 			<td>1.2.1</td>
 			<td><label for="{{form.corti_libre_orina.id}}">{{form.corti_libre_orina.label}}</label></td>
@@ -54,7 +56,7 @@
 		<tr>
 			<td><input type="submit" value="Guardar" class="btn btn-primary" id="btn_guardar" /></td>
 			<td></td>	
-			<td><input type="submit" value="Siguiente" class="btn btn-success" id="btn_siguiente" /></td>
+			<td><input type="button" value="Siguiente" class="btn btn-success" id="btn_siguiente" onclick="window.location.href='/generales'"/></td>
 		</tr>
 	</table>
 

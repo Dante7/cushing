@@ -5,17 +5,19 @@
 <div class="sub"><h3>3	Síntomas / Enfermedad de Cushing</h3></div>
 
 <form action="" method="post" class="form-inline" role="form" id="FrmSintomas">{% csrf_token %}
-	<table class="table table-condensed">
-		<tr class="th_principal">
-			<th>Síntomas</th>
-			<th>En los ultimos 6 meses</th>
-			<th>Entre 6 y 12 meses</td>
-		</tr>
-		<tr class="th_secundario">
-			<th>3.1	Complexión</th>
-			<th>Si = 1 / No = 2</th>
-			<th>Si = 1 / No = 2</td>
-		</tr>
+	<table class="table table-condensed table-striped table-bordered">
+		<thead>
+			<tr class="th_principal">
+				<th>Síntomas</th>
+				<th>En los ultimos 6 meses</th>
+				<th>Entre 6 y 12 meses</td>
+			</tr>
+			<tr class="th_secundario">
+				<th>3.1	Complexión</th>
+				<th>Si = 1 / No = 2</th>
+				<th>Si = 1 / No = 2</td>
+			</tr>
+		</thead>
 		<tr>
 			<td><label for="{{form.cara_luna_6.id}}">{{form.cara_luna_6.label}}</label></td>
 			<td>{{form.cara_luna_6}}</td>
@@ -180,7 +182,7 @@
 		<tr>
 			<td><input type="submit" value="Guardar" class="btn btn-primary" id="btn_guardar" /></td>
 			<td></td>	
-			<td><input type="submit" value="Siguiente" class="btn btn-success" id="btn_siguiente" /></td>
+			<td><input type="button" value="Siguiente" class="btn btn-success" id="btn_siguiente" onclick="window.location.href='/comorbilidades'" /></td>
 		</tr>
 	</table>
 

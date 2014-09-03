@@ -2,7 +2,7 @@
 
 {% block child %}
 
-<div class="sub"><h3>9	Tratamiento farmacológico </h3></div>
+<div class="sub"><h3>9 Tratamiento farmacológico (Comorbilidades)</h3></div>
 
 <form action="" method="post" class="form-inline" role="form" id="FrmComorb">{% csrf_token %}
 	<table class="table table-condensed">
@@ -53,7 +53,7 @@
 		</tr>
 		<tr>
 			<td colspan="2"><input type="submit" value="Guardar" class="btn btn-primary" id="btn_guardar" /></td>
-			<td><input type="submit" value="Siguiente" class="btn btn-success" id="btn_siguiente" /></td>
+			<td><input type="button" value="Siguiente" class="btn btn-success" id="btn_siguiente"  onclick="window.location.href='/complicaciones'" /></td>
 		</tr>
 	</table>
 

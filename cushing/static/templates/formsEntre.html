@@ -8,7 +8,7 @@
 <div class="sub"><h5>Datos del entrevistado</h5></div>
 
 <form action="" method="post" class="form-horizontal" role="form" id="FrmEntrevista">{% csrf_token %}
-	<table class="table table-condensed ">
+	<table class="table table-condensed table-striped table-bordered">
 		{% for field in form.visible_fields  %}
 			<tr>
 				<td><label class="" for="{{field.name}}">{{field.label}}</label></td>
@@ -21,7 +21,7 @@
 
 		<tr>
 			<td><input type="submit" value="Guardar" class="btn btn-primary" id="btn_guardar"/></td>
-			<td><input type="submit" value="Siguiente" class="btn btn-success" id="btn_siguiente"/></td>
+			<td><input type="button" value="Siguiente" class="btn btn-success" id="btn_siguiente" onclick="window.location.href='/seleccion'"/></td>
 		</tr>
 	</table>
 </form>
