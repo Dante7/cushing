@@ -2,7 +2,6 @@ var JsonTx = [];
 
 
 $(document).ready(function() {
-	
 
 	function Limpiar () {
 		$("#menu li").each(function( index ) {
@@ -67,6 +66,21 @@ function botones(valor) {
 	}else{
 		$('#btn_guardar').prop("disabled", false);
 		$('#btn_siguiente').prop("disabled", false);
+	};
+}
+
+function Deshabilita(valor) {
+	// body...
+	if (valor) {
+		$.each($('input'),function(){
+			$(this).prop("disabled", true);
+		});
+		$('#btn_siguiente').prop("disabled", false);
+	}else{
+		$.each($('input'),function(){
+			$(this).prop("disabled", false);
+		});
+		$('#btn_siguiente').prop("disabled", true);
 	};
 }
 
@@ -226,4 +240,8 @@ function Validar(tx,temp) {
 	}else{
 		NewRow(tx,temp);
 	};
+}
+
+function Start() {
+	window.location.href='/entrevistado';
 }

@@ -71,6 +71,14 @@ def Main(request):
 	return render_to_response(template, context_instance=RequestContext(request))
 
 @login_required(login_url='/')
+def Captura(request):
+	template = 'captura.html'
+	registros = Entrevistado.objects.all()
+	resultado = {'registros': registros}
+	return render_to_response(template, resultado, context_instance=RequestContext(request))
+
+
+@login_required(login_url='/')
 def Menu(request):
 	template = 'menu.html'
 	return render_to_response(template, context_instance=RequestContext(request))
@@ -85,11 +93,18 @@ def CapEntrev(request):
 			formulario.save()
 			request.session["folio"] = request.POST['folio']
 			msg = 'true'
+			resultado = {'form':formulario, 'msg':msg}
 			return render_to_response(template, resultado, context_instance=RequestContext(request))
 	else:
-		formulario = FrmEntrevistado()
+		try:
+			registro = Entrevistado.objects.filter(folio=request.session['folio'])
+			formulario = FrmEntrevistado(instance=registro)
+			msg = 'true'
+			pass
+		except:
+			formulario = FrmEntrevistado()
+			pass
 	resultado = {'form':formulario, 'msg':msg}
-	print msg
 	return render_to_response(template, resultado, context_instance=RequestContext(request))
 
 @login_required(login_url='/')
@@ -102,9 +117,17 @@ def CapSelec(request):
 			formulario.save()
 			request.session["folio"] = request.POST['folio']
 			msg = 'true'
+			resultado = {'form':formulario, 'msg':msg}
 			return render_to_response(template, resultado, context_instance=RequestContext(request))
 	else:
-		formulario = FrmSeleccion()
+		try:
+			registro = Seleccion.objects.filter(folio=request.session['folio'])
+			formulario = FrmSeleccion(instance=registro)
+			msg = 'true'
+			pass
+		except: 
+			formulario = FrmSeleccion()
+			pass
 	resultado = {'form':formulario, 'msg':msg}
 	return render_to_response(template, resultado, context_instance=RequestContext(request))
 
@@ -117,10 +140,17 @@ def CapControl(request):
 		if formulario.is_valid():
 			formulario.save()
 			msg = 'true'
-			request.session["folio"] = request.POST['folio']
+			resultado = {'form':formulario, 'msg':msg}
 			return render_to_response(template, resultado, context_instance=RequestContext(request))
 	else:
-		formulario = FrmControl()
+		try:
+			registro = Control.objects.filter(folio=request.session['folio'])
+			formulario = FrmControl(instance=registro)
+			msg = 'true'
+			pass
+		except: 
+			formulario = FrmControl()
+			pass
 	resultado = {'form':formulario, 'msg':msg}
 	return render_to_response(template, resultado, context_instance=RequestContext(request))
 
@@ -133,10 +163,17 @@ def CapGenerales(request):
 		if formulario.is_valid():
 			formulario.save()
 			msg = 'true'
-			request.session["folio"] = request.POST['folio']
+			resultado = {'form':formulario, 'msg':msg}
 			return render_to_response(template, resultado, context_instance=RequestContext(request))
 	else:
-		formulario = FrmGenerales()
+		try:
+			registro = Generales.objects.filter(folio=request.session['folio'])
+			formulario = FrmGenerales(instance=registro)
+			msg = 'true'
+			pass
+		except: 
+			formulario = FrmGenerales()
+			pass
 	resultado = {'form':formulario, 'msg':msg}
 	return render_to_response(template, resultado, context_instance=RequestContext(request))
 
@@ -149,10 +186,17 @@ def CapSintomas(request):
 		if formulario.is_valid():
 			formulario.save()
 			msg = 'true'
-			request.session["folio"] = request.POST['folio']
+			resultado = {'form':formulario, 'msg':msg}
 			return render_to_response(template, resultado, context_instance=RequestContext(request))
 	else:
-		formulario = FrmSintomas()
+		try:
+			registro = Sintomas.objects.filter(folio=request.session['folio'])
+			formulario = FrmSintomas(instance=registro)
+			msg = 'true'
+			pass
+		except: 
+			formulario = FrmSintomas()
+			pass
 	resultado = {'form':formulario, 'msg':msg}
 	return render_to_response(template, resultado, context_instance=RequestContext(request))
 
@@ -165,10 +209,17 @@ def CapComorb(request):
 		if formulario.is_valid():
 			formulario.save()
 			msg = 'true'
-			request.session["folio"] = request.POST['folio']
+			resultado = {'form':formulario, 'msg':msg}
 			return render_to_response(template, resultado, context_instance=RequestContext(request))
 	else:
-		formulario = FrmComorbilidades()
+		try:
+			registro = Comorbilidades.objects.filter(folio=request.session['folio'])
+			formulario = FrmComorbilidades(instance=registro)
+			msg = 'true'
+			pass
+		except: 
+			formulario = FrmComorbilidades()
+			pass
 	resultado = {'form':formulario, 'msg':msg}
 	return render_to_response(template, resultado, context_instance=RequestContext(request))
 
@@ -181,10 +232,17 @@ def CapEspe(request):
 		if formulario.is_valid():
 			formulario.save()
 			msg = 'true'
-			request.session["folio"] = request.POST['folio']
+			resultado = {'form':formulario, 'msg':msg}
 			return render_to_response(template, resultado, context_instance=RequestContext(request))
 	else:
-		formulario = FrmEspecialista()
+		try:
+			registro = Especialista.objects.filter(folio=request.session['folio'])
+			formulario = FrmEspecialista(instance=registro)
+			msg = 'true'
+			pass
+		except: 
+			formulario = FrmEspecialista()
+			pass
 	resultado = {'form':formulario, 'msg':msg}
 	return render_to_response(template, resultado, context_instance=RequestContext(request))
 
@@ -197,10 +255,17 @@ def CapHosp(request):
 		if formulario.is_valid():
 			formulario.save()
 			msg = 'true'
-			request.session["folio"] = request.POST['folio']
+			resultado = {'form':formulario, 'msg':msg}
 			return render_to_response(template, resultado, context_instance=RequestContext(request))
 	else:
-		formulario = FrmHospitalizacion()
+		try:
+			registro = Hospitalizacion.objects.filter(folio=request.session['folio'])
+			formulario = FrmHospitalizacion(instance=registro)
+			msg = 'true'
+			pass
+		except: 
+			formulario = FrmHospitalizacion()
+			pass
 	resultado = {'form':formulario, 'msg':msg}
 	return render_to_response(template, resultado, context_instance=RequestContext(request))
 
@@ -213,10 +278,17 @@ def CapLab(request):
 		if formulario.is_valid():
 			formulario.save()
 			msg = 'true'
-			request.session["folio"] = request.POST['folio']
+			resultado = {'form':formulario, 'msg':msg}
 			return render_to_response(template, resultado, context_instance=RequestContext(request))
 	else:
-		formulario = FrmLaboratorio()
+		try:
+			registro = Laboratorio.objects.filter(folio=request.session['folio'])
+			formulario = FrmLaboratorio(instance=registro)
+			msg = 'true'
+			pass
+		except: 
+			formulario = FrmLaboratorio()
+			pass
 	resultado = {'form':formulario, 'msg':msg}
 	return render_to_response(template, resultado, context_instance=RequestContext(request))
 
@@ -229,10 +301,17 @@ def CapInter(request):
 		if formulario.is_valid():
 			formulario.save()
 			msg = 'true'
-			request.session["folio"] = request.POST['folio']
+			resultado = {'form':formulario, 'msg':msg}
 			return render_to_response(template, resultado, context_instance=RequestContext(request))
 	else:
-		formulario = FrmIntervenciones()
+		try:
+			registro = Intervenciones.objects.filter(folio=request.session['folio'])
+			formulario = FrmIntervenciones(instance=registro)
+			msg = 'true'
+			pass
+		except: 
+			formulario = FrmIntervenciones()
+			pass
 	resultado = {'form':formulario, 'msg':msg}
 	return render_to_response(template, resultado, context_instance=RequestContext(request))
 
@@ -241,16 +320,22 @@ def CapTx(request):
 	template = 'forms9.html'
 	msg = 'false'
 	if request.method=='POST':
-		# print request.POST['valores']
 		formulario = FrmTratamiento(request.POST)
 		GuardaTratamientos(request.POST['valores'], request.POST['folio'])
 		if formulario.is_valid():
 			formulario.save()
 			msg = 'true'
-			request.session["folio"] = request.POST['folio']
+			resultado = {'form':formulario, 'msg':msg}
 			return render_to_response(template, resultado, context_instance=RequestContext(request))
 	else:
-		formulario = FrmTratamiento()
+		try:
+			registro = Tratamiento.objects.filter(folio=request.session['folio'])
+			formulario = FrmTratamiento(instance=registro)
+			msg = 'true'
+			pass
+		except: 
+			formulario = FrmTratamiento()
+			pass
 	resultado = {'form':formulario, 'msg':msg}
 	return render_to_response(template, resultado, context_instance=RequestContext(request))
 
@@ -264,10 +349,17 @@ def CapComorbTx(request):
 		if formulario.is_valid():
 			formulario.save()
 			msg = 'true'
-			request.session["folio"] = request.POST['folio']
+			resultado = {'form':formulario, 'msg':msg}
 			return render_to_response(template, resultado, context_instance=RequestContext(request))
 	else:
-		formulario = FrmComorbilidadesTx()
+		try:
+			registro = ComorbilidadesTx.objects.filter(folio=request.session['folio'])
+			formulario = FrmComorbilidadesTx(instance=registro)
+			msg = 'true'
+			pass
+		except: 
+			formulario = FrmComorbilidadesTx()
+			pass
 	resultado = {'form':formulario, 'msg':msg}
 	return render_to_response(template, resultado, context_instance=RequestContext(request))
 
@@ -281,9 +373,16 @@ def CapComp(request):
 		if formulario.is_valid():
 			formulario.save()
 			msg = 'true'
-			request.session["folio"] = request.POST['folio']
+			resultado = {'form':formulario, 'msg':msg}
 			return render_to_response(template, resultado, context_instance=RequestContext(request))
 	else:
-		formulario = FrmComplicaciones()
+		try:
+			registro = Complicaciones.objects.filter(folio=request.session['folio'])
+			formulario = FrmComplicaciones(instance=registro)
+			msg = 'true'
+			pass
+		except: 
+			formulario = FrmComplicaciones()
+			pass
 	resultado = {'form':formulario, 'msg':msg}
 	return render_to_response(template, resultado, context_instance=RequestContext(request))

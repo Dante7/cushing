@@ -11,6 +11,9 @@ urlpatterns = patterns('',
 
     url(r'^$', 'captura.views.Main', name='main'),
     url(r'^menu/', 'captura.views.Menu', name='menu'),
+
+    url(r'^captura/', 'captura.views.Captura', name='captura'),
+
     url(r'^entrevistado/', 'captura.views.CapEntrev', name='entrevistado'),
     url(r'^seleccion/', 'captura.views.CapSelec', name='seleccion'),
     url(r'^control/', 'captura.views.CapControl', name='control'),
