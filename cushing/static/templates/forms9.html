@@ -5,8 +5,8 @@
 <div class="sub"><h3>9	Tratamiento farmacológico </h3></div>
 
 <form action="" method="post" class="form-inline" role="form" id="FrmTx">{% csrf_token %}
-	<input type="hidden" id="folio" name="folio">
-	<input type="hidden" id="valores" name="valores">
+	{{form.tx}}
+	{{form.folio}}
 	<table class="table table-condensed table-striped table-bordered">
 		<thead>
 		<tr class="th_principal">

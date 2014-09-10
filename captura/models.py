@@ -15,17 +15,18 @@ class RegEnt(models.Model):
 
 class Entrevistado(models.Model):
 	"""Datos del Entrevistado"""
-	folio = models.CharField(max_length=150)
-	monitor_clinico = models.CharField(max_length=150)
-	supervisor = models.CharField(max_length=150)
-	fecha_llenado = models.CharField(max_length=150)
-	nombre_medico = models.CharField(max_length=150)
-	especialidad = models.CharField(max_length=150)
-	pais = models.CharField(max_length=150)
-	institucion_publica = models.CharField(max_length=150)
-	institucion_privada = models.CharField(max_length=150)
-	telefono = models.CharField(max_length=150)
-	email = models.CharField(max_length=150)
+	folio_principal = models.CharField(max_length=150)
+	monitor_clinico = models.CharField(max_length=150, blank=True, null=True)
+	supervisor = models.CharField(max_length=150, blank=True, null=True)
+	fecha_llenado = models.CharField(max_length=150, blank=True)
+	nombre_medico = models.CharField(max_length=150, blank=True)
+	especialidad = models.CharField(max_length=150, blank=True)
+	pais = models.CharField(max_length=150, blank=True)
+	institucion_publica = models.CharField(max_length=150, blank=True)
+	institucion_privada = models.CharField(max_length=150, blank=True)
+	telefono = models.CharField(max_length=150, blank=True)
+	email = models.CharField(max_length=150, blank=True)
+	hora_guardado = models.DateTimeField(auto_now=True)
 	class Meta:
 		db_table = 'entrevistado'
 		
@@ -39,6 +40,8 @@ class Seleccion(models.Model):
 	examen_orina_2 = models.CharField(max_length=150)
 	examen_orina_1 = models.CharField(max_length=150)
 	examen_orina_0 = models.CharField(max_length=150)
+	es_candidato = models.CharField(max_length=150, blank=True, null=True)
+	hora_guardado = models.DateTimeField(auto_now=True)
 	class Meta:
 		db_table = 'seleccion'
 
@@ -51,6 +54,7 @@ class Control(models.Model):
 	corti_libre_orina = models.CharField(max_length=150)
 	hormona_adreno = models.CharField(max_length=150)
 	sintomas_paciente = models.CharField(max_length=150)
+	hora_guardado = models.DateTimeField(auto_now=True)
 	class Meta:
 		db_table = 'control'
 
@@ -63,6 +67,7 @@ class Generales(models.Model):
 	talla = models.CharField(max_length=150)
 	imc = models.CharField(max_length=150)
 	fecha_diag = models.DateField(auto_now=False)
+	hora_guardado = models.DateTimeField(auto_now=True)
 	class Meta:
 		db_table = 'generales'
 
@@ -126,6 +131,7 @@ class Sintomas(models.Model):
 	otro2_cual = models.CharField(max_length=150)
 	otro2_6 = models.CharField(max_length=150)
 	otro2_12 = models.CharField(max_length=150)
+	hora_guardado = models.DateTimeField(auto_now=True)
 
 	class Meta:
 		db_table = 'sintomas'
@@ -183,6 +189,7 @@ class Comorbilidades(models.Model):
 	otro2_cual = models.CharField(max_length=150)
 	otro2_6 = models.CharField(max_length=150)
 	otro2_12 = models.CharField(max_length=150)
+	hora_guardado = models.DateTimeField(auto_now=True)
 
 	class Meta:
 		db_table = 'comorbilidades'
@@ -264,6 +271,7 @@ class Especialista(models.Model):
 	otro2_10_mes = models.CharField(max_length=150)
 	otro2_11_mes = models.CharField(max_length=150)
 	otro2_12_mes = models.CharField(max_length=150)
+	hora_guardado = models.DateTimeField(auto_now=True)
 	class Meta:
 		db_table = 'especialista'
 
@@ -294,6 +302,7 @@ class Hospitalizacion(models.Model):
 	ci_10_mes = models.CharField(max_length=150)
 	ci_11_mes = models.CharField(max_length=150)
 	ci_12_mes = models.CharField(max_length=150)
+	hora_guardado = models.DateTimeField(auto_now=True)
 
 	class Meta:
 		db_table = 'hospitalizacion'
@@ -401,6 +410,7 @@ class Laboratorio(models.Model):
 	otro2_pruebas_6 = models.CharField(max_length=150)
 	otro2_si_12 = models.CharField(max_length=150)
 	otro2_pruebas_12 = models.CharField(max_length=150)
+	hora_guardado = models.DateTimeField(auto_now=True)
 
 	class Meta:
 		db_table = 'laboratorio'
@@ -480,83 +490,86 @@ class Intervenciones(models.Model):
 	adrena_nelson_veces_12 = models.CharField(max_length=150)
 	adrena_otras_comp_12 = models.CharField(max_length=150)
 	adrena_otras_veces_12 = models.CharField(max_length=150)
+	hora_guardado = models.DateTimeField(auto_now=True)
 
 	class Meta:
 		db_table = 'inteervenciones'
 
 class Tratamiento(models.Model):
 	"""Datos del Tratamiento"""
-	folio = models.CharField(max_length=150)
-	keto_6 = models.CharField(max_length=150)
-	keto_12 = models.CharField(max_length=150)
-	caber_6 = models.CharField(max_length=150)
-	caber_12 = models.CharField(max_length=150)
-	mife_6 = models.CharField(max_length=150)
-	mife_12 = models.CharField(max_length=150)
-	otro1_cual = models.CharField(max_length=150)
-	otro1_6 = models.CharField(max_length=150)
-	otro1_12 = models.CharField(max_length=150)
-	otro2_cual = models.CharField(max_length=150)
-	otro2_6 = models.CharField(max_length=150)
-	otro2_12 = models.CharField(max_length=150)
-	otro3_cual = models.CharField(max_length=150)
-	otro3_6 = models.CharField(max_length=150)
-	otro3_12 = models.CharField(max_length=150)
-	metfo_6 = models.CharField(max_length=150)
-	metfo_12 = models.CharField(max_length=150)
-	sulfo_6 = models.CharField(max_length=150)
-	sulfo_12 = models.CharField(max_length=150)
-	tiazo_6 = models.CharField(max_length=150)
-	tiazo_12 = models.CharField(max_length=150)
-	dpp4_6 = models.CharField(max_length=150)
-	dpp4_12 = models.CharField(max_length=150)
-	glp1_6 = models.CharField(max_length=150)
-	glp1_12 = models.CharField(max_length=150)
-	insu_rapida_6 = models.CharField(max_length=150)
-	insu_rapida_12 = models.CharField(max_length=150)
-	insu_lenta_6 = models.CharField(max_length=150)
-	insu_lenta_12 = models.CharField(max_length=150)
-	ieca_6 = models.CharField(max_length=150)
-	ieca_12 = models.CharField(max_length=150)
-	bra_6 = models.CharField(max_length=150)
-	bra_12 = models.CharField(max_length=150)
-	beta_bloq_6 = models.CharField(max_length=150)
-	beta_bloq_12 = models.CharField(max_length=150)
-	fibratos_6 = models.CharField(max_length=150)
-	fibratos_12 = models.CharField(max_length=150)
-	bcc_6 = models.CharField(max_length=150)
-	bcc_12 = models.CharField(max_length=150)
-	diuretico_6 = models.CharField(max_length=150)
-	diuretico_12 = models.CharField(max_length=150)
-	iac_6 = models.CharField(max_length=150)
-	iac_12 = models.CharField(max_length=150)
-	vit_b3_6 = models.CharField(max_length=150)
-	vit_b3_12 = models.CharField(max_length=150)
-	nitrato_6 = models.CharField(max_length=150)
-	nitrato_12 = models.CharField(max_length=150)
-	antiplaq_6 = models.CharField(max_length=150)
-	antiplaq_12 = models.CharField(max_length=150)
-	acido_acetil_6 = models.CharField(max_length=150)
-	acido_acetil_12 = models.CharField(max_length=150)
-	estatina_6 = models.CharField(max_length=150)
-	estatina_12 = models.CharField(max_length=150)
-	sab_6 = models.CharField(max_length=150)
-	sab_12 = models.CharField(max_length=150)
-	sepsis_cual = models.CharField(max_length=150)
-	sepsis_6 = models.CharField(max_length=150)
-	sepsis_12 = models.CharField(max_length=150)
-	neumonia_cual = models.CharField(max_length=150)
-	neumonia_6 = models.CharField(max_length=150)
-	neumonia_12 = models.CharField(max_length=150)
-	vias_cual = models.CharField(max_length=150)
-	vias_6 = models.CharField(max_length=150)
-	vias_12 = models.CharField(max_length=150)
-	ptb_cual = models.CharField(max_length=150)
-	ptb_6 = models.CharField(max_length=150)
-	ptv_12 = models.CharField(max_length=150)
-	fungi_cual = models.CharField(max_length=150)
-	fungi_6 = models.CharField(max_length=150)
-	fungi_12 = models.CharField(max_length=150)
+	folio = models.CharField(max_length=150, blank=True)
+	keto_6 = models.CharField(max_length=150, blank=True)
+	keto_12 = models.CharField(max_length=150, blank=True)
+	caber_6 = models.CharField(max_length=150, blank=True)
+	caber_12 = models.CharField(max_length=150, blank=True)
+	mife_6 = models.CharField(max_length=150, blank=True)
+	mife_12 = models.CharField(max_length=150, blank=True)
+	otro1_cual = models.CharField(max_length=150, blank=True)
+	otro1_6 = models.CharField(max_length=150, blank=True)
+	otro1_12 = models.CharField(max_length=150, blank=True)
+	otro2_cual = models.CharField(max_length=150, blank=True)
+	otro2_6 = models.CharField(max_length=150, blank=True)
+	otro2_12 = models.CharField(max_length=150, blank=True)
+	otro3_cual = models.CharField(max_length=150, blank=True)
+	otro3_6 = models.CharField(max_length=150, blank=True)
+	otro3_12 = models.CharField(max_length=150, blank=True)
+	metfo_6 = models.CharField(max_length=150, blank=True)
+	metfo_12 = models.CharField(max_length=150, blank=True)
+	sulfo_6 = models.CharField(max_length=150, blank=True)
+	sulfo_12 = models.CharField(max_length=150, blank=True)
+	tiazo_6 = models.CharField(max_length=150, blank=True)
+	tiazo_12 = models.CharField(max_length=150, blank=True)
+	dpp4_6 = models.CharField(max_length=150, blank=True)
+	dpp4_12 = models.CharField(max_length=150, blank=True)
+	glp1_6 = models.CharField(max_length=150, blank=True)
+	glp1_12 = models.CharField(max_length=150, blank=True)
+	insu_rapida_6 = models.CharField(max_length=150, blank=True)
+	insu_rapida_12 = models.CharField(max_length=150, blank=True)
+	insu_lenta_6 = models.CharField(max_length=150, blank=True)
+	insu_lenta_12 = models.CharField(max_length=150, blank=True)
+	ieca_6 = models.CharField(max_length=150, blank=True)
+	ieca_12 = models.CharField(max_length=150, blank=True)
+	bra_6 = models.CharField(max_length=150, blank=True)
+	bra_12 = models.CharField(max_length=150, blank=True)
+	beta_bloq_6 = models.CharField(max_length=150, blank=True)
+	beta_bloq_12 = models.CharField(max_length=150, blank=True)
+	fibratos_6 = models.CharField(max_length=150, blank=True)
+	fibratos_12 = models.CharField(max_length=150, blank=True)
+	bcc_6 = models.CharField(max_length=150, blank=True)
+	bcc_12 = models.CharField(max_length=150, blank=True)
+	diuretico_6 = models.CharField(max_length=150, blank=True)
+	diuretico_12 = models.CharField(max_length=150, blank=True)
+	iac_6 = models.CharField(max_length=150, blank=True)
+	iac_12 = models.CharField(max_length=150, blank=True)
+	vit_b3_6 = models.CharField(max_length=150, blank=True)
+	vit_b3_12 = models.CharField(max_length=150, blank=True)
+	nitrato_6 = models.CharField(max_length=150, blank=True)
+	nitrato_12 = models.CharField(max_length=150, blank=True)
+	antiplaq_6 = models.CharField(max_length=150, blank=True)
+	antiplaq_12 = models.CharField(max_length=150, blank=True)
+	acido_acetil_6 = models.CharField(max_length=150, blank=True)
+	acido_acetil_12 = models.CharField(max_length=150, blank=True)
+	estatina_6 = models.CharField(max_length=150, blank=True)
+	estatina_12 = models.CharField(max_length=150, blank=True)
+	sab_6 = models.CharField(max_length=150, blank=True)
+	sab_12 = models.CharField(max_length=150, blank=True)
+	sepsis_cual = models.CharField(max_length=150, blank=True)
+	sepsis_6 = models.CharField(max_length=150, blank=True)
+	sepsis_12 = models.CharField(max_length=150, blank=True)
+	neumonia_cual = models.CharField(max_length=150, blank=True)
+	neumonia_6 = models.CharField(max_length=150, blank=True)
+	neumonia_12 = models.CharField(max_length=150, blank=True)
+	vias_cual = models.CharField(max_length=150, blank=True)
+	vias_6 = models.CharField(max_length=150, blank=True)
+	vias_12 = models.CharField(max_length=150, blank=True)
+	ptb_cual = models.CharField(max_length=150, blank=True)
+	ptb_6 = models.CharField(max_length=150, blank=True)
+	ptv_12 = models.CharField(max_length=150, blank=True)
+	fungi_cual = models.CharField(max_length=150, blank=True)
+	fungi_6 = models.CharField(max_length=150, blank=True)
+	fungi_12 = models.CharField(max_length=150, blank=True)
+	tx = models.TextField()
+	hora_guardado = models.DateTimeField(auto_now=True)
 
 	class Meta:
 		db_table = 'tratamiento'
@@ -582,6 +595,7 @@ class ComorbilidadesTx(models.Model):
 	otra2_cual = models.CharField(max_length=150)
 	otra2_6 = models.CharField(max_length=150)
 	otra2_12 = models.CharField(max_length=150)
+	hora_guardado = models.DateTimeField(auto_now=True)
 
 	class Meta:
 		db_table = 'comorbilidades_tx'
@@ -629,6 +643,7 @@ class Complicaciones(models.Model):
 	tx_si_2 = models.CharField(max_length=150)
 	tx_eventos_2 = models.CharField(max_length=150)
 	tx_duracion_2 = models.CharField(max_length=150)
+	hora_guardado = models.DateTimeField(auto_now=True)
 
 	class Meta:
 		db_table = 'complicaciones'
@@ -643,6 +658,7 @@ class TxCompleto(models.Model):
 	intervalos = models.CharField(max_length=150)
 	ciclos = models.CharField(max_length=150)
 	cateterismo = models.BooleanField()
+	hora_guardado = models.DateTimeField(auto_now=True)
 	class Meta:
 		db_table = 'tx_completo'
 		

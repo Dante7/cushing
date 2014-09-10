@@ -4,6 +4,7 @@
 
 <form action="" method="post" class="form-inline" role="form" id="FrmCompl">{% csrf_token %}
 	<table class="table table-condensed">
+		{{form.folio}}
 		<tr class="th_principal">
 			<th>Evento adversos / Complicación</th>
 			<th>Utilizado (si/no)</th>
@@ -84,7 +85,7 @@
 		</tr>
 		<tr>
 			<td colspan="2"><input type="submit" value="Guardar" class="btn btn-primary" id="btn_guardar" /></td>
-			<td colspan="2"><input type="button" value="Siguiente" class="btn btn-success" id="btn_siguiente"  onclick="window.location.href='/'"/></td>
+			<td colspan="2"><input type="button" value="Finalizar" class="btn btn-success" id="btn_siguiente"  onclick="window.location.href='/captura'"/></td>
 		</tr>
 	</table>
 

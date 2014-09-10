@@ -19,6 +19,13 @@ p
 	margin: 0 0 1em 1em;
 }
 
+/*DatePicker*/
+#ui-datepicker-title select
+{
+	color: black;
+}
+/*Termina DatePicker*/
+
 /*Login*/
 #loginform
 {
@@ -59,7 +66,7 @@ p
 {
 	border-style: solid;
 	border-width: 0.2em;
-	border-radius: 5px;
+	border-radius: 3px;
 	margin: 0 0.2em 0 0.2em;
 }
 /*Termina menu*/
@@ -320,6 +327,14 @@ p
 .helptext
 {
 	text-align: center;
+}
+
+.main
+{
+	vertical-align: center;
+	border-radius: 0.2em 0.3em 0 0;
+	background-color: rgba(51,91,116,.5);
+	padding: 0.5em 0 0.5em 0;
 }
 
 .sub

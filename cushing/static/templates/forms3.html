@@ -5,6 +5,7 @@
 <div class="sub"><h3>3	Síntomas / Enfermedad de Cushing</h3></div>
 
 <form action="" method="post" class="form-inline" role="form" id="FrmSintomas">{% csrf_token %}
+	{{form.folio}}
 	<table class="table table-condensed table-striped table-bordered">
 		<thead>
 			<tr class="th_principal">
@@ -27,11 +28,6 @@
 			<td><label for="{{form.ojos_jinchados_6.id}}">{{form.ojos_jinchados_6.label}}</label></td>
 			<td>{{form.ojos_jinchados_6}}</td>
 			<td>{{form.ojos_jinchados_12}}</td>
-		</tr>
-		<tr>
-			<td><label for="{{form.cara_luna_6.id}}">{{form.cara_luna_6.label}}</label></td>
-			<td>{{form.cara_luna_6}}</td>
-			<td>{{form.cara_luna_12}}</td>
 		</tr>
 		<tr>
 			<td><label for="{{form.tez_purpuras_6.id}}">{{form.tez_purpuras_6.label}}</label></td>

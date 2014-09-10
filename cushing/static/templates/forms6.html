@@ -7,6 +7,7 @@
 <p>Número de días al mes por tipo de hospitalización</p>
 
 <form action="" method="post" class="form-inline" role="form" id="FrmHospitalizacion">{% csrf_token %}
+	{{form.folio}}
 	<table class="table table-condensed">
 		<tr class="th_principal">
 			<th>Meses</th>

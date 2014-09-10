@@ -29,26 +29,38 @@ ce = (
 		(4,4)
 )
 
+espe = (
+		('Endocrinología','Endocrinología'),
+		('Neurología','Neurología')
+)
+
+pais = (
+		('México','México'),
+		('Colombia','Colombia')
+)
+
 class FrmEntrevistado(ModelForm):
 	"""Formulario de enrtevistado"""
-	folio = forms.CharField(label="Folio", help_text='', required=False)
-	monitor_clinico = forms.CharField(label="Monitor clínico", help_text='', required=False)
-	supervisor = forms.CharField(label="Supervisor", help_text='', required=False)
+	folio_principal = forms.CharField(label="Folio", help_text='',  widget=forms.TextInput(attrs={'readonly':'readonly'}),required=False)
+	monitor_clinico = forms.CharField(label="Monitor clínico", widget=forms.TextInput(attrs={'readonly':'readonly'}), help_text='' ,required=False)
+	supervisor = forms.CharField(label="Supervisor", help_text='',widget=forms.TextInput(attrs={'readonly':'readonly'}) , required=False)
 	fecha_llenado = forms.DateField(label="Fecha de llenado", help_text='', required=False)
 	nombre_medico = forms.CharField(label="Nombre del medico", help_text='', required=False)
-	especialidad = forms.CharField(label="Especialidad", help_text='', required=False)
-	pais = forms.CharField(label="País", help_text='', required=False)
+	especialidad = forms.ChoiceField(label="Especialidad", help_text='', choices=espe, required=False)
+	pais = forms.ChoiceField(label="País", help_text='', choices=pais, required=False)
 	institucion_publica = forms.CharField(label="Institución pública", help_text='', required=False)
 	institucion_privada = forms.CharField(label="Institución privada", help_text='', required=False)
 	telefono = forms.CharField(label="Teléfono", help_text='', required=False)
 	email = forms.EmailField(label="Email", help_text='', required=False)
+
 	class Meta:
 		model = Entrevistado
 
 class FrmSeleccion(ModelForm):
 	"""Formulario de enrtevistado"""
-	folio = forms.CharField(widget=forms.HiddenInput())
-	espe_medica = forms.CharField(label="1)Dr. ¿Cuál es su especialidad médica?", help_text='', required=False)
+	folio = forms.CharField(widget=forms.HiddenInput(), required=False)
+	es_candidato = forms.CharField(widget=forms.HiddenInput(), required=False)
+	espe_medica = forms.CharField(label="1)Dr. ¿Cuál es su especialidad médica?", help_text='',widget=forms.TextInput(attrs={'readonly':'readonly'}), required=False)
 	tiempo_endo = forms.CharField(label="2)Dr. ¿Cuántos años tiene practicando como médico endocrinólogo?", help_text='', required=False)
 	cushing_actual_tx = forms.CharField(label="3)Dr. ¿Actualmente cuantos pacientes con Enfermedad de Cushing (No Síndrome de Cushing) tiene en tratamiento?", help_text='', required=False)
 	cushing_cm_12m = forms.CharField(label="4)Dr. ¿De los pacientes con Enfermedad de Cushing en tratamiento, cuantos han estado bajo cuidados médicos por 12 meses o más?", help_text='', required=False)
@@ -60,7 +72,7 @@ class FrmSeleccion(ModelForm):
 
 class FrmControl(ModelForm):
 	"""Formulario de enrtevistado"""
-	folio = forms.CharField(widget=forms.HiddenInput())
+	folio = forms.CharField(widget=forms.HiddenInput(), required=False)
 	control_alto = forms.CharField(label='Control alto', help_text='', required=False)
 	control_bajo = forms.CharField(label='Control bajo', help_text='', required=False)
 	control_medio = forms.CharField(label='Control intermedio', help_text='', required=False)
@@ -72,7 +84,7 @@ class FrmControl(ModelForm):
 
 class FrmGenerales(ModelForm):
 	"""Formulario de enrtevistado"""
-	folio = forms.CharField(widget=forms.HiddenInput())
+	folio = forms.CharField(widget=forms.HiddenInput(), required=False)
 	edad = forms.CharField(label='2.1.Edad', help_text='', required=False)
 	sexo = forms.ChoiceField(label='2.2.Sexo', help_text='', required=False,  choices=sexo, widget=forms.RadioSelect(attrs={'class':'multi'}))
 	peso = forms.CharField(label='2.3.Peso', help_text='', required=False)
@@ -84,7 +96,7 @@ class FrmGenerales(ModelForm):
 
 class FrmSintomas(ModelForm):
 	"""Formulario de enrtevistado"""
-	folio = forms.CharField(widget=forms.HiddenInput())
+	folio = forms.CharField(widget=forms.HiddenInput(), required=False)
 	cara_luna_6 = forms.ChoiceField(label='3.1.1.	Cara de luna (redonda).', help_text='', required=False, choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}))
 	cara_luna_12 = forms.ChoiceField(label='', help_text='', required=False, choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}))
 	ojos_jinchados_6 = forms.ChoiceField(label='3.1.2. Ojos hinchados.', help_text='', required=False, choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}))
@@ -144,7 +156,7 @@ class FrmSintomas(ModelForm):
 
 class FrmComorbilidades(ModelForm):
 	"""Formulario de enrtevistado"""
-	folio = forms.CharField(widget=forms.HiddenInput())
+	folio = forms.CharField(widget=forms.HiddenInput(), required=False)
 	dm1_6 = forms.ChoiceField(label='4.1.1. Diabetes mellitus I', help_text='', required=False, choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}))
 	dm1_12 = forms.ChoiceField(label='', help_text='', required=False, choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}))
 	dm2_6 = forms.ChoiceField(label='4.1.2. Diabetes mellitus II', help_text='', required=False, choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}))
@@ -201,7 +213,7 @@ class FrmComorbilidades(ModelForm):
 
 class FrmEspecialista(ModelForm):
 	"""Formulario de enrtevistado"""
-	folio = forms.CharField(widget=forms.HiddenInput())
+	folio = forms.CharField(widget=forms.HiddenInput(), required=False)
 	endo_1_mes = forms.CharField(label='', help_text='', required=False)
 	endo_2_mes = forms.CharField(label='', help_text='', required=False)
 	endo_3_mes = forms.CharField(label='', help_text='', required=False)
@@ -282,7 +294,7 @@ class FrmEspecialista(ModelForm):
 
 class FrmHospitalizacion(ModelForm):
 	"""Formulario de enrtevistado"""
-	folio = forms.CharField(widget=forms.HiddenInput())
+	folio = forms.CharField(widget=forms.HiddenInput(), required=False)
 	hosp_1_mes = forms.CharField(label='', help_text='', required=False)
 	hosp_2_mes = forms.CharField(label='', help_text='', required=False)
 	hosp_3_mes = forms.CharField(label='', help_text='', required=False)
@@ -312,7 +324,7 @@ class FrmHospitalizacion(ModelForm):
 
 class FrmLaboratorio(ModelForm):
 	"""Formulario de enrtevistado"""
-	folio = forms.CharField(widget=forms.HiddenInput())
+	folio = forms.CharField(widget=forms.HiddenInput(), required=False)
 	clo_no_1_mes = forms.CharField(label='', help_text='', required=False)
 	clo_valor_1_mes = forms.CharField(label='', help_text='', required=False)
 	clo_no_2_mes = forms.CharField(label='', help_text='', required=False)
@@ -418,7 +430,7 @@ class FrmLaboratorio(ModelForm):
 class FrmIntervenciones(ModelForm):
 	"""Formulario de enrtevistado"""
 	# 6 meses
-	folio = forms.CharField(widget=forms.HiddenInput())
+	folio = forms.CharField(widget=forms.HiddenInput(), required=False)
 	rx_si_6 = forms.ChoiceField(label='', help_text='', required=False, choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}))
 	rx_hipo_comp_6 = forms.BooleanField(label='', help_text='', required=False, widget=forms.CheckboxInput())
 	rx_hipo_veces_6 = forms.CharField(label='', help_text='', required=False)
@@ -499,7 +511,8 @@ class FrmIntervenciones(ModelForm):
 
 class FrmTratamiento(ModelForm):
 	"""Formulario de enrtevistado"""
-	folio = forms.CharField(widget=forms.HiddenInput())
+	folio = forms.CharField(widget=forms.HiddenInput(), required=False)
+	tx = forms.CharField(widget=forms.HiddenInput(), required=False)
 	keto_6 = forms.ChoiceField(label='', help_text='', required=False, choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}))
 	keto_12 = forms.ChoiceField(label='', help_text='', required=False, choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}))
 	caber_6 = forms.ChoiceField(label='', help_text='', required=False, choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}))
@@ -575,71 +588,71 @@ class FrmTratamiento(ModelForm):
 
 class FrmComorbilidadesTx(ModelForm):
 	"""Formulario de enrtevistado"""
-	folio = forms.CharField(widget=forms.HiddenInput())
-	depre_cual = forms.CharField(label='', help_text='')
-	depre_6 = forms.ChoiceField(label='', help_text='', choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}))
-	depre_12 = forms.ChoiceField(label='', help_text='', choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}))
-	ansi_cual = forms.CharField(label='', help_text='')
-	ansi_6 = forms.ChoiceField(label='', help_text='', choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}))
-	ansi_12 = forms.ChoiceField(label='', help_text='', choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}))
-	psico_cual = forms.CharField(label='', help_text='')
-	psico_6 = forms.ChoiceField(label='', help_text='', choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}))
-	psico_12 = forms.ChoiceField(label='', help_text='', choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}))
-	cr_cual = forms.CharField(label='', help_text='')
-	cr_6 = forms.ChoiceField(label='', help_text='', choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}))
-	cr_12 = forms.ChoiceField(label='', help_text='', choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}))
-	otra1_cual = forms.CharField(label='', help_text='')
-	otra1_6 = forms.ChoiceField(label='', help_text='', choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}))
-	otra1_12 = forms.ChoiceField(label='', help_text='', choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}))
-	otra2_cual = forms.CharField(label='', help_text='')
-	otra2_6 = forms.ChoiceField(label='', help_text='', choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}))
-	otra2_12 = forms.ChoiceField(label='', help_text='', choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}))
+	folio = forms.CharField(widget=forms.HiddenInput(), required=False)
+	depre_cual = forms.CharField(label='', help_text='', required=False)
+	depre_6 = forms.ChoiceField(label='', help_text='', choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}), required=False)
+	depre_12 = forms.ChoiceField(label='', help_text='', choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}), required=False)
+	ansi_cual = forms.CharField(label='', help_text='', required=False)
+	ansi_6 = forms.ChoiceField(label='', help_text='', choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}), required=False)
+	ansi_12 = forms.ChoiceField(label='', help_text='', choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}), required=False)
+	psico_cual = forms.CharField(label='', help_text='', required=False)
+	psico_6 = forms.ChoiceField(label='', help_text='', choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}), required=False)
+	psico_12 = forms.ChoiceField(label='', help_text='', choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}), required=False)
+	cr_cual = forms.CharField(label='', help_text='', required=False)
+	cr_6 = forms.ChoiceField(label='', help_text='', choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}), required=False)
+	cr_12 = forms.ChoiceField(label='', help_text='', choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}), required=False)
+	otra1_cual = forms.CharField(label='', help_text='', required=False)
+	otra1_6 = forms.ChoiceField(label='', help_text='', choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}), required=False)
+	otra1_12 = forms.ChoiceField(label='', help_text='', choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}), required=False)
+	otra2_cual = forms.CharField(label='', help_text='', required=False)
+	otra2_6 = forms.ChoiceField(label='', help_text='', choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}), required=False)
+	otra2_12 = forms.ChoiceField(label='', help_text='', choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}), required=False)
 	class Meta:
 		model = ComorbilidadesTx
 
 
 class FrmComplicaciones(ModelForm):
 	"""Formulario de enrtevistado"""
-	folio = forms.CharField(widget=forms.HiddenInput())
-	cual_1 = forms.CharField(label='', help_text='')
-	hosp_si_1 = forms.ChoiceField(label='', help_text='', choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}))
-	hosp_eventos_1 = forms.CharField(label='', help_text='')
-	hosp_duracion_1 = forms.CharField(label='', help_text='')
-	espe_si_1 = forms.ChoiceField(label='', help_text='', choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}))
-	espe_eventos_1 = forms.CharField(label='', help_text='')
-	espe_duracion_1 = forms.CharField(label='', help_text='')
-	otras_visitas_cual_1 = forms.CharField(label='', help_text='')
-	otras_visitas_si_1 = forms.ChoiceField(label='', help_text='', choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}))
-	otras_visitas_eventos_1 = forms.CharField(label='', help_text='')
-	otras_visitas_duracion_1 = forms.CharField(label='', help_text='')
-	proc_1 = forms.CharField(label='', help_text='')
-	proc_si_1 = forms.ChoiceField(label='', help_text='', choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}))
-	proc_eventos_1 = forms.CharField(label='', help_text='')
-	proc_duracion_1 = forms.CharField(label='', help_text='')
-	tx_1 = forms.CharField(label='', help_text='')
-	tx_posologia_1 = forms.CharField(label='', help_text='')
-	tx_si_1 = forms.ChoiceField(label='', help_text='', choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}))
-	tx_eventos_1 = forms.CharField(label='', help_text='')
-	tx_duracion_1 = forms.CharField(label='', help_text='')
-	cual_2 = forms.CharField(label='', help_text='')
-	hosp_si_2 = forms.ChoiceField(label='', help_text='', choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}))
-	hosp_eventos_2 = forms.CharField(label='', help_text='')
-	hosp_duracion_2 = forms.CharField(label='', help_text='')
-	espe_si_2 = forms.ChoiceField(label='', help_text='', choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}))
-	espe_eventos_2 = forms.CharField(label='', help_text='')
-	espe_duracion_2 = forms.CharField(label='', help_text='')
-	otras_visitas_cual_2 = forms.CharField(label='', help_text='')
-	otras_visitas_si_2 = forms.ChoiceField(label='', help_text='', choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}))
-	otras_visitas_eventos_2 = forms.CharField(label='', help_text='')
-	otras_visitas_duracion_2 = forms.CharField(label='', help_text='')
-	proc_2 = forms.CharField(label='', help_text='')
-	proc_si_2 = forms.ChoiceField(label='', help_text='', choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}))
-	proc_eventos_2 = forms.CharField(label='', help_text='')
-	proc_duracion_2 = forms.CharField(label='', help_text='')
-	tx_2 = forms.CharField(label='', help_text='')
-	tx_posologia_2 = forms.CharField(label='', help_text='')
-	tx_si_2 = forms.ChoiceField(label='', help_text='', choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}))
-	tx_eventos_2 = forms.CharField(label='', help_text='')
-	tx_duracion_2 = forms.CharField(label='', help_text='')
+	folio = forms.CharField(widget=forms.HiddenInput(), required=False)
+	cual_1 = forms.CharField(label='', help_text='', required=False)
+	hosp_si_1 = forms.ChoiceField(label='', help_text='', choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}), required=False)
+	hosp_eventos_1 = forms.CharField(label='', help_text='', required=False)
+	hosp_duracion_1 = forms.CharField(label='', help_text='', required=False)
+	espe_si_1 = forms.ChoiceField(label='', help_text='', choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}), required=False)
+	espe_eventos_1 = forms.CharField(label='', help_text='', required=False)
+	espe_duracion_1 = forms.CharField(label='', help_text='', required=False)
+	otras_visitas_cual_1 = forms.CharField(label='', help_text='', required=False)
+	otras_visitas_si_1 = forms.ChoiceField(label='', help_text='', choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}), required=False)
+	otras_visitas_eventos_1 = forms.CharField(label='', help_text='', required=False)
+	otras_visitas_duracion_1 = forms.CharField(label='', help_text='', required=False)
+	proc_1 = forms.CharField(label='', help_text='', required=False)
+	proc_si_1 = forms.ChoiceField(label='', help_text='', choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}), required=False)
+	proc_eventos_1 = forms.CharField(label='', help_text='', required=False)
+	proc_duracion_1 = forms.CharField(label='', help_text='', required=False)
+	tx_1 = forms.CharField(label='', help_text='', required=False)
+	tx_posologia_1 = forms.CharField(label='', help_text='', required=False)
+	tx_si_1 = forms.ChoiceField(label='', help_text='', choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}), required=False)
+	tx_eventos_1 = forms.CharField(label='', help_text='', required=False)
+	tx_duracion_1 = forms.CharField(label='', help_text='', required=False)
+	cual_2 = forms.CharField(label='', help_text='', required=False)
+	hosp_si_2 = forms.ChoiceField(label='', help_text='', choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}), required=False)
+	hosp_eventos_2 = forms.CharField(label='', help_text='', required=False)
+	hosp_duracion_2 = forms.CharField(label='', help_text='', required=False)
+	espe_si_2 = forms.ChoiceField(label='', help_text='', choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}), required=False)
+	espe_eventos_2 = forms.CharField(label='', help_text='', required=False)
+	espe_duracion_2 = forms.CharField(label='', help_text='', required=False)
+	otras_visitas_cual_2 = forms.CharField(label='', help_text='', required=False)
+	otras_visitas_si_2 = forms.ChoiceField(label='', help_text='', choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}), required=False)
+	otras_visitas_eventos_2 = forms.CharField(label='', help_text='', required=False)
+	otras_visitas_duracion_2 = forms.CharField(label='', help_text='', required=False)
+	proc_2 = forms.CharField(label='', help_text='', required=False)
+	proc_si_2 = forms.ChoiceField(label='', help_text='', choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}), required=False)
+	proc_eventos_2 = forms.CharField(label='', help_text='', required=False)
+	proc_duracion_2 = forms.CharField(label='', help_text='', required=False)
+	tx_2 = forms.CharField(label='', help_text='', required=False)
+	tx_posologia_2 = forms.CharField(label='', help_text='', required=False)
+	tx_si_2 = forms.ChoiceField(label='', help_text='', choices=sino, widget=forms.RadioSelect(attrs={'class':'multi'}), required=False)
+	tx_eventos_2 = forms.CharField(label='', help_text='', required=False)
+	tx_duracion_2 = forms.CharField(label='', help_text='', required=False)
 	class Meta:
 		model = Complicaciones

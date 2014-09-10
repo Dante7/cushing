@@ -1,3 +1,4 @@
+#encoding:utf-8
 from django.conf.urls import patterns, include, url
 
 # Uncomment the next two lines to enable the admin:
@@ -9,12 +10,12 @@ urlpatterns = patterns('',
     # url(r'^$', 'cushing.views.home', name='home'),
     # url(r'^cushing/', include('cushing.foo.urls')),
 
+    # url's en español
     url(r'^$', 'captura.views.Main', name='main'),
     url(r'^menu/', 'captura.views.Menu', name='menu'),
-
     url(r'^captura/', 'captura.views.Captura', name='captura'),
-
-    url(r'^entrevistado/', 'captura.views.CapEntrev', name='entrevistado'),
+    url(r'^entrevistado/$', 'captura.views.CapEntrev', name='entrevistado'),
+    url(r'^entrevistado/(?P<folio>\d+)', 'captura.views.CapEntrev', name='entrevistado'),
     url(r'^seleccion/', 'captura.views.CapSelec', name='seleccion'),
     url(r'^control/', 'captura.views.CapControl', name='control'),
     url(r'^generales/', 'captura.views.CapGenerales', name='generales'),
@@ -27,6 +28,25 @@ urlpatterns = patterns('',
     url(r'^tratamiento/', 'captura.views.CapTx', name='tratamiento'),
     url(r'^comorb_tx/', 'captura.views.CapComorbTx', name='comorbilidades'),
     url(r'^complicaciones/', 'captura.views.CapComp', name='complicaciones'),
+
+    # url's en ingles
+    #url(r'^$', 'captura.views.Main', name='main'),
+    #url(r'^menu/', 'captura.views.Menu', name='menu'),
+    #url(r'^captura/', 'captura.views.Captura', name='captura'),
+    #url(r'^entrevistado/$', 'captura.views.CapEntrev', name='entrevistado'),
+    #url(r'^entrevistado/(?P<folio>\d+)', 'captura.views.CapEntrev', name='entrevistado'),
+    #url(r'^seleccion/', 'captura.views.CapSelec', name='seleccion'),
+    #url(r'^control/', 'captura.views.CapControl', name='control'),
+    #url(r'^generales/', 'captura.views.CapGenerales', name='generales'),
+    #url(r'^sintomas/', 'captura.views.CapSintomas', name='sintomas'),
+    #url(r'^comorbilidades/', 'captura.views.CapComorb', name='comorbilidades'),
+    #url(r'^especialista/', 'captura.views.CapEspe', name='especialista'),
+    #url(r'^hospitalizacion/', 'captura.views.CapHosp', name='hospitalizacion'),
+    #url(r'^laboratorio/', 'captura.views.CapLab', name='laboratorio'),
+    #url(r'^intervenciones/', 'captura.views.CapInter', name='intervenciones'),
+    #url(r'^tratamiento/', 'captura.views.CapTx', name='tratamiento'),
+    #url(r'^comorb_tx/', 'captura.views.CapComorbTx', name='comorbilidades'),
+    #url(r'^complicaciones/', 'captura.views.CapComp', name='complicaciones'),
 
     (r'^logout$', 'django.contrib.auth.views.logout', {'next_page': '/'}),
 

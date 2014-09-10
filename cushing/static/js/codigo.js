@@ -2,6 +2,7 @@ var JsonTx = [];
 
 
 $(document).ready(function() {
+	 $('#id_folio_principal').NumBox({type: 'integer'});
 
 	function Limpiar () {
 		$("#menu li").each(function( index ) {
@@ -12,7 +13,9 @@ $(document).ready(function() {
 	$('#menu li').click(function (e) {
 		var clase = $(this).attr('class')
 		Limpiar();
-		$(this).addClass('active');
+		if (clase != 'disabled') {
+			$(this).addClass('active');
+		};
 	})
 
 	$('.multi').click(function() {
@@ -46,7 +49,7 @@ $(document).ready(function() {
 		JsonTx.push(nuevo);
 
 		EliminaRow('temporal');
-		$("#valores").val(JSON.stringify(JsonTx));
+		$("#id_tx").val(JSON.stringify(JsonTx));
 		$('#mymodal').modal('hide')
 
 
@@ -58,31 +61,6 @@ $(document).ready(function() {
 
 });
 
-
-function botones(valor) {
-	if (valor) {
-		$('#btn_guardar').prop("disabled", true);
-		$('#btn_siguiente').prop("disabled", false);
-	}else{
-		$('#btn_guardar').prop("disabled", false);
-		$('#btn_siguiente').prop("disabled", false);
-	};
-}
-
-function Deshabilita(valor) {
-	// body...
-	if (valor) {
-		$.each($('input'),function(){
-			$(this).prop("disabled", true);
-		});
-		$('#btn_siguiente').prop("disabled", false);
-	}else{
-		$.each($('input'),function(){
-			$(this).prop("disabled", false);
-		});
-		$('#btn_siguiente').prop("disabled", true);
-	};
-}
 
 function Tratamiento(nom) {
 
@@ -242,6 +220,13 @@ function Validar(tx,temp) {
 	};
 }
 
-function Start() {
-	window.location.href='/entrevistado';
+function botones(valor) {
+	if (valor) {
+		$('#btn_guardar').prop("disabled", true);
+		$('#btn_siguiente').prop("disabled", false);
+	}else{
+		$('#btn_guardar').prop("disabled", false);
+		$('#btn_siguiente').prop("disabled", false);
+	};
 }
+

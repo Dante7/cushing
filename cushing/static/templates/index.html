@@ -6,24 +6,116 @@
 	<meta charset="UTF-8">
 	<title>Inicio</title>
 	<!-- Bootstrap -->
-	<link rel="stylesheet" href="{{STATIC_PREFIX}}css/ui-lightness/jquery-ui-1.9.2.custom.css">
+	<link rel="stylesheet" href="{{STATIC_PREFIX}}css/smoothness/jquery-ui-1.9.2.custom.css">
 	<link rel="stylesheet" href="{{STATIC_PREFIX}}css/bootstrap.min.css">
 	<link rel="stylesheet" href="{{STATIC_PREFIX}}css/estilos.css">
+
+	<!-- Jquery -->
 	<script src="{{STATIC_PREFIX}}js/jquery.js"></script>
 	<script src="{{STATIC_PREFIX}}js/bootstrap.min.js"></script>
+	<script src="{{STATIC_PREFIX}}js/jquery.numbox-1.1.0.min.js"></script>
 	<script src="{{STATIC_PREFIX}}js/codigo.js"></script>
+
 
 	<!-- UI -->
 	<script src="{{STATIC_PREFIX}}js/jquery-ui-1.9.2.custom.js"></script>
+	
+	<script>
+		$.datepicker.regional['es'] = {
+		closeText: 'Cerrar',
+		prevText: '<Ant',
+		nextText: 'Sig>',
+		currentText: 'Hoy',
+		monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+		monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+		dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+		dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+		dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
+		weekHeader: 'Sm',
+		dateFormat: 'dd/mm/yy',
+		firstDay: 1,
+		isRTL: false,
+		showMonthAfterYear: false,
+		yearSuffix: ''
+		};
+		$.datepicker.setDefaults($.datepicker.regional['es']);
+		$(function () {
+		$("#fecha").datepicker();
+		});
+	</script>
 
 	<script>
 		$(document).ready(function() {
-			$( "#id_fecha_diag" ).datepicker();
-			$( "#id_fecha_llenado" ).datepicker();
+			function Deshabilita(valor) {
+				// body...
+				if (valor) {
+					$.each($('input'),function(){
+						$(this).prop("disabled", true);
+					});
+					$('#btn_siguiente').prop("disabled", false);
+				}else{
+					$.each($('input'),function(){
+						$(this).prop("disabled", false);
+					});
+					$('#btn_siguiente').prop("disabled", true);
+				};
+			}
+
+			function Begin(param) {
+				// body...
+				Deshabilita(param['msg']);
+				
+				if (param['folio'] != 0) {
+					$('#id_folio').val(param['folio']);
+				};
+
+				if (param['usuario'] != 'capturista') {
+					$('#id_monitor_clinico').val(param['usuario']);
+				};
+
+				if (param['espe'] != 'espe') {
+					$('#id_espe_medica').val(param['espe']);
+				};
+			}
+
+			function cargaUsuario(usuario) {
+				// body...
+				$('#id_monitor_clinico').val(usuario);
+			}
+
+			function cargaEspe(espe) {
+				// body...
+				$('#id_espe_medica').val(espe);
+			}
+
+			$.datepicker.setDefaults( $.datepicker.regional[ "es" ] );
+			$( "#id_fecha_diag" ).datepicker({ 
+				dateFormat: "dd/mm/yy",
+				changeMonth: true,
+				changeYear: true
+			});
+
+			$( "#id_fecha_llenado" ).datepicker({ 
+				dateFormat: "dd/mm/yy",
+				changeMonth: true,
+				changeYear: true
+			});
+
+			var param = {
+							"msg":{{msg|default:'false'}},
+							"folio":{{folio|default:'0'}},
+							"usuario":"{{usuario|default:'capturista'}}",
+							"espe":"{{espe|default:'espe'}}"
+						};
+
+			Begin(param);
+
 		})
+		
+
 	</script>
 </head>
-<body onload="Deshabilita({{msg}})">
+<body>
 
 {% block menu  %}
 {% endblock %}

@@ -5,7 +5,7 @@
 <section>
 	<br />
 	<section>
-		<article><h3>Folios capturados</h3></article>
+		<article><h3 class="main">Folios capturados</h3></article>
 		<article><button  class="btn btn-default" data-toggle="modal" data-target="#confirmacion">Capturar nuevo folio</button></article>
 	</section>
 	<br />
@@ -24,15 +24,15 @@
 			<tbody>
 				{% for item in registros %}
 					<tr>
-						<td>{{item.folio}}</td>
+						<td>{{item.folio_principal}}</td>
 						<td>{{item.nombre_medico}}</td>
 						<td>{{item.especialidad}}</td>
 						<td>{{item.monitor_clinico}}</td>
 						<td>{{item.pais}}</td>
 						<td>
 							<!-- <button type="button" class="btn btn-default"> -->
-								<a href="#" class="btn btn-default">
-								Modificar <span class="glyphicon glyphicon-pencil"></span>
+								<a href="/entrevistado/{{item.folio_principal}}" class="btn btn-default">
+									Revisar captura <span class="glyphicon glyphicon-pencil"></span>
 								</a>
 							<!--</button>-->
 						</td>
@@ -56,7 +56,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-				<button type="button" class="btn btn-primary" onclick="Start();">Si</button>
+				<button type="button" class="btn btn-primary" onclick="window.location.href='/entrevistado'">Si</button>
 			</div>
 		</div>
 	</div>
