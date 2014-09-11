@@ -115,11 +115,14 @@ def CapEntrev(request,folio=''):
 		if formulario.is_valid():
 			formulario.save()
 
-			inst_ent = Entrevistado.objects.get(folio_principal=request.POST['folio_principal'])
-			inst_ent.monitor_clinico = request.session['usuario']
-			inst_ent.save()
+			reg = Entrevistado.objects.filter(monitor_clinico=request.session['usuario']).latest('hora_guardado')
 
-			request.session["folio"] = request.POST['folio_principal']
+			fol = Entrevistado.objects.get(id=reg.id)
+			fol.folio_principal = reg.id
+			fol.save()
+
+
+			request.session['folio'] = reg.id
 			request.session['espe'] = request.POST['especialidad']
 			msg = 'true'
 			resultado = {'form':formulario, 'msg':msg, 'folio': request.session['folio'], 'espe': request.session['espe']}
