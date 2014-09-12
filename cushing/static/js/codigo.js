@@ -2,21 +2,6 @@ var JsonTx = [];
 
 
 $(document).ready(function() {
-	 $('#id_folio_principal').NumBox({type: 'integer'});
-
-	function Limpiar () {
-		$("#menu li").each(function( index ) {
-			$(this).removeClass('active');
-		});
-	}
-
-	$('#menu li').click(function (e) {
-		var clase = $(this).attr('class')
-		Limpiar();
-		if (clase != 'disabled') {
-			$(this).addClass('active');
-		};
-	})
 
 	$('.multi').click(function() {
 		// body...
@@ -219,14 +204,3 @@ function Validar(tx,temp) {
 		NewRow(tx,temp);
 	};
 }
-
-function botones(valor) {
-	if (valor) {
-		$('#btn_guardar').prop("disabled", true);
-		$('#btn_siguiente').prop("disabled", false);
-	}else{
-		$('#btn_guardar').prop("disabled", false);
-		$('#btn_siguiente').prop("disabled", false);
-	};
-}
-

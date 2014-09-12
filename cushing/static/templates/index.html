@@ -14,35 +14,13 @@
 	<script src="{{STATIC_PREFIX}}js/jquery.js"></script>
 	<script src="{{STATIC_PREFIX}}js/bootstrap.min.js"></script>
 	<script src="{{STATIC_PREFIX}}js/jquery.numbox-1.1.0.min.js"></script>
+	<script src="{{STATIC_PREFIX}}js/FormCtrl.js"></script>
 	<script src="{{STATIC_PREFIX}}js/codigo.js"></script>
 
 
 	<!-- UI -->
 	<script src="{{STATIC_PREFIX}}js/jquery-ui-1.9.2.custom.js"></script>
 	
-	<script>
-		$.datepicker.regional['es'] = {
-		closeText: 'Cerrar',
-		prevText: '<Ant',
-		nextText: 'Sig>',
-		currentText: 'Hoy',
-		monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-		monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
-		dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-		dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
-		dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
-		weekHeader: 'Sm',
-		dateFormat: 'dd/mm/yy',
-		firstDay: 1,
-		isRTL: false,
-		showMonthAfterYear: false,
-		yearSuffix: ''
-		};
-		$.datepicker.setDefaults($.datepicker.regional['es']);
-		$(function () {
-		$("#fecha").datepicker();
-		});
-	</script>
 
 	<script>
 		$(document).ready(function() {
@@ -78,29 +56,6 @@
 					$('#id_espe_medica').val(param['espe']);
 				};
 			}
-
-			function cargaUsuario(usuario) {
-				// body...
-				$('#id_monitor_clinico').val(usuario);
-			}
-
-			function cargaEspe(espe) {
-				// body...
-				$('#id_espe_medica').val(espe);
-			}
-
-			$.datepicker.setDefaults( $.datepicker.regional[ "es" ] );
-			$( "#id_fecha_diag" ).datepicker({ 
-				dateFormat: "dd/mm/yy",
-				changeMonth: true,
-				changeYear: true
-			});
-
-			$( "#id_fecha_llenado" ).datepicker({ 
-				dateFormat: "dd/mm/yy",
-				changeMonth: true,
-				changeYear: true
-			});
 
 			var param = {
 							"msg":{{msg|default:'false'}},
