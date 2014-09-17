@@ -334,6 +334,7 @@ class Laboratorio(models.Model):
 	ha_no_10_mes = models.CharField(max_length=150)
 	ha_no_11_mes = models.CharField(max_length=150)
 	ha_no_12_mes = models.CharField(max_length=150)
+	lab = models.TextField()
 	# Columnas no contabilizadas en el excel
 	control_1_mes = models.CharField(max_length=150)
 	control_2_mes = models.CharField(max_length=150)
@@ -393,83 +394,61 @@ class Laboratorio(models.Model):
 
 class Intervenciones(models.Model):
 	"""Datos del Intervenciones"""
+	# 6 meses
 	folio = models.CharField(max_length=150)
 	rx_si_6 = models.CharField(max_length=150)
+	rx_veces_6 = models.CharField(max_length=150)
 	rx_hipo_comp_6 = models.CharField(max_length=150)
-	rx_hipo_veces_6 = models.CharField(max_length=150)
 	rx_cerebro_comp_6 = models.CharField(max_length=150)
-	rx_cerebro_veces_6 = models.CharField(max_length=150)
 	rx_otras_comp_6 = models.CharField(max_length=150)
-	rx_otras_veces_6 = models.CharField(max_length=150)
 	radiocirugia_si_6 = models.CharField(max_length=150)
+	radiocirugia_veces_6 = models.CharField(max_length=150)
 	radiocirugia_hipo_comp_6 = models.CharField(max_length=150)
-	radiocirugia_hipo_veces_6 = models.CharField(max_length=150)
 	radiocirugia_visual_comp_6 = models.CharField(max_length=150)
-	radiocirugia_visual_veces_6 = models.CharField(max_length=150)
 	radiocirugia_craneal_comp_6 = models.CharField(max_length=150)
-	radiocirugia_craneal_veces_6 = models.CharField(max_length=150)
 	radiocirugia_otras_comp_6 = models.CharField(max_length=150)
-	radiocirugia_otras_veces_6 = models.CharField(max_length=150)
 	cirugia_si_6 = models.CharField(max_length=150)
+	cirugia_veces_6 = models.CharField(max_length=150)
 	cirugia_hormo_comp_6 = models.CharField(max_length=150)
-	cirugia_hormo_veces_6 = models.CharField(max_length=150)
 	cirugia_diabetes_comp_6 = models.CharField(max_length=150)
-	cirugia_diabetes_veces_6 = models.CharField(max_length=150)
 	cirugia_cerebro_comp_6 = models.CharField(max_length=150)
-	cirugia_cerebro_veces_6 = models.CharField(max_length=150)
 	cirugia_visual_comp_6 = models.CharField(max_length=150)
-	cirugia_visual_veces_6 = models.CharField(max_length=150)
 	cirugia_menin_comp_6 = models.CharField(max_length=150)
-	cirugia_menin_veces_6 = models.CharField(max_length=150)
 	cirugia_cefalo_comp_6 = models.CharField(max_length=150)
-	cirugia_cefalo_veces_6 = models.CharField(max_length=150)
 	cirugia_otras_comp_6 = models.CharField(max_length=150)
-	cirugia_otras_veces_6 = models.CharField(max_length=150)
 	adrena_si_6 = models.CharField(max_length=150)
+	adrena_veces_6 = models.CharField(max_length=150)
 	adrena_nelson_comp_6 = models.CharField(max_length=150)
-	adrena_nelson_veces_6 = models.CharField(max_length=150)
 	adrena_otras_comp_6 = models.CharField(max_length=150)
-	adrena_otras_veces_6 = models.CharField(max_length=150)
+	# 12 mese
 	rx_si_12 = models.CharField(max_length=150)
+	rx_veces_12 = models.CharField(max_length=150)
 	rx_hipo_comp_12 = models.CharField(max_length=150)
-	rx_hipo_veces_12 = models.CharField(max_length=150)
 	rx_cerebro_comp_12 = models.CharField(max_length=150)
-	rx_cerebro_veces_12 = models.CharField(max_length=150)
 	rx_otras_comp_12 = models.CharField(max_length=150)
-	rx_otras_veces_12 = models.CharField(max_length=150)
 	radiocirugia_si_12 = models.CharField(max_length=150)
+	radiocirugia_veces_12 = models.CharField(max_length=150)
 	radiocirugia_hipo_comp_12 = models.CharField(max_length=150)
-	radiocirugia_hipo_veces_12 = models.CharField(max_length=150)
 	radiocirugia_visual_comp_12 = models.CharField(max_length=150)
-	radiocirugia_visual_veces_12 = models.CharField(max_length=150)
 	radiocirugia_craneal_comp_12 = models.CharField(max_length=150)
-	radiocirugia_craneal_veces_12 = models.CharField(max_length=150)
 	radiocirugia_otras_comp_12 = models.CharField(max_length=150)
-	radiocirugia_otras_veces_12 = models.CharField(max_length=150)
 	cirugia_si_12 = models.CharField(max_length=150)
+	cirugia_veces_12 = models.CharField(max_length=150)
 	cirugia_hormo_comp_12 = models.CharField(max_length=150)
-	cirugia_hormo_veces_12 = models.CharField(max_length=150)
 	cirugia_diabetes_comp_12 = models.CharField(max_length=150)
-	cirugia_diabetes_veces_12 = models.CharField(max_length=150)
 	cirugia_cerebro_comp_12 = models.CharField(max_length=150)
-	cirugia_cerebro_veces_12 = models.CharField(max_length=150)
 	cirugia_visual_comp_12 = models.CharField(max_length=150)
-	cirugia_visual_veces_12 = models.CharField(max_length=150)
 	cirugia_menin_comp_12 = models.CharField(max_length=150)
-	cirugia_menin_veces_12 = models.CharField(max_length=150)
 	cirugia_cefalo_comp_12 = models.CharField(max_length=150)
-	cirugia_cefalo_veces_12 = models.CharField(max_length=150)
 	cirugia_otras_comp_12 = models.CharField(max_length=150)
-	cirugia_otras_veces_12 = models.CharField(max_length=150)
 	adrena_si_12 = models.CharField(max_length=150)
+	adrena_veces_12 = models.CharField(max_length=150)
 	adrena_nelson_comp_12 = models.CharField(max_length=150)
-	adrena_nelson_veces_12 = models.CharField(max_length=150)
 	adrena_otras_comp_12 = models.CharField(max_length=150)
-	adrena_otras_veces_12 = models.CharField(max_length=150)
 	hora_guardado = models.DateTimeField(auto_now=True)
 
 	class Meta:
-		db_table = 'inteervenciones'
+		db_table = 'intervenciones'
 
 class Tratamiento(models.Model):
 	"""Datos del Tratamiento"""
@@ -571,6 +550,7 @@ class ComorbilidadesTx(models.Model):
 	otra2_cual = models.CharField(max_length=150)
 	otra2_6 = models.CharField(max_length=150)
 	otra2_12 = models.CharField(max_length=150)
+	tx = models.TextField()
 	hora_guardado = models.DateTimeField(auto_now=True)
 
 	class Meta:
@@ -637,4 +617,14 @@ class TxCompleto(models.Model):
 	hora_guardado = models.DateTimeField(auto_now=True)
 	class Meta:
 		db_table = 'tx_completo'
+
+class LabCompleto(models.Model):
+	"""docstring for Lab"""
+	folio = models.CharField(max_length=150)
+	prueba = models.CharField(max_length=150)
+	mes = models.CharField(max_length=150)
+	fecha = models.CharField(max_length=150)
+	resultado = models.CharField(max_length=150)
+	class Meta:
+		db_table = 'lab_completo'
 		

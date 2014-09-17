@@ -1,0 +1,22 @@
+{% extends "index.html" %}
+
+{% block menu  %}
+<nav id="menu">
+	<section class="logo_menu">
+		<img src="{{STATIC_PREFIX}}core/img/logo_web_its.png" alt="" class="solo_logo">
+	</section>
+	<section class="botones_menu">
+		<ul>
+			<li><a class="menu" href="#">Inicio</a></li>
+			<li><a class="menu" href="/captura">Captura</a></li>
+			<li><a class="menu" href="#" disabled>Revisión</a></li>
+			<li><a class="menu" href="/logout">Salir</a></li> 
+		</ul>
+	</section>
+</nav>
+
+{% block child %}
+	
+{% endblock %}
+
+{% endblock %}

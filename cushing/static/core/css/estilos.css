@@ -1,0 +1,467 @@
+/*Elementos principales*/
+body
+{
+	padding: 0.5em 3em 0 3em;
+	/*background-image: url(../img/bg.png);*/
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+header
+{
+	margin: 0 0 0 0;
+}
+h1 ,h2, h3 ,h4, h5, h6
+{
+	text-align: center;
+}
+p
+{
+	width: 80%;
+	margin: 0 0 1em 1em;
+}
+
+/*DatePicker*/
+#ui-datepicker-title select
+{
+	color: black;
+}
+/*Termina DatePicker*/
+
+/*Login*/
+#loginform
+{
+	width: 30%;
+	margin: auto;
+	margin-top: 5em;
+	border-style: groove;
+	border-color: #1F84E8;
+	border-radius: 5px;	
+	padding: 3em 2em 4em 2em;
+}
+
+#loginform input
+{
+	margin: auto;
+}
+
+#loginform div
+{
+	width: 30%;
+	margin: auto;
+}
+
+#logo
+{
+	width: 300px;
+	margin: 0 0 2em 0;
+}
+/*Termina login*/
+
+/*Menu*/
+#menu
+{
+	margin: 0.5em auto;
+	border-radius: 5px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: rgba(51,91,116,.5);
+
+	-webkit-box-shadow: 2px 2px 2px rgba(51,91,116,.5), 0px 5px 10px rgba(0,0,0,.3);
+	-moz-box-shadow: 2px 2px 2px rgba(51,91,116,.5), 0px 5px 10px rgba(0,0,0,.3);
+	box-shadow: 2px 2px 2px rgba(51,91,116,.5), 0px 5px 10px rgba(0,0,0,.3);
+}
+#menu section
+{
+	display: inline-block;
+	vertical-align: top;
+}
+#menu section.logo_menu
+{
+	margin: 1em 6em 0 4em;
+}
+#menu ul
+{
+	text-align: center;
+	padding: 1em 1em 1em 1em;
+}
+#menu li
+{
+	display: inline-block;
+	vertical-align: top;
+	margin: 0 1em 0 0;
+}
+a.menu {
+	position: relative;
+	color: rgba(255,255,255,1);
+	text-decoration: none;
+	background-color: rgba(219,87,5,0.8);
+	font-family: 'Yanone Kaffeesatz';
+	font-weight: 700;
+	font-size: 1.5em;
+	display: block;
+	padding: 4px;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	-webkit-box-shadow: 0px 5px 0px rgba(219,31,5,0.7), 0px 5px 15px rgba(0,0,0,.5);
+	-moz-box-shadow: 0px 5px 0px rgba(219,31,5,0.7), 0px 5px 15px rgba(0,0,0,.5);
+	box-shadow: 0px 5px 0px rgba(219,31,5,0.7), 0px 5px 15px rgba(0,0,0,.5);
+	width: 180px;
+	text-align: center;
+
+	-webkit-transition: all .1s ease;
+	-moz-transition: all .1s ease;
+	-ms-transition: all .1s ease;
+	-o-transition: all .1s ease;
+	transition: all .1s ease;
+}
+
+a.menu:active {
+	text-decoration: none;
+	-webkit-box-shadow: 0px 3px 0px rgba(219,31,5,0.8), 0px 3px 6px rgba(0,0,0,.9);
+	-moz-box-shadow: 0px 3px 0px rgba(219,31,5,0.8), 0px 3px 6px rgba(0,0,0,.9);
+	box-shadow: 0px 3px 0px rgba(219,31,5,0.8), 0px 3px 6px rgba(0,0,0,.9);
+	position: relative;
+	top: 6px;
+}
+a.menu:hover {
+	text-decoration: none;
+	color: white;
+}
+
+img.solo_logo
+{
+	max-width: 120px;
+}
+
+/*Termina menu*/
+
+
+/*Captura*/
+
+#registros th, td
+{
+	text-align: center;
+}
+
+/*Termina captura*/
+
+/*Entrevista*/
+#FrmEntrevista
+{
+	margin: auto;
+	width: 60%;
+}
+
+/*Termina Entrevista*/
+
+/*seleccion*/
+#FrmSeleccion
+{
+	margin: auto;
+	width: 80%;
+}
+
+/*Termina seleccion*/
+
+/*Control*/
+#FrmControl
+{
+	margin: auto;
+	width: 90%;
+}
+#FrmControl ul
+{
+	list-style:none;
+}
+#FrmControl ul li
+{
+	display: inline-block;
+	vertical-align: top;
+	width: 200px;
+}
+/*Termina control*/
+
+/*Generales*/
+#FrmGenerales
+{
+	margin: auto;
+	width: 60%;
+}
+#FrmGenerales input[type="text"]
+{
+	width: 100px;
+}
+#FrmGenerales ul
+{
+	list-style:none;
+}
+#FrmGenerales ul li
+{
+	display: inline-block;
+	vertical-align: top;
+	width: 100px;
+}
+/*Termina generales*/
+
+/*Sintomas*/
+#FrmSintomas
+{
+	margin: auto;
+	width: 60%;
+}
+#FrmSintomas ul
+{
+	list-style:none;
+}
+#FrmSintomas ul li
+{
+	display: inline-block;
+	vertical-align: top;
+	width: 50px;
+}
+/*Termina sintomas*/
+
+/*Comorbilidades*/
+#FrmComorbilidades
+{
+	margin: auto;
+	width: 60%;
+}
+#FrmComorbilidades ul
+{
+	list-style:none;
+}
+#FrmComorbilidades ul li
+{
+	display: inline-block;
+	vertical-align: top;
+	width: 50px;
+}
+/*Termina comorbilidades*/
+
+/*Especialista*/
+#FrmEspe
+{
+	width: 80%;
+	margin: auto;
+}
+/*Termina especialista*/
+
+/*Hospitalizacion*/
+#FrmHospitalizacion
+{
+	width: 70%;
+	margin: auto;
+}
+/*Termina hospitalizacion*/
+
+/*Laboratorio*/
+#FrmLaboratorio
+{
+	width: 100%;
+	margin: auto;
+}
+#FrmLaboratorio input[type="text"]
+{
+	width: 80px;
+}
+#FrmLaboratorio ul
+{
+	list-style:none;
+}
+#FrmLaboratorio ul li
+{
+	display: inline-block;
+	vertical-align: top;
+	width: 50px;
+}
+/*Termina laboratorio*/
+
+/*Intervenciones*/
+#FrmIntervenciones
+{
+	width: 100%;
+	margin: auto;
+}
+#FrmIntervenciones input[type="text"]
+{
+	width: 80px;
+}
+#FrmIntervenciones ul
+{
+	list-style:none;
+}
+#FrmIntervenciones ul li
+{
+	display: inline-block;
+	vertical-align: top;
+	width: 50px;
+}
+/*Termina Intervenciones*/
+
+/*Tratamientos*/
+#FrmTx
+{
+	width: 80%;
+	margin: auto;
+}
+#FrmTx ul
+{
+	list-style:none;
+}
+#FrmTx ul li
+{
+	display: inline-block;
+	vertical-align: top;
+	width: 50px;
+}
+.habilitado
+{
+	width: 50px;
+}
+.tratamiento
+{
+	width: 150px;
+}
+#tratamientos
+{
+	text-align: center;
+}
+/*Termina tratamientos*/
+
+/*Comorbilidades*/
+#FrmComorb
+{
+	width: 80%;
+	margin: auto;
+}
+#FrmComorb ul
+{
+	list-style:none;
+}
+#FrmComorb ul li
+{
+	display: inline-block;
+	vertical-align: top;
+	width: 50px;
+}
+/*Termina comorbilidades*/
+
+/*Complicaciones*/
+#FrmCompl
+{
+	width: 80%;
+	margin: auto;
+}
+#FrmCompl ul
+{
+	list-style:none;
+}
+#FrmCompl ul li
+{
+	display: inline-block;
+	vertical-align: top;
+	width: 50px;
+}
+/*Termina complicaciones*/
+
+/*Manejo de css por id tipo "like"*/
+[id*="cual"]
+{
+	width: 200px;
+}
+
+[id*="mes"]
+{
+	width: 50px;
+}
+
+/*Manejo de clases de encabezado principal y secundario*/
+.th_principal
+{
+	background-color: rgba(0,32,96,0.4);
+	color: black;
+	text-align: center;
+}
+.th_secundario
+{
+	background-color: rgba(51,91,116,0.2);
+	color: black;
+}
+.helptext
+{
+	text-align: center;
+}
+
+.main
+{
+	background-color: rgba(3,3,3,.1);
+	border-color: rgba(27,66,255,.2);
+	border-radius: 0.3em;
+	border-style: solid;
+	border-width: 1px;
+	padding: 0.5em 0 0.5em 0;
+	vertical-align: center;
+
+	-webkit-box-shadow: 1px 1px 1px rgba(27,66,255,.2), 0px 2px 5px rgba(0,0,0,.3);
+	-moz-box-shadow: 1px 1px 1px rgba(27,66,255,.2), 0px 2px 5px rgba(0,0,0,.3);
+	box-shadow: 1px 1px 1px rgba(27,66,255,.2), 0px 2px 5px rgba(0,0,0,.3);
+	margin: 1em 0 1em 0;
+}
+
+
+.boton {
+	-moz-box-shadow:inset 0px 3px 5px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 3px 5px 0px #ffffff;
+	box-shadow:inset 0px 3px 5px 0px #ffffff;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #e8e8e8), color-stop(1, #bbbbbb) );
+	background:-moz-linear-gradient( center top, #e8e8e8 5%, #bbbbbb 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#e8e8e8', endColorstr='#cccccc');
+	background-color:#e8e8e8;
+	-webkit-border-top-left-radius:6px;
+	-moz-border-radius-topleft:6px;
+	border-top-left-radius:6px;
+	-webkit-border-top-right-radius:6px;
+	-moz-border-radius-topright:6px;
+	border-top-right-radius:6px;
+	-webkit-border-bottom-right-radius:6px;
+	-moz-border-radius-bottomright:6px;
+	border-bottom-right-radius:6px;
+	-webkit-border-bottom-left-radius:6px;
+	-moz-border-radius-bottomleft:6px;
+	border-bottom-left-radius:6px;
+	text-indent:0;
+	border:1px solid #d1d1d1;
+	display:inline-block;
+	color:#474747;
+	font-family: 'Yanone Kaffeesatz';
+	font-weight: 700;
+	height: 30px;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:1px 1px 0px #ffffff;
+	padding: 0.25em 1em 0 1em;
+}
+.boton:hover 
+{
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #cccccc), color-stop(1, #e8e8e8) );
+	background:-moz-linear-gradient( center top, #cccccc 5%, #e8e8e8 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#cccccc', endColorstr='#e8e8e8');
+	background-color:#cccccc;
+	text-decoration: none;
+}
+.boton:active 
+{
+	position:relative;
+	top:1px;
+}
+.boton:disabled
+{
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #cccccc), color-stop(1, #e8e8e8) );
+	background:-moz-linear-gradient( center top, #cccccc 5%, #e8e8e8 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#cccccc', endColorstr='#e8e8e8');
+	background-color:#dddddd;
+	text-decoration: none;
+}

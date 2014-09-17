@@ -1,0 +1,114 @@
+{% extends "menu.html" %}
+
+{% block child %}
+
+<div class="main"><h4>Carga de la enfermedad de Cushing </h4></div>
+
+<div class="sub"><h6>SELECCIÓN DE MÉDICOS PARTICIPANTES</h6></div>
+<div class="sub"><h6>Datos del entrevistado</h6></div>
+
+<form action="" method="post" class="form-horizontal" role="form" id="FrmEntrevista">{% csrf_token %}
+	<table class="table table-condensed table-striped table-bordered">
+		<tr>
+			<td><label class="" for="">Folio</label></td>
+			<td>{{form.folio_principal}}</td>
+		</tr>
+		<tr>
+			<td><label class="" for="">{{form.monitor_clinico.label}}</label></td>
+			<td>{{form.monitor_clinico}}
+			{% if form.monitor_clinico.errors %}
+				<span data-toggle="tooltip" data-placement="right" title="{{form.monitor_clinico.errors|striptags}}" class="glyphicon glyphicon-remove">
+				</span>
+			{% endif %}
+			</td>
+		</tr>
+		<tr>
+			<td><label class="" for="">{{form.supervisor.label}}</label></td>
+			<td>{{form.supervisor}}
+			{% if form.supervisor.errors %}
+				<span data-toggle="tooltip" data-placement="right" title="{{form.supervisor.errors|striptags}}" class="glyphicon glyphicon-remove">
+				</span>
+			{% endif %}
+			</td>
+		</tr>
+		<tr>
+			<td><label class="" for="">{{form.fecha_llenado.label}}</label></td>
+			<td>{{form.fecha_llenado}}
+			{% if form.fecha_llenado.errors %}
+				<span data-toggle="tooltip" data-placement="right" title="{{form.fecha_llenado.errors|striptags}}" class="glyphicon glyphicon-remove">
+				</span>
+			{% endif %}
+			</td>
+		</tr>
+		<tr>
+			<td><label class="" for="">{{form.nombre_medico.label}}</label></td>
+			<td>{{form.nombre_medico}}
+			{% if form.nombre_medico.errors %}
+				<span data-toggle="tooltip" data-placement="right" title="{{form.nombre_medico.errors|striptags}}" class="glyphicon glyphicon-remove">
+				</span>
+			{% endif %}
+			</td>
+		</tr>
+		<tr>
+			<td><label class="" for="">{{form.especialidad.label}}</label></td>
+			<td>{{form.especialidad}}
+			{% if form.especialidad.errors %}
+				<span data-toggle="tooltip" data-placement="right" title="{{form.especialidad.errors|striptags}}" class="glyphicon glyphicon-remove">
+				</span>
+			{% endif %}
+			</td>
+		</tr>
+		<tr>
+			<td><label class="" for="">{{form.pais.label}}</label></td>
+			<td>{{form.pais}}
+			{% if form.pais.errors %}
+				<span data-toggle="tooltip" data-placement="right" title="{{form.pais.errors|striptags}}" class="glyphicon glyphicon-remove">
+				</span>
+			{% endif %}
+			</td>
+		</tr>
+		<tr>
+			<td><label class="" for="">{{form.institucion_publica.label}}</label></td>
+			<td>{{form.institucion_publica}}
+			{% if form.institucion_publica.errors %}
+				<span data-toggle="tooltip" data-placement="right" title="{{form.institucion_publica.errors|striptags}}" class="glyphicon glyphicon-remove">
+				</span>
+			{% endif %}
+			</td>
+		</tr>
+		<tr>
+			<td><label class="" for="">{{form.institucion_privada.label}}</label></td>
+			<td>{{form.institucion_privada}}
+			{% if form.institucion_privada.errors %}
+				<span data-toggle="tooltip" data-placement="right" title="{{form.institucion_privada.errors|striptags}}" class="glyphicon glyphicon-remove">
+				</span>
+			{% endif %}
+			</td>
+		</tr>
+		<tr>
+			<td><label class="" for="">{{form.telefono.label}}</label></td>
+			<td>{{form.telefono}}
+			{% if form.telefono.errors %}
+				<span data-toggle="tooltip" data-placement="right" title="{{form.telefono.errors|striptags}}" class="glyphicon glyphicon-remove">
+				</span>
+			{% endif %}
+			</td>
+		</tr>
+		<tr>
+			<td><label class="" for="">{{form.email.label}}</label></td>
+			<td>{{form.email}}
+			{% if form.email.errors %}
+				<span data-toggle="tooltip" data-placement="right" title="{{form.email.errors|striptags}}" class="glyphicon glyphicon-remove">
+				</span>
+			{% endif %}
+			</td>
+		</tr>
+
+		<tr>
+			<td><input type="submit" value="Guardar" id="btn_guardar" class="boton" /></td>
+			<td><input type="button" value="Siguiente" id="btn_siguiente" onclick="window.location.href='/seleccion'" class="boton" /></td>
+		</tr>
+	</table>
+</form>
+
+{% endblock %}

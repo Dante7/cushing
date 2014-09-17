@@ -1,0 +1,127 @@
+{% extends "menu.html" %}
+
+{% block child %}
+
+<div class="sub"><h3>5	Consulta con especialista / Enfermedad de Cushing</h3></div>
+
+<p>Número de consultas médicas con especialista por mes.</p>
+
+<form action="" method="post" class="form-inline" role="form" id="FrmEspe">{% csrf_token %}
+	{{form.folio}}
+	<table class="table table-condensed">
+		<tr class="th_principal">
+			<th>Meses</th>
+			<th>1</th>
+			<th>2</th>
+			<th>3</th>
+			<th>4</th>
+			<th>5</th>
+			<th>6</th>
+			<th>7</th>
+			<th>8</th>
+			<th>9</th>
+			<th>10</th>
+			<th>11</th>
+			<th>12</th>
+		</tr>
+		<tr>
+			<td>5.1.Endocrinólogo</td>
+			<td>{{form.endo_1_mes}}</td>
+			<td>{{form.endo_2_mes}}</td>
+			<td>{{form.endo_3_mes}}</td>
+			<td>{{form.endo_4_mes}}</td>
+			<td>{{form.endo_5_mes}}</td>
+			<td>{{form.endo_6_mes}}</td>
+			<td>{{form.endo_7_mes}}</td>
+			<td>{{form.endo_8_mes}}</td>
+			<td>{{form.endo_9_mes}}</td>
+			<td>{{form.endo_10_mes}}</td>
+			<td>{{form.endo_11_mes}}</td>
+			<td>{{form.endo_12_mes}}</td>
+		</tr>
+		<tr>
+			<td>5.2. M. Internista</td>
+			<td>{{form.inter_1_mes}}</td>
+			<td>{{form.inter_2_mes}}</td>
+			<td>{{form.inter_3_mes}}</td>
+			<td>{{form.inter_4_mes}}</td>
+			<td>{{form.inter_5_mes}}</td>
+			<td>{{form.inter_6_mes}}</td>
+			<td>{{form.inter_7_mes}}</td>
+			<td>{{form.inter_8_mes}}</td>
+			<td>{{form.inter_9_mes}}</td>
+			<td>{{form.inter_10_mes}}</td>
+			<td>{{form.inter_11_mes}}</td>
+			<td>{{form.inter_12_mes}}</td>
+		</tr>
+		<tr>
+			<td>5.3. Cirujano</td>
+			<td>{{form.cx_1_mes}}</td>
+			<td>{{form.cx_2_mes}}</td>
+			<td>{{form.cx_3_mes}}</td>
+			<td>{{form.cx_4_mes}}</td>
+			<td>{{form.cx_5_mes}}</td>
+			<td>{{form.cx_6_mes}}</td>
+			<td>{{form.cx_7_mes}}</td>
+			<td>{{form.cx_8_mes}}</td>
+			<td>{{form.cx_9_mes}}</td>
+			<td>{{form.cx_10_mes}}</td>
+			<td>{{form.cx_11_mes}}</td>
+			<td>{{form.cx_12_mes}}</td>
+		</tr>
+		<tr>
+			<td>5.4. Urgencias</td>
+			<td>{{form.urg_1_mes}}</td>
+			<td>{{form.urg_2_mes}}</td>
+			<td>{{form.urg_3_mes}}</td>
+			<td>{{form.urg_4_mes}}</td>
+			<td>{{form.urg_5_mes}}</td>
+			<td>{{form.urg_6_mes}}</td>
+			<td>{{form.urg_7_mes}}</td>
+			<td>{{form.urg_8_mes}}</td>
+			<td>{{form.urg_9_mes}}</td>
+			<td>{{form.urg_10_mes}}</td>
+			<td>{{form.urg_11_mes}}</td>
+			<td>{{form.urg_12_mes}}</td>
+		</tr>
+		<tr>
+			<td>5.5. Otro 1 ¿Cuál?{{form.otro1_cual}}</td>
+			<td>{{form.otro1_1_mes}}</td>
+			<td>{{form.otro1_2_mes}}</td>
+			<td>{{form.otro1_3_mes}}</td>
+			<td>{{form.otro1_4_mes}}</td>
+			<td>{{form.otro1_5_mes}}</td>
+			<td>{{form.otro1_6_mes}}</td>
+			<td>{{form.otro1_7_mes}}</td>
+			<td>{{form.otro1_8_mes}}</td>
+			<td>{{form.otro1_9_mes}}</td>
+			<td>{{form.otro1_10_mes}}</td>
+			<td>{{form.otro1_11_mes}}</td>
+			<td>{{form.otro1_12_mes}}</td>
+		</tr>
+		<tr>
+			<td>5.6. Otro 2 ¿Cuál?{{form.otro2_cual}}</td>
+			<td>{{form.otro2_1_mes}}</td>
+			<td>{{form.otro2_2_mes}}</td>
+			<td>{{form.otro2_3_mes}}</td>
+			<td>{{form.otro2_4_mes}}</td>
+			<td>{{form.otro2_5_mes}}</td>
+			<td>{{form.otro2_6_mes}}</td>
+			<td>{{form.otro2_7_mes}}</td>
+			<td>{{form.otro2_8_mes}}</td>
+			<td>{{form.otro2_9_mes}}</td>
+			<td>{{form.otro2_10_mes}}</td>
+			<td>{{form.otro2_11_mes}}</td>
+			<td>{{form.otro2_12_mes}}</td>
+		</tr>
+		<tr>
+			<td colspan="6"><input type="submit" value="Guardar" class="btn btn-primary" id="btn_guardar" /></td>
+			<td colspan="7"><input type="button" value="Siguiente" class="btn btn-success" id="btn_siguiente"  onclick="window.location.href='/hospitalizacion'"/></td>
+		</tr>
+	</table>
+
+
+	
+</form>
+
+{% endblock %}

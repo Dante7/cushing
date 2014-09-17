@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	{% load static %}
+	{% get_static_prefix as STATIC_PREFIX %}
+	<meta charset="UTF-8">
+	<title>Inicio</title>
+
+	<!-- Core -->
+	<link rel="stylesheet" href="{{STATIC_PREFIX}}core/css/normalize.css"> 
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="{{STATIC_PREFIX}}core/css/estilos.css"> 
+	<link rel="stylesheet" href="{{STATIC_PREFIX}}core/css/smoothness/jquery-ui-1.9.2.custom.css">
+
+	<script src="{{STATIC_PREFIX}}core/js/modernizr.js"></script>
+	<script src="{{STATIC_PREFIX}}core/js/jquery.js"></script>
+	<script src="{{STATIC_PREFIX}}core/js/jquery-ui-1.9.2.custom.min.js"></script>
+	<script src="{{STATIC_PREFIX}}core/js/jquery.numbox-1.1.0.min.js"></script>
+	<script src="{{STATIC_PREFIX}}core/js/FormCtrl.js"></script>
+	<script src="{{STATIC_PREFIX}}core/js/codigo.js"></script>
+
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="{{STATIC_PREFIX}}bootstrap/css/bootstrap.min.css">
+	<script src="{{STATIC_PREFIX}}bootstrap/js/bootstrap.min.js"></script>
+	
+</head>
+<body class="homepage" onload="Begin({{msg|default:'false'}}, {{folio|default:'0'}}, '{{usuario|default:'capturista'}}', '{{espe|default:'espe'}}')">
+
+{% block menu  %}
+{% endblock %}
+
+</body>
+</html>

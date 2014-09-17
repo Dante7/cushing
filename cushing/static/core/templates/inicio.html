@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+	{% load static %}
+	{% get_static_prefix as STATIC_PREFIX %}
+	<meta charset="UTF-8">
+	<title>Inicio</title>
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="{{STATIC_PREFIX}}css/bootstrap.min.css">
+	<link rel="stylesheet" href="{{STATIC_PREFIX}}css/estilos.css">
+	<script src="{{STATIC_PREFIX}}js/jquery.js"></script>
+	<script src="{{STATIC_PREFIX}}js/bootstrap.min.js"></script>
+	
+	<!-- Jquery IU -->
+	<link href="{{STATIC_PREFIX}}css/smoothness/jquery-ui-1.10.4.custom.css" rel="stylesheet">
+	<script src="{{STATIC_PREFIX}}js/jquery-ui-1.10.4.custom.js"></script>
+</head>
+<body>
+
+<form action="." method="post" class="form-horizontal" role="form" id="loginform"> {% csrf_token %}
+	<img src="{{STATIC_PREFIX}}img/logo_web_its.png" alt="" id="logo" />
+	<br />
+	<label for="usuario">Usuario:</label>
+	<input type="text" name="usuario" id="usuario" class="form-control">
+	<label for="password">Contraseña:</label>
+	<input type="password" name="password" id="password" class="form-control">
+	<br />
+	<input type="submit" value="Ingresar" class="btn btn-default" />
+</form>
+<br />
+
+{% if estado %}
+	{% if estado == 'correcto' %}
+		<div class="alert alert-success"> {{mensaje}}</div>
+	{% else %}
+		<div class="alert alert-danger"> {{mensaje}}</div>
+	{% endif %}
+{% endif %}
+
+</body>
+</html>

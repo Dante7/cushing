@@ -1,0 +1,45 @@
+{% extends "menu.html" %}
+
+{% block child %}
+
+<div class="main"><h4>Selección médicos participantes</h4></div>
+
+{% if msg == 'true' %}
+	{% if candidato == 'Si' %}
+		<h4 class="bg-success">El médico es candidato para seguir la entrevista</h4>
+	{% else %}
+		<h4 class="bg-danger">El médico no es candidato para seguir la entrevista</h4>
+	{% endif %}
+{% endif %}
+
+<form action="" method="post" class="form-inline" role="form" id="FrmSeleccion">{% csrf_token %}
+	<table class="table table-condensed table-striped table-bordered">
+		{{form.folio}}
+		{% for field in form.visible_fields %}
+			<tr>
+				<td><label for="{{field.name}}">{{field.label}}</label></td>
+				<td>{{field}}
+					{% if field.errors %}
+						<span data-toggle="tooltip" data-placement="right" title="{{field.errors|striptags}}" class="glyphicon glyphicon-remove">
+				</span>
+					{% endif %}
+				</td>
+			</tr>
+		{% endfor %}
+
+		<tr>
+			<td><input type="submit" value="Guardar" class="boton" id="btn_guardar"/></td>
+			<td>
+			{% if msg == 'true' %}
+				{% if candidato == 'Si' %}
+					<input type="button" value="Siguiente" class="boton" id="btn_siguiente" onclick="window.location.href='/control'"/>
+				{% else %}
+					<input type="button" value="Terminar entrevista" class="boton" id="btn_siguiente" onclick="window.location.href='/captura'"/>
+				{% endif %}
+			{% endif %}
+			</td>
+		</tr>
+	</table>
+</form>
+
+{% endblock %}

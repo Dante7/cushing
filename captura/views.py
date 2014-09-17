@@ -14,21 +14,35 @@ from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 import time
 
+import json
+
 def GuardaTratamientos(tx, folio):
 	tx = json.loads(tx)
 	for item in tx:
 		farma = TxCompleto()
 		farma.folio = folio
-		farma.tratamiento = item['tx']
-		farma.meses = item['temp']
-		farma.dosis = item['dosis']
-		farma.ciclo = item['ciclo']
-		farma.intervalos = item['inter']
-		farma.ciclos = item['ciclos']
-		farma.cateterismo = item['cateter']
+		farma.tratamiento = item.get('tx')
+		farma.meses = item.get('temp')
+		farma.dosis = item.get('dosis')
+		farma.ciclo = item.get('ciclo')
+		farma.intervalos = item.get('inter')
+		farma.ciclos = item.get('ciclos')
+		farma.cateterismo = item.get('cateter')
 		farma.save()
 	pass
 
+def GuardaLaboratorio(lab, folio):
+	lab = json.loads(lab)
+	for item in lab:
+		Lab = LabCompleto()
+		Lab.folio = folio
+		Lab.prueba = item.get('prueba')
+		Lab.mes = item.get('mes')
+		Lab.fecha = item.get('fecha')
+		Lab.resultado = item.get('result')
+		Lab.save()
+		pass
+	pass
 
 def ValidaReg(datos):
 	valor = 'No'
@@ -126,7 +140,9 @@ def CapEntrev(request,folio=''):
 			request.session['espe'] = request.POST['especialidad']
 			msg = 'true'
 			resultado = {'form':formulario, 'msg':msg, 'folio': request.session['folio'], 'espe': request.session['espe']}
-			return render_to_response(template, resultado, context_instance=RequestContext(request))
+		else:
+			resultado = {'form':formulario, 'msg':msg}
+		return render_to_response(template, resultado, context_instance=RequestContext(request))
 	else:
 		try:
 			registro = Entrevistado.objects.get(folio_principal=folio)
@@ -172,7 +188,9 @@ def CapSelec(request):
 
 			msg = 'true'
 			resultado = {'form':formulario, 'msg':msg, 'folio': request.session['folio'], 'candidato':request.session['candidato']}
-			return render_to_response(template, resultado, context_instance=RequestContext(request))
+		else:
+			resultado = {'form':formulario, 'msg':msg}
+		return render_to_response(template, resultado, context_instance=RequestContext(request))
 	else:
 		try:
 			registro = Seleccion.objects.get(folio=request.session['folio'])
@@ -334,6 +352,12 @@ def CapLab(request):
 		if formulario.is_valid():
 			formulario.save()
 			msg = 'true'
+			try:
+				GuardaLaboratorio(request.POST['lab'], request.POST['folio'])
+				pass
+			except:
+				pass
+
 			resultado = {'form':formulario, 'msg':msg, 'folio': request.session['folio']}
 			return render_to_response(template, resultado, context_instance=RequestContext(request))
 	else:
@@ -382,11 +406,7 @@ def CapTx(request):
 			print request.session['folio']
 			formulario.save()
 			msg = 'true'
-			try:
-				GuardaTratamientos(request.POST['valores'], request.POST['folio'])
-				pass
-			except:
-				pass
+			GuardaTratamientos(request.POST['tx'], request.POST['folio'])
 			
 			resultado = {'form':formulario, 'msg':msg, 'folio': request.session['folio']}
 			return render_to_response(template, resultado, context_instance=RequestContext(request))
@@ -412,6 +432,11 @@ def CapComorbTx(request):
 		if formulario.is_valid():
 			formulario.save()
 			msg = 'true'
+			try:
+				GuardaTratamientos(request.POST['tx'], request.POST['folio'])
+				pass
+			except:
+				pass
 			resultado = {'form':formulario, 'msg':msg, 'folio': request.session['folio']}
 			return render_to_response(template, resultado, context_instance=RequestContext(request))
 	else:
