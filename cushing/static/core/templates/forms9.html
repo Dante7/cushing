@@ -2,23 +2,23 @@
 
 {% block child %}
 
-<div class="sub"><h3>9	Tratamiento farmacológico </h3></div>
+<article class="main"><h4>9	Tratamiento farmacológico </h4></article>
 
 <form action="" method="post" class="form-inline" role="form" id="FrmTx">{% csrf_token %}
 	{{form.tx}}
 	{{form.folio}}
 	<table class="table table-condensed table-striped table-bordered">
 		<thead>
-		<tr class="th_principal">
-			<th>Tratamientos</th>
-			<th>En los últimos 6 meses</th>
-			<th>Entre 6 y 12 meses</th>
-		</tr>
-		<tr class="th_secundario">
-			<th>9.2	Enfermedad de Cushing</th>
-			<th>Si = 1 / No = 2</th>
-			<th>Si = 1 / No = 2</th>
-		</tr>
+			<tr class="th_principal">
+				<th>Tratamientos</th>
+				<th>En los últimos 6 meses</th>
+				<th>Entre 6 y 12 meses</th>
+			</tr>
+			<tr class="th_secundario">
+				<th>9.2	Enfermedad de Cushing</th>
+				<th>Si = 1 / No = 2</th>
+				<th>Si = 1 / No = 2</th>
+			</tr>
 		</thead>
 		<tr>
 			<td>9.2.1 Ketoconazol</td>
@@ -193,8 +193,8 @@
 			<td>{{form.fungi_12}}</td>
 		</tr>
 		<tr>
-			<td colspan="2"><input type="submit" value="Guardar" class="btn btn-primary" id="btn_guardar" /></td>
-			<td><input type="button" value="Siguiente" class="btn btn-success" id="btn_siguiente"  onclick="window.location.href='/comorb_tx'" /></td>
+			<td colspan="2"><input type="submit" value="Guardar" class="boton" id="btn_guardar" /></td>
+			<td><input type="button" value="Siguiente" class="boton" id="btn_siguiente"  onclick="window.location.href='/comorb_tx'" /></td>
 		</tr>
 	</table>
 </form>

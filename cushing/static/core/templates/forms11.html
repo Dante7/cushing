@@ -2,21 +2,25 @@
 
 {% block child %}
 
+<br />
+
 <form action="" method="post" class="form-inline" role="form" id="FrmCompl">{% csrf_token %}
-	<table class="table table-condensed">
+	<table class="table table-condensed table-striped table-bordered">
 		{{form.folio}}
-		<tr class="th_principal">
-			<th>Evento adversos / Complicación</th>
-			<th>Utilizado (si/no)</th>
-			<th># de eventos usados </th>
-			<th>Duración del evento</th>
-		</tr>
-		<tr>
-			<td colspan="4">1. {{form.cual_1}}</td>
-			<!-- <td></td>
-			<td></td>
-			<td></td> -->
-		</tr>
+		<thead>
+			<tr class="th_principal">
+				<th>Evento adversos / Complicación</th>
+				<th>Utilizado (si/no)</th>
+				<th># de eventos usados </th>
+				<th>Duración del evento</th>
+			</tr>
+			<tr>
+				<td colspan="4">1. Cual{{form.cual_1}}</td>
+				<!-- <td></td>
+				<td></td>
+				<td></td> -->
+			</tr>
+		</thead>
 		<tr>
 			<td>¿Hospitalización?</td>
 			<td>{{form.hosp_si_1}}</td>
@@ -48,7 +52,7 @@
 			<td>{{form.tx_duracion_1}}</td>
 		</tr>
 		<tr>
-			<td colspan="4">2. </td>
+			<td colspan="4">2. Cual{{form.cual_2}} </td>
 			<!-- <td></td>
 			<td></td>
 			<td></td> -->
@@ -84,8 +88,8 @@
 			<td>{{form.tx_duracion_2}}</td>
 		</tr>
 		<tr>
-			<td colspan="2"><input type="submit" value="Guardar" class="btn btn-primary" id="btn_guardar" /></td>
-			<td colspan="2"><input type="button" value="Finalizar" class="btn btn-success" id="btn_siguiente"  onclick="window.location.href='/captura'"/></td>
+			<td colspan="2"><input type="submit" value="Guardar" class="boton" id="btn_guardar" /></td>
+			<td colspan="2"><input type="button" value="Finalizar" class="boton" id="btn_siguiente"  onclick="window.location.href='/captura'"/></td>
 		</tr>
 	</table>
 

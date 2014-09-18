@@ -2,22 +2,24 @@
 
 {% block child %}
 
-<div class="sub"><h3>9 Tratamiento farmacológico (Comorbilidades)</h3></div>
+<section class="main"><h4>9 Tratamiento farmacológico (Comorbilidades)</h4></section>
 
 <form action="" method="post" class="form-inline" role="form" id="FrmComorb">{% csrf_token %}
 	{{form.folio}}
 	{{form.tx}}
-	<table class="table table-condensed">
-		<tr class="th_principal">
-			<th>Comorbilidades</th>
-			<th>En los últimos 6 meses</th>
-			<th>Entre 6 y 12 meses</th>
-		</tr>
-		<tr class="th_secundario">
-			<th>9.6	Mentales</th>
-			<th>Si = 1 / No = 2</th>
-			<th>Si = 1 / No = 2</th>
-		</tr>
+	<table class="table table-condensed table-striped table-bordered">
+		<thead>
+			<tr class="th_principal">
+				<th>Comorbilidades</th>
+				<th>En los últimos 6 meses</th>
+				<th>Entre 6 y 12 meses</th>
+			</tr>
+			<tr class="th_secundario">
+				<th>9.6	Mentales</th>
+				<th>Si = 1 / No = 2</th>
+				<th>Si = 1 / No = 2</th>
+			</tr>
+		</thead>
 		<tr>
 			<td>9.6.1 Depresión. ¿Cuál?{{form.depre_cual}}</td>
 			<td>{{form.depre_6}}</td>
@@ -54,8 +56,8 @@
 			<td>{{form.otra2_12}}</td>
 		</tr>
 		<tr>
-			<td colspan="2"><input type="submit" value="Guardar" class="btn btn-primary" id="btn_guardar" /></td>
-			<td><input type="button" value="Siguiente" class="btn btn-success" id="btn_siguiente"  onclick="window.location.href='/complicaciones'" /></td>
+			<td colspan="2"><input type="submit" value="Guardar" class="boton" id="btn_guardar" /></td>
+			<td><input type="button" value="Siguiente" class="boton" id="btn_siguiente"  onclick="window.location.href='/complicaciones'" /></td>
 		</tr>
 	</table>
 

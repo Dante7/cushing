@@ -2,28 +2,30 @@
 
 {% block child %}
 
-<div class="sub"><h3>6	Hospitalización / Enfermedad de Cushing</h3></div>
+<article class="main"><h4>6	Hospitalización / Enfermedad de Cushing</h4></article>
 
 <p>Número de días al mes por tipo de hospitalización</p>
 
 <form action="" method="post" class="form-inline" role="form" id="FrmHospitalizacion">{% csrf_token %}
 	{{form.folio}}
-	<table class="table table-condensed">
-		<tr class="th_principal">
-			<th>Meses</th>
-			<th>1</th>
-			<th>2</th>
-			<th>3</th>
-			<th>4</th>
-			<th>5</th>
-			<th>6</th>
-			<th>7</th>
-			<th>8</th>
-			<th>9</th>
-			<th>10</th>
-			<th>11</th>
-			<th>12</th>
-		</tr>
+	<table class="table table-condensed table-striped table-bordered">
+		<thead>
+			<tr class="th_principal">
+				<th>Meses</th>
+				<th>1</th>
+				<th>2</th>
+				<th>3</th>
+				<th>4</th>
+				<th>5</th>
+				<th>6</th>
+				<th>7</th>
+				<th>8</th>
+				<th>9</th>
+				<th>10</th>
+				<th>11</th>
+				<th>12</th>
+			</tr>
+		</thead>
 		<tr>
 			<td>6.1. Hospitalización</td>
 			<td>{{form.hosp_1_mes}}</td>
@@ -55,8 +57,8 @@
 			<td>{{form.ci_12_mes}}</td>
 		</tr>
 		<tr>
-			<td colspan="6"><input type="submit" value="Guardar" class="btn btn-primary" id="btn_guardar" /></td>
-			<td colspan="7"><input type="button" value="Siguiente" class="btn btn-success" id="btn_siguiente"  onclick="window.location.href='/laboratorio'" /></td>
+			<td colspan="6"><input type="submit" value="Guardar" class="boton" id="btn_guardar" /></td>
+			<td colspan="7"><input type="button" value="Siguiente" class="boton" id="btn_siguiente"  onclick="window.location.href='/laboratorio'" /></td>
 		</tr>
 	</table>
 

@@ -6,19 +6,19 @@
 	<meta charset="UTF-8">
 	<title>Inicio</title>
 	<!-- Bootstrap -->
-	<link rel="stylesheet" href="{{STATIC_PREFIX}}css/bootstrap.min.css">
-	<link rel="stylesheet" href="{{STATIC_PREFIX}}css/estilos.css">
-	<script src="{{STATIC_PREFIX}}js/jquery.js"></script>
-	<script src="{{STATIC_PREFIX}}js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="{{STATIC_PREFIX}}bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="{{STATIC_PREFIX}}core/css/estilos.css">
+	<script src="{{STATIC_PREFIX}}core/js/jquery.js"></script>
+	<script src="{{STATIC_PREFIX}}bootstrap/js/bootstrap.min.js"></script>
 	
 	<!-- Jquery IU -->
-	<link href="{{STATIC_PREFIX}}css/smoothness/jquery-ui-1.10.4.custom.css" rel="stylesheet">
-	<script src="{{STATIC_PREFIX}}js/jquery-ui-1.10.4.custom.js"></script>
+	<link href="{{STATIC_PREFIX}}core/css/smoothness/jquery-ui-1.10.4.custom.css" rel="stylesheet">
+	<script src="{{STATIC_PREFIX}}core/js/jquery-ui-1.10.4.custom.js"></script>
 </head>
 <body>
 
 <form action="." method="post" class="form-horizontal" role="form" id="loginform"> {% csrf_token %}
-	<img src="{{STATIC_PREFIX}}img/logo_web_its.png" alt="" id="logo" />
+	<img src="{{STATIC_PREFIX}}core/img/logo_web_its.png" alt="" id="logo" />
 	<br />
 	<label for="usuario">Usuario:</label>
 	<input type="text" name="usuario" id="usuario" class="form-control">

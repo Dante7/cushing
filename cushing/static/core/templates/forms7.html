@@ -2,29 +2,31 @@
 
 {% block child %}
 
-<div class="sub"><h3>7	Pruebas de laboratorio / Enfermedad de Cushing</h3></div>
+<article class="main"><h4>7	Pruebas de laboratorio / Enfermedad de Cushing</h4></article>
 
 <p>Número de estudios y resultados al mes</p>
 
 <form action="" method="post" class="form-inline" role="form" id="FrmLaboratorio">{% csrf_token %}
 	{{form.folio}}
 	{{form.lab}}
-	<table class="table table-condensed">
-		<tr class="th_principal">
-			<th colspan="2">Meses</th>
-			<th>1</th>
-			<th>2</th>
-			<th>3</th>
-			<th>4</th>
-			<th>5</th>
-			<th>6</th>
-			<th>7</th>
-			<th>8</th>
-			<th>9</th>
-			<th>10</th>
-			<th>11</th>
-			<th>12</th>
-		</tr>
+	<table class="table table-condensed table-striped table-bordered">
+		<thead>
+			<tr class="th_principal">
+				<th colspan="2">Meses</th>
+				<th>1</th>
+				<th>2</th>
+				<th>3</th>
+				<th>4</th>
+				<th>5</th>
+				<th>6</th>
+				<th>7</th>
+				<th>8</th>
+				<th>9</th>
+				<th>10</th>
+				<th>11</th>
+				<th>12</th>
+			</tr>
+		</thead>
 		<tr>
 			<td>7.1. Cortisol libre en orina</td>
 			<td>No.</td>
@@ -93,14 +95,16 @@
 		</tr>
 	</table>
 
-	<table class="table table-condensed">
-		<tr class="th_principal">
-			<th>Pruebas de laboratorio</th>
-			<th colspan="2">En los últimos 6 meses</th>
-			<!-- <th></th> -->
-			<th colspan="2">Entre 6 y 12 meses</th>
-			<!-- <th></th> -->
-		</tr>
+	<table class="table table-condensed table-striped table-bordered">
+		<thead>
+			<tr class="th_principal">
+				<th>Pruebas de laboratorio</th>
+				<th colspan="2">En los últimos 6 meses</th>
+				<!-- <th></th> -->
+				<th colspan="2">Entre 6 y 12 meses</th>
+				<!-- <th></th> -->
+			</tr>
+		</thead>
 		<tr class="th_secundario">
 			<td>7.4. Otras pruebas de laboratorio</td>
 			<td>Si = 1 / No = 2</td>
@@ -173,8 +177,8 @@
 			 
 		</tr>
 		<tr>
-			<td colspan="3"><input type="submit" value="Guardar" class="btn btn-primary" id="btn_guardar" /></td>
-			<td colspan="2"><input type="button" value="Siguiente" class="btn btn-success" id="btn_siguiente"  onclick="window.location.href='/intervenciones'"/></td>
+			<td colspan="3"><input type="submit" value="Guardar" class="boton" id="btn_guardar" /></td>
+			<td colspan="2"><input type="button" value="Siguiente" class="boton" id="btn_siguiente"  onclick="window.location.href='/intervenciones'"/></td>
 		</tr>
 	</table>
 

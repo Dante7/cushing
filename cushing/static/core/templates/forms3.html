@@ -2,7 +2,7 @@
 
 {% block child %}
 
-<div class="sub"><h3>3	Síntomas / Enfermedad de Cushing</h3></div>
+<article class="main"><h4>3	Síntomas / Enfermedad de Cushing</h4></article>
 
 <form action="" method="post" class="form-inline" role="form" id="FrmSintomas">{% csrf_token %}
 	{{form.folio}}
@@ -176,9 +176,9 @@
 		</tr>
 
 		<tr>
-			<td><input type="submit" value="Guardar" class="btn btn-primary" id="btn_guardar" /></td>
+			<td><input type="submit" value="Guardar" class="boton" id="btn_guardar" /></td>
 			<td></td>	
-			<td><input type="button" value="Siguiente" class="btn btn-success" id="btn_siguiente" onclick="window.location.href='/comorbilidades'" /></td>
+			<td><input type="button" value="Siguiente" class="boton" id="btn_siguiente" onclick="window.location.href='/comorbilidades'" /></td>
 		</tr>
 	</table>
 

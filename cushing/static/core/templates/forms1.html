@@ -2,7 +2,7 @@
 
 {% block child %}
 
-<div class="sub"><h3>1.	Control de la enfermedad</h3></div>
+<article class="main"><h4>1.	Control de la enfermedad</h4></article>
 
 <form action="" method="post" class="form-inline" role="form" id="FrmControl">{% csrf_token %}
 	{{form.folio}}
@@ -70,9 +70,9 @@
 		</tr>
 
 		<tr>
-			<td><input type="submit" value="Guardar" class="btn btn-default" id="btn_guardar" /></td>
+			<td><input type="submit" value="Guardar" class="boton" id="btn_guardar" /></td>
 			<td></td>	
-			<td><input type="button" value="Siguiente" class="btn btn-default" id="btn_siguiente" onclick="window.location.href='/generales'"/></td>
+			<td><input type="button" value="Siguiente" class="boton" id="btn_siguiente" onclick="window.location.href='/generales'"/></td>
 		</tr>
 	</table>
 
