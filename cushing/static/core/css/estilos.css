@@ -24,10 +24,28 @@ form
 {
 	font-family: 'Roboto', sans-serif;
 }
-
 table
 {
+	text-align: center;
 	font-family: 'Roboto', sans-serif;
+}
+
+tr.th_principal
+{
+	background-color: rgba(0,32,96,0.4);
+	color: black;
+	text-align: center;
+	font-weight: bold;
+}
+tr.th_secundario
+{
+	color: black;
+	font-weight: bold;
+}
+
+td.opciones
+{
+	width: 150px;
 }
 
 /*DatePicker*/
@@ -437,17 +455,6 @@ ul {
 }
 
 /*Manejo de clases de encabezado principal y secundario*/
-.th_principal
-{
-	background-color: rgba(0,32,96,0.4);
-	color: black;
-	text-align: center;
-}
-.th_secundario
-{
-	background-color: rgba(51,91,116,0.2);
-	color: black;
-}
 .helptext
 {
 	text-align: center;
