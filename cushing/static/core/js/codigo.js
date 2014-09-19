@@ -9,20 +9,26 @@ $(document).ready(function() {
 		var control = $(this).val();
 		var valor = $(this).attr("name");
 		var pos = valor.search("_");
+		var clase = valor.substring(0,pos);
+		var valor = valor.substring(pos+1);
+		var pos = valor.search("_");
 		var nom = valor.substring(0,pos);
 		var temp = valor.substring(pos+1);
+		clase_str = ObtenClase(clase);
 
 		if (control == 1) {
 			$('#TxModal').modal('show');
-			var tx = Tratamiento(nom);
+			var tx = Tratamiento(nom,clase);
 			CreaRow();
-			Validar(tx,temp);
+			Validar(clase_str,tx,temp);
 		};
 	});
 
 	$('#GuardarModal').click(function() {
+		var clase = $('#clase').val();
 		var tx = $('#tratamiento').val();
 		var temp = $('#temp').val();
+		var fecha = $('#fecha').val();
 		var dosis = $('#dosis').val();
 		var ciclo = $('#ciclo').val();
 		var inter = $('#intervalos').val();
@@ -30,7 +36,8 @@ $(document).ready(function() {
 		var cateter = $('#cateterismo').is(':checked');
 
 		//var arr = [tx + "_" + temp];
-		var nuevo = {"tx":tx,"temp":temp,"dosis":dosis,"ciclo":ciclo,"inter":inter,"ciclos":ciclos,"cateter":cateter};
+		var nuevo = {"clase":clase,"tx":tx,"temp":temp,"fecha":fecha,"dosis":dosis,"ciclo":ciclo,"inter":inter,"ciclos":ciclos,"cateter":cateter};
+		console.log(nuevo);
 		//arr.push(nuevo);
 		JsonTx.push(nuevo);
 
@@ -49,7 +56,7 @@ $(document).ready(function() {
 	// Formulario Laboratorio
 
 	$('.lab').change(function() {
-		var control = $(this).val();
+		var control = $(this).val();		
 		var valor = $(this).attr("name");
 		var pos = valor.search("_");
 		var nom = valor.substring(0,pos);
@@ -122,8 +129,7 @@ $(document).ready(function() {
 });
 
 
-function Tratamiento(nom) {
-
+function Tratamiento(nom,clase) {
 	var tx
 	var tratamientos = {
 						'keto':'Ketoconazol',
@@ -151,14 +157,46 @@ function Tratamiento(nom) {
 						'sab':'Secuestrantes de ácidos biliares (resinas)'
 					}
 
+	console.log(nom);
+	var tratamientos_ot = {
+						'otro1':'Otro',
+						'otro2':'Otro',
+						'otro3':'Otro',
+						'sepsis':'Sepsis',
+						'neumonia':'Neumonía',
+						'vias':'Vías urinarias',
+						'ptb':'Piel y tejidos blandos',
+						'fungi':'Fúngicas',
+						'depre':'Depresión',
+						'ansi':'Ansiedad',
+						'psico':'Psicosis',
+						'cr':'Cálculos renales'
+					}
+
 	if (tratamientos[nom] == undefined) {
-		var id = "#id_" + nom + "_cual";
-		console.log(id);
-		tx = $(id).val();
+		var id = "#id_" + clase + "_" + nom + "_cual";
+		tx = tratamientos_ot[nom] + " " + $(id).val();
 	}else{
 		tx = tratamientos[nom];
 	};
 	return tx
+}
+
+function ObtenClase(cls) {
+
+	var clase
+	var clases = {
+						'ec':'Enfermedad de Cushing',
+						'diab':'Diabetes',
+						'car':'Cardiovasculares',
+						'inf':'Infecciones',
+						'ment':'Mentales',
+						'ot':'Otras'
+					}
+
+	clase = clases[cls];
+
+	return clase
 }
 
 function CreaRow(tx,temp) {
@@ -166,6 +204,17 @@ function CreaRow(tx,temp) {
 	$("#tratamientos").find('tbody')
 	.append($('<tr>')
 		.attr('id','temporal')
+		//Input de tratamiento
+		.append($('<td>')
+			.append($('<input>')
+				.attr({
+					type:'text',
+					id: 'clase',
+					disabled: 'disabled',
+					class: 'tratamiento'
+				})
+			)
+		)
 		//Input de tratamiento
 		.append($('<td>')
 			.append($('<input>')
@@ -185,6 +234,16 @@ function CreaRow(tx,temp) {
 					id: 'temp',
 					disabled: 'disabled',
 					class: 'habilitado'
+				})
+			)
+		)
+		//Input de temporalidad
+		.append($('<td>')
+			.append($('<input>')
+				.attr({
+					type:'text',
+					id: 'fecha',
+					class: 'fecha_tx'
 				})
 			)
 		)
@@ -241,8 +300,9 @@ function CreaRow(tx,temp) {
 	);
 }
 
-function NewRow(tx,temp) {
+function NewRow(clase,tx,temp) {
 	// body...
+	$('#clase').val(clase);
 	$('#tratamiento').val(tx);
 	$('#temp').val(temp);
 }
@@ -264,7 +324,7 @@ function EliminaRow(id) {
 	tabla.removeChild(document.getElementById(id));
 }
 
-function Validar(tx,temp) {
+function Validar(clase,tx,temp) {
 	// body...
 	var vacio = Object.keys(JsonTx).length
 	if (vacio != 0) {
@@ -272,11 +332,11 @@ function Validar(tx,temp) {
 			if (JsonTx[key].tx == tx && JsonTx[key].temp == temp) {
 				ExistRow(JsonTx[key]);
 			}else{
-				NewRow(tx,temp);
+				NewRow(clase,tx,temp);
 			};
 		};
 	}else{
-		NewRow(tx,temp);
+		NewRow(clase,tx,temp);
 	};
 }
 

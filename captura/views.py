@@ -21,7 +21,9 @@ def GuardaTratamientos(tx, folio):
 	for item in tx:
 		farma = TxCompleto()
 		farma.folio = folio
+		farma.clase = item.get('clase')
 		farma.tratamiento = item.get('tx')
+		farma.fecha = item.get('fecha')
 		farma.meses = item.get('temp')
 		farma.dosis = item.get('dosis')
 		farma.ciclo = item.get('ciclo')

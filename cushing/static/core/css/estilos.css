@@ -20,6 +20,15 @@ p
 	width: 80%;
 	margin: 0 0 1em 1em;
 }
+form
+{
+	font-family: 'Roboto', sans-serif;
+}
+
+table
+{
+	font-family: 'Roboto', sans-serif;
+}
 
 /*DatePicker*/
 #ui-datepicker-title select
@@ -365,6 +374,10 @@ ul {
 .habilitado
 {
 	width: 50px;
+}
+.fecha_tx
+{
+	width: 80px;	
 }
 .tratamiento
 {
