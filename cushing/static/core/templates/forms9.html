@@ -7,17 +7,18 @@
 <form action="" method="post" class="form-inline" role="form" id="FrmTx">{% csrf_token %}
 	{{form.tx}}
 	{{form.folio}}
+	<input type="hidden" value="{{f_diag|date:'d/m/Y'}}" id="f_diag">
 	<table class="table table-condensed table-striped table-bordered">
 		<thead>
 			<tr class="th_principal">
 				<th>Tratamientos</th>
-				<th>En los últimos 6 meses</th>
-				<th>Entre 6 y 12 meses</th>
+				<th>De 0 a 6 meses</th>
+				<th>De 7 a 12 mese</th>
 			</tr>
 			<tr class="th_secundario">
-				<th>9.2	Enfermedad de Cushing</th>
-				<th>Si = 1 / No = 2</th>
-				<th>Si = 1 / No = 2</th>
+				<td colspan="3">9.2	Enfermedad de Cushing</td>
+				<!-- <th></th>
+				<th></th> -->
 			</tr>
 		</thead>
 		<tr>
@@ -36,25 +37,25 @@
 			<td>{{form.ec_mife_12}}</td>
 		</tr>
 		<tr>
-			<td>9.2.4 Otro 1 ¿Cuál?{{form.ec_otro1_cual}}</td>
+			<td>9.2.4 Otro 1 ¿Cuantos? {{form.ec_otro1_cuantos}}</td>
 			<td>{{form.ec_otro1_6}}</td>
 			<td>{{form.ec_otro1_12}}</td>
 		</tr>
 		<tr>
-			<td>9.2.5 Otro 2 ¿Cuál?{{form.ec_otro2_cual}}</td>
+			<td>9.2.5 Otro 2 ¿Cuantos? {{form.ec_otro2_cuantos}}</td>
 			<td>{{form.ec_otro2_6}}</td>
 			<td>{{form.ec_otro2_12}}</td>
 		</tr>
 		<tr>
-			<td>9.2.6 Otro 3 ¿Cuál?{{form.ec_otro3_cual}}</td>
+			<td>9.2.6 Otro 3 ¿Cuantos? {{form.ec_otro3_cuantos}}</td>
 			<td>{{form.ec_otro3_6}}</td>
 			<td>{{form.ec_otro3_12}}</td>
 		</tr>
 		<thead>
 		<tr class="th_secundario">
-			<th>9.3	Diabetes</th>
-			<th>Si = 1 / No = 2</th>
-			<th>Si = 1 / No = 2</th>
+			<td colspan="3">9.3	Diabetes</td>
+			<!-- <th></th>
+				<th></th> -->
 		</tr>
 		</thead>
 		<tr>
@@ -93,9 +94,9 @@
 			<td>{{form.diab_insu_lenta_12}}</td>
 		</tr>
 		<tr class="th_secundario">
-			<th>9.4	Cardiovasculares</th>
-			<th>Si = 1 / No = 2</th>
-			<th>Si = 1 / No = 2</th>
+			<td colspan="3">9.4	Cardiovasculares</td>
+			<!-- <th></th>
+				<th></th> -->
 		</tr>
 		<tr>
 			<td>9.4.1 Inhibidores enzima convertidora angiotensina</td>
@@ -163,32 +164,32 @@
 			<td>{{form.car_sab_12}}</td>
 		</tr>
 		<tr class="th_secundario">
-			<th>9.5	Infecciones</th>
-			<th>Si = 1 / No = 2</th>
-			<th>Si = 1 / No = 2</th>
+			<td colspan="3">9.5	Infecciones</td>
+			<!-- <th></th>
+				<th></th> -->
 		</tr>
 		<tr>
-			<td>9.5.1 Sepsis. ¿Cuál?{{form.inf_sepsis_cual}}</td>
+			<td>9.5.1 Sepsis. ¿Cuantos? {{form.inf_sepsis_cuantos}}</td>
 			<td>{{form.inf_sepsis_6}}</td>
 			<td>{{form.inf_sepsis_12}}</td>
 		</tr>
 		<tr>
-			<td>9.5.2 Neumonía. ¿Cuál?{{form.inf_neumonia_cual}}</td>
+			<td>9.5.2 Neumonía. ¿Cuantos? {{form.inf_neumonia_cuantos}}</td>
 			<td>{{form.inf_neumonia_6}}</td>
 			<td>{{form.inf_neumonia_12}}</td>
 		</tr>
 		<tr>
-			<td>9.5.3 Vías urinarias. ¿Cuál?{{form.inf_vias_cual}}</td>
+			<td>9.5.3 Vías urinarias. ¿Cuantos? {{form.inf_vias_cuantos}}</td>
 			<td>{{form.inf_vias_6}}</td>
 			<td>{{form.inf_vias_12}}</td>
 		</tr>
 		<tr>
-			<td>9.5.4 Piel y tejidos blandos. ¿Cuál?{{form.inf_ptb_cual}}</td>
+			<td>9.5.4 Piel y tejidos blandos. ¿Cuantos? {{form.inf_ptb_cuantos}}</td>
 			<td>{{form.inf_ptb_6}}</td>
 			<td>{{form.inf_ptb_12}}</td>
 		</tr>
 		<tr>
-			<td>9.5.5 Fúngicas. ¿Cuál?{{form.inf_fungi_cual}}</td>
+			<td>9.5.5 Fúngicas. ¿Cuantos? {{form.inf_fungi_cuantos}}</td>
 			<td>{{form.inf_fungi_6}}</td>
 			<td>{{form.inf_fungi_12}}</td>
 		</tr>
@@ -203,24 +204,26 @@
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">
-					<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-				</button>
 				<h4 class="modal-title">Captura de tratamientos</h4>
 			</div>
 			<div class="modal-body">
-				<table class="table table-condensed" id='tratamientos'>
-					<tr>
-						<th>Clase</th>
-						<th>Tratamiento (Principio activo)</th>
-						<th>Meses</th>
-						<th>Fecha</th>
-						<th>Dosis (mg)</th>
-						<th>Ciclos</th>
-						<th>Intervalos entre ciclos</th>
-						<th># de ciclos al año</th>
-						<th>Cateterismo</th>
-					</tr>
+				<table class="table table-condensed table-striped" id='tratamientos'>
+					<thead>
+						<tr class="th_principal">
+							<td></td>
+							<td>Tratamiento</td>
+							<td>Fecha</td>
+							<td>Dosis (mg)</td>
+							<td>Cada cuantas horas</td>
+							<td>Durante cuantas horas</td>
+							<td>Intervalos entre ciclos (semanas)</td>
+							<td># de ciclos al año</td>
+							<td>Cateterismo</td>
+						</tr>
+					</thead>
+					<tbody>
+						
+					</tbody>
 				</table>
 			</div>
 			<div class="modal-footer">
@@ -230,5 +233,6 @@
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
 
 {% endblock %}

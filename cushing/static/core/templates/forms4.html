@@ -6,184 +6,201 @@
 
 <form action="" method="post" class="form-inline" role="form" id="FrmComorbilidades">{% csrf_token %}
 	{{form.folio}}
+	<input type="hidden" value="{{f_diag|date:'d/m/Y'}}" id="f_diag">
 	<table class="table table-condensed table-striped table-bordered">
 		<thead>
 			<tr class="th_principal">
-				<th>Comorbilidades</th>
-				<th>Fecha comorbilidad</th>
-				<th>En los ultimos 6 meses</th>
-				<th>Entre 6 y 12 meses</td>
+				<td>Comorbilidades</td>
+				<td>Fecha comorbilidad</td>
+				<td>En los ultimos 6 meses</td>
+				<td>Entre 7 y 12 meses</td>
 			</tr>
 			<tr class="th_secundario">
-				<th>4.1	Metabólicas</th>
-				<th></th>
-				<th>Si = 1 / No = 2</th>
-				<th>Si = 1 / No = 2</td>
+				<td colspan="4">4.1	Metabólicas</td>
+				<!-- <td></td>
+				<td></td>
+				<td></td> -->
 			</tr>
 		</thead>
 		<tr>
 			<td><label for="{{form.dm1_6.id}}">{{form.dm1_6.label}}</label></td>
-			<td>{{form.dm1_fecha}}</td>
-			<td>{{form.dm1_6}}</td>
-			<td>{{form.dm1_12}}</td>
+			<td class="opciones">{{form.dm1_fecha}}</td>
+			<td class="opciones">{{form.dm1_6}}</td>
+			<td class="opciones">{{form.dm1_12}}</td>
 		</tr>
 		<tr>
 			<td><label for="{{form.dm2_6.id}}">{{form.dm2_6.label}}</label></td>
-			<td>{{form.dm2_fecha}}</td>
-			<td>{{form.dm2_6}}</td>
-			<td>{{form.dm2_12}}</td>
+			<td class="opciones">{{form.dm2_fecha}}</td>
+			<td class="opciones">{{form.dm2_6}}</td>
+			<td class="opciones">{{form.dm2_12}}</td>
 		</tr>
 		<tr>
 			<td><label for="{{form.sind_met_6.id}}">{{form.sind_met_6.label}}</label></td>
-			<td>{{form.sind_met_fecha}}</td>
-			<td>{{form.sind_met_6}}</td>
-			<td>{{form.sind_met_12}}</td>
+			<td class="opciones">{{form.sind_met_fecha}}</td>
+			<td class="opciones">{{form.sind_met_6}}</td>
+			<td class="opciones">{{form.sind_met_12}}</td>
 		</tr>
 		<tr>
 			<td><label for="{{form.int_glucosa_6.id}}">{{form.int_glucosa_6.label}}</label></td>
-			<td>{{form.int_glucosa_fecha}}</td>
-			<td>{{form.int_glucosa_6}}</td>
-			<td>{{form.int_glucosa_12}}</td>
+			<td class="opciones">{{form.int_glucosa_fecha}}</td>
+			<td class="opciones">{{form.int_glucosa_6}}</td>
+			<td class="opciones">{{form.int_glucosa_12}}</td>
 		</tr>
 		<tr>
 			<td><label for="{{form.obesidad_6.id}}">{{form.obesidad_6.label}}</label></td>
-			<td>{{form.obesidad_fecha}}</td>
-			<td>{{form.obesidad_6}}</td>
-			<td>{{form.obesidad_12}}</td>
+			<td class="opciones">{{form.obesidad_fecha}}</td>
+			<td class="opciones">{{form.obesidad_6}}</td>
+			<td class="opciones">{{form.obesidad_12}}</td>
 		</tr>
-		<tr class="td_principal">
-			<th>4.2	Cardiovasculares</th>
-			<th>Si = 1 / No = 2</th>
-			<th>Si = 1 / No = 2</th>
-		</tr>
+	</table>
+	<table class="table table-condensed table-striped table-bordered">
+		<thead>
+			<tr class="th_secundario">
+				<td colspan="4">4.2	Cardiovasculares</td>
+				<!-- <td></td>
+				<td></td> -->
+			</tr>
+		</thead>
 		<tr>
 			<td><label for="{{form.hipertension_6.id}}">{{form.hipertension_6.label}}</label></td>
-			<td>{{form.hipertension_fecha}}</td>
-			<td>{{form.hipertension_6}}</td>
-			<td>{{form.hipertension_12}}</td>
+			<td class="opciones">{{form.hipertension_fecha}}</td>
+			<td class="opciones">{{form.hipertension_6}}</td>
+			<td class="opciones">{{form.hipertension_12}}</td>
 		</tr>
 		<tr>
 			<td><label for="{{form.colesterol_6.id}}">{{form.colesterol_6.label}}</label></td>
-			<td>{{form.colesterol_fecha}}</td>
-			<td>{{form.colesterol_6}}</td>
-			<td>{{form.colesterol_12}}</td>
+			<td class="opciones">{{form.colesterol_fecha}}</td>
+			<td class="opciones">{{form.colesterol_6}}</td>
+			<td class="opciones">{{form.colesterol_12}}</td>
 		</tr>
 		<tr>
 			<td><label for="{{form.trombosis_6.id}}">{{form.trombosis_6.label}}</label></td>
-			<td>{{form.trombosis_fecha}}</td>
-			<td>{{form.trombosis_6}}</td>
-			<td>{{form.trombosis_12}}</td>
+			<td class="opciones">{{form.trombosis_fecha}}</td>
+			<td class="opciones">{{form.trombosis_6}}</td>
+			<td class="opciones">{{form.trombosis_12}}</td>
 		</tr>
 		<tr>
 			<td><label for="{{form.infarto_miocardio_6.id}}">{{form.infarto_miocardio_6.label}}</label></td>
-			<td>{{form.infarto_miocardio_fecha}}</td>
-			<td>{{form.infarto_miocardio_6}}</td>
-			<td>{{form.infarto_miocardio_12}}</td>
+			<td class="opciones">{{form.infarto_miocardio_fecha}}</td>
+			<td class="opciones">{{form.infarto_miocardio_6}}</td>
+			<td class="opciones">{{form.infarto_miocardio_12}}</td>
 		</tr>
 		<tr>
 			<td><label for="{{form.angina_pecho_6.id}}">{{form.angina_pecho_6.label}}</label></td>
-			<td>{{form.angina_pecho_fecha}}</td>
-			<td>{{form.angina_pecho_6}}</td>
-			<td>{{form.angina_pecho_12}}</td>
+			<td class="opciones">{{form.angina_pecho_fecha}}</td>
+			<td class="opciones">{{form.angina_pecho_6}}</td>
+			<td class="opciones">{{form.angina_pecho_12}}</td>
 		</tr>
 		<tr>
 			<td><label for="{{form.cardiopatia_6.id}}">{{form.cardiopatia_6.label}}</label></td>
-			<td>{{form.cardiopatia_fecha}}</td>
-			<td>{{form.cardiopatia_6}}</td>
-			<td>{{form.cardiopatia_12}}</td>
+			<td class="opciones">{{form.cardiopatia_fecha}}</td>
+			<td class="opciones">{{form.cardiopatia_6}}</td>
+			<td class="opciones">{{form.cardiopatia_12}}</td>
 		</tr>
 		<tr>
 			<td><label for="{{form.cerebrovascular_6.id}}">{{form.cerebrovascular_6.label}}</label></td>
-			<td>{{form.cerebrovascular_fecha}}</td>
-			<td>{{form.cerebrovascular_6}}</td>
-			<td>{{form.cerebrovascular_12}}</td>
+			<td class="opciones">{{form.cerebrovascular_fecha}}</td>
+			<td class="opciones">{{form.cerebrovascular_6}}</td>
+			<td class="opciones">{{form.cerebrovascular_12}}</td>
 		</tr>
 		<tr>
 			<td><label for="{{form.isquemia_6.id}}">{{form.isquemia_6.label}}</label></td>
-			<td>{{form.isquemia_fecha}}</td>
-			<td>{{form.isquemia_6}}</td>
-			<td>{{form.isquemia_12}}</td>
+			<td class="opciones">{{form.isquemia_fecha}}</td>
+			<td class="opciones">{{form.isquemia_6}}</td>
+			<td class="opciones">{{form.isquemia_12}}</td>
 		</tr>
-		<tr class="td_principal">
-			<th>4.3	Infecciones</th>
-			<th>Si = 1 / No = 2</th>
-			<th>Si = 1 / No = 2</th>
-		</tr>
+	</table>
+	<table class="table table-condensed table-striped table-bordered">
+		<thead>
+			<tr class="th_secundario">
+				<td colspan="4">4.3	Infecciones</td>
+				<!-- <td></td>
+				<td></td> -->
+			</tr>
+		</thead>
 		<tr>
 			<td><label for="{{form.sepsis_6.id}}">{{form.sepsis_6.label}}</label></td>
-			<td>{{form.sepsis_fecha}}</td>
-			<td>{{form.sepsis_6}}</td>
-			<td>{{form.sepsis_12}}</td>
+			<td class="opciones">{{form.sepsis_fecha}}</td>
+			<td class="opciones">{{form.sepsis_6}}</td>
+			<td class="opciones">{{form.sepsis_12}}</td>
 		</tr>
 		<tr>
 			<td><label for="{{form.neumonia_6.id}}">{{form.neumonia_6.label}}</label></td>
-			<td>{{form.neumonia_fecha}}</td>
-			<td>{{form.neumonia_6}}</td>
-			<td>{{form.neumonia_12}}</td>
+			<td class="opciones">{{form.neumonia_fecha}}</td>
+			<td class="opciones">{{form.neumonia_6}}</td>
+			<td class="opciones">{{form.neumonia_12}}</td>
 		</tr>
 		<tr>
 			<td><label for="{{form.vias_urinarias_6.id}}">{{form.vias_urinarias_6.label}}</label></td>
-			<td>{{form.vias_urinarias_fecha}}</td>
-			<td>{{form.vias_urinarias_6}}</td>
-			<td>{{form.vias_urinarias_12}}</td>
+			<td class="opciones">{{form.vias_urinarias_fecha}}</td>
+			<td class="opciones">{{form.vias_urinarias_6}}</td>
+			<td class="opciones">{{form.vias_urinarias_12}}</td>
 		</tr>
 		<tr>
 			<td><label for="{{form.pytb_6.id}}">{{form.pytb_6.label}}</label></td>
-			<td>{{form.pytb_fecha}}</td>
-			<td>{{form.pytb_6}}</td>
-			<td>{{form.pytb_12}}</td>
+			<td class="opciones">{{form.pytb_fecha}}</td>
+			<td class="opciones">{{form.pytb_6}}</td>
+			<td class="opciones">{{form.pytb_12}}</td>
 		</tr>
 		<tr>
 			<td><label for="{{form.fungicas_6.id}}">{{form.fungicas_6.label}}</label></td>
-			<td>{{form.fungicas_fecha}}</td>
-			<td>{{form.fungicas_6}}</td>
-			<td>{{form.fungicas_12}}</td>
+			<td class="opciones">{{form.fungicas_fecha}}</td>
+			<td class="opciones">{{form.fungicas_6}}</td>
+			<td class="opciones">{{form.fungicas_12}}</td>
 		</tr>
-		<tr class="td_principal">
-			<th>4.4	Mentales</th>
-			<th>Si = 1 / No = 2</th>
-			<th>Si = 1 / No = 2</th>
-		</tr>
+	</table>
+	<table class="table table-condensed table-striped table-bordered">
+		<thead>
+			<tr class="th_secundario">
+				<td colspan="4">4.4	Mentales</td>
+				<!-- <td></td>
+				<td></td> -->
+			</tr>
+		</thead>
 		<tr>
 			<td><label for="{{form.depresion_6.id}}">{{form.depresion_6.label}}</label></td>
-			<td>{{form.depresion_fecha}}</td>
-			<td>{{form.depresion_6}}</td>
-			<td>{{form.depresion_12}}</td>
+			<td class="opciones">{{form.depresion_fecha}}</td>
+			<td class="opciones">{{form.depresion_6}}</td>
+			<td class="opciones">{{form.depresion_12}}</td>
 		</tr>
 		<tr>
 			<td><label for="{{form.ansiedad_6.id}}">{{form.ansiedad_6.label}}</label></td>
-			<td>{{form.ansiedad_fecha}}</td>
-			<td>{{form.ansiedad_6}}</td>
-			<td>{{form.ansiedad_12}}</td>
+			<td class="opciones">{{form.ansiedad_fecha}}</td>
+			<td class="opciones">{{form.ansiedad_6}}</td>
+			<td class="opciones">{{form.ansiedad_12}}</td>
 		</tr>
 		<tr>
 			<td><label for="{{form.psicosis_6.id}}">{{form.psicosis_6.label}}</label></td>
-			<td>{{form.psicosis_fecha}}</td>
-			<td>{{form.psicosis_6}}</td>
-			<td>{{form.psicosis_12}}</td>
+			<td class="opciones">{{form.psicosis_fecha}}</td>
+			<td class="opciones">{{form.psicosis_6}}</td>
+			<td class="opciones">{{form.psicosis_12}}</td>
 		</tr>
-		<tr class="td_principal">
-			<th>4.5	Otras</th>
-			<th>Si = 1 / No = 2</th>
-			<th>Si = 1 / No = 2</th>
-		</tr>
+	</table>
+	<table class="table table-condensed table-striped table-bordered">
+		<thead>
+			<tr class="th_secundario">
+				<td colspan="4">4.5	Otras</td>
+				<!-- <td></td>
+				<td></td> -->
+			</tr>
+		</thead>
 		<tr>
 			<td><label for="{{form.cr_6.id}}">{{form.cr_6.label}}</label></td>
-			<td>{{form.cr_fecha}}</td>
-			<td>{{form.cr_6}}</td>
-			<td>{{form.cr_12}}</td>
+			<td class="opciones">{{form.cr_fecha}}</td>
+			<td class="opciones">{{form.cr_6}}</td>
+			<td class="opciones">{{form.cr_12}}</td>
 		</tr>
 		<tr>
 			<td><label for="{{form.otro1_6.id}}">{{form.otro1_6.label}}{{form.otro1_cual}}</label></td>
-			<td>{{form.otro1_fecha}}</td>
-			<td>{{form.otro1_6}}</td>
-			<td>{{form.otro1_12}}</td>
+			<td class="opciones">{{form.otro1_fecha}}</td>
+			<td class="opciones">{{form.otro1_6}}</td>
+			<td class="opciones">{{form.otro1_12}}</td>
 		</tr>
 		<tr>
 			<td><label for="{{form.otro2_6.id}}">{{form.otro2_6.label}}{{form.otro2_cual}}</label></td>
-			<td>{{form.otro2_fecha}}</td>
-			<td>{{form.otro2_6}}</td>
-			<td>{{form.otro2_12}}</td>
+			<td class="opciones">{{form.otro2_fecha}}</td>
+			<td class="opciones">{{form.otro2_6}}</td>
+			<td class="opciones">{{form.otro2_12}}</td>
 		</tr>
 		<tr>
 			<td><input type="submit" value="Guardar" class="boton" id="btn_guardar" /></td>

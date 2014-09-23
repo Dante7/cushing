@@ -23,12 +23,13 @@ def GuardaTratamientos(tx, folio):
 		farma.folio = folio
 		farma.clase = item.get('clase')
 		farma.tratamiento = item.get('tx')
-		farma.fecha = item.get('fecha')
 		farma.meses = item.get('temp')
+		farma.fecha = item.get('fecha')
 		farma.dosis = item.get('dosis')
-		farma.ciclo = item.get('ciclo')
-		farma.intervalos = item.get('inter')
-		farma.ciclos = item.get('ciclos')
+		farma.c_horas = item.get('c_horas')
+		farma.d_horas = item.get('d_horas')
+		farma.intervalos = item.get('intervalos')
+		farma.n_ciclos = item.get('n_ciclos')
 		farma.cateterismo = item.get('cateter')
 		farma.save()
 	pass
@@ -238,12 +239,15 @@ def CapGenerales(request):
 		formulario = FrmGenerales(request.POST)
 		if formulario.is_valid():
 			formulario.save()
+			request.session['f_diag'] = request.POST['fecha_diag']
 			msg = 'true'
 			resultado = {'form':formulario, 'msg':msg, 'folio': request.session['folio']}
 			return render_to_response(template, resultado, context_instance=RequestContext(request))
 	else:
 		try:
 			registro = Generales.objects.get(folio=request.session['folio'])
+			request.session['f_diag'] = registro.fecha_diag
+			print request.session['f_diag']
 			formulario = FrmGenerales(instance=registro)
 			msg = 'true'
 			pass
@@ -285,7 +289,7 @@ def CapComorb(request):
 		if formulario.is_valid():
 			formulario.save()
 			msg = 'true'
-			resultado = {'form':formulario, 'msg':msg, 'folio': request.session['folio']}
+			resultado = {'form':formulario, 'msg':msg, 'folio': request.session['folio'], 'f_diag':request.session['f_diag']}
 			return render_to_response(template, resultado, context_instance=RequestContext(request))
 	else:
 		try:
@@ -296,7 +300,7 @@ def CapComorb(request):
 		except: 
 			formulario = FrmComorbilidades()
 			pass
-	resultado = {'form':formulario, 'msg':msg, 'folio': request.session['folio']}
+	resultado = {'form':formulario, 'msg':msg, 'folio': request.session['folio'], 'f_diag':request.session['f_diag']}
 	return render_to_response(template, resultado, context_instance=RequestContext(request))
 
 @login_required(login_url='/')
@@ -360,7 +364,7 @@ def CapLab(request):
 			except:
 				pass
 
-			resultado = {'form':formulario, 'msg':msg, 'folio': request.session['folio']}
+			resultado = {'form':formulario, 'msg':msg, 'folio': request.session['folio'], 'f_diag':request.session['f_diag']}
 			return render_to_response(template, resultado, context_instance=RequestContext(request))
 	else:
 		try:
@@ -371,7 +375,7 @@ def CapLab(request):
 		except: 
 			formulario = FrmLaboratorio()
 			pass
-	resultado = {'form':formulario, 'msg':msg, 'folio': request.session['folio']}
+	resultado = {'form':formulario, 'msg':msg, 'folio': request.session['folio'], 'f_diag':request.session['f_diag']}
 	return render_to_response(template, resultado, context_instance=RequestContext(request))
 
 @login_required(login_url='/')
@@ -408,9 +412,12 @@ def CapTx(request):
 			print request.session['folio']
 			formulario.save()
 			msg = 'true'
-			GuardaTratamientos(request.POST['tx'], request.POST['folio'])
-			
-			resultado = {'form':formulario, 'msg':msg, 'folio': request.session['folio']}
+			try:
+				GuardaTratamientos(request.POST['tx'], request.POST['folio'])
+				pass
+			except:
+				pass
+			resultado = {'form':formulario, 'msg':msg, 'folio': request.session['folio'], 'f_diag':request.session['f_diag']}
 			return render_to_response(template, resultado, context_instance=RequestContext(request))
 	else:
 		try:
@@ -421,7 +428,7 @@ def CapTx(request):
 		except: 
 			formulario = FrmTratamiento()
 			pass
-	resultado = {'form':formulario, 'msg':msg, 'folio': request.session['folio']}
+	resultado = {'form':formulario, 'msg':msg, 'folio': request.session['folio'], 'f_diag':request.session['f_diag']}
 	return render_to_response(template, resultado, context_instance=RequestContext(request))
 
 
@@ -439,7 +446,7 @@ def CapComorbTx(request):
 				pass
 			except:
 				pass
-			resultado = {'form':formulario, 'msg':msg, 'folio': request.session['folio']}
+			resultado = {'form':formulario, 'msg':msg, 'folio': request.session['folio'], 'f_diag':request.session['f_diag']}
 			return render_to_response(template, resultado, context_instance=RequestContext(request))
 	else:
 		try:
@@ -450,7 +457,7 @@ def CapComorbTx(request):
 		except: 
 			formulario = FrmComorbilidadesTx()
 			pass
-	resultado = {'form':formulario, 'msg':msg, 'folio': request.session['folio']}
+	resultado = {'form':formulario, 'msg':msg, 'folio': request.session['folio'], 'f_diag':request.session['f_diag']}
 	return render_to_response(template, resultado, context_instance=RequestContext(request))
 
 

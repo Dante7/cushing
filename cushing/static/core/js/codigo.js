@@ -15,43 +15,64 @@ $(document).ready(function() {
 		var nom = valor.substring(0,pos);
 		var temp = valor.substring(pos+1);
 		clase_str = ObtenClase(clase);
+		var n_tx = $("#id_" + clase + "_" + nom + "_cuantos").val();
+		if (n_tx == undefined) 
+		{
+			n_tx = 1; 
+		};
 
 		if (control == 1) {
-			$('#TxModal').modal('show');
+			CreaRow(n_tx);
 			var tx = Tratamiento(nom,clase);
-			CreaRow();
+			$('#TxModal').modal('show');
 			Validar(clase_str,tx,temp);
 		};
 	});
 
 	$('#GuardarModal').click(function() {
+		//var hidden
 		var clase = $('#clase').val();
 		var tx = $('#tratamiento').val();
 		var temp = $('#temp').val();
+		//var no hidden
 		var fecha = $('#fecha').val();
 		var dosis = $('#dosis').val();
-		var ciclo = $('#ciclo').val();
-		var inter = $('#intervalos').val();
-		var ciclos = $('#ciclos').val();
+		var c_horas = $('#c_horas').val();
+		var d_horas = $('#d_horas').val();
+		var intervalos = $('#intervalos').val();
+		var n_ciclos = $('#n_ciclos').val();
+
 		var cateter = $('#cateterismo').is(':checked');
 
 		//var arr = [tx + "_" + temp];
-		var nuevo = {"clase":clase,"tx":tx,"temp":temp,"fecha":fecha,"dosis":dosis,"ciclo":ciclo,"inter":inter,"ciclos":ciclos,"cateter":cateter};
+		var nuevo = {
+					"clase":clase,
+					"tx":tx,
+					"temp":temp,
+					"fecha":fecha,
+					"dosis":dosis,
+					"c_horas":c_horas,
+					"d_horas":d_horas,
+					"intervalos":intervalos,
+					"n_ciclos":n_ciclos,
+					"cateter":cateter
+				};
+
 		console.log(nuevo);
 		//arr.push(nuevo);
 		JsonTx.push(nuevo);
 
-		EliminaRow('temporal');
 		$("#id_tx").val(JSON.stringify(JsonTx));
 		$('#TxModal').modal('hide')
 
 
 	});
 
-	$('#CierraModal').click(function() {
-		// body...
-		EliminaRow('temporal');
+	$('#TxModal').on('hide.bs.modal', function (e) {
+		// do something...
+		EliminaRowTx();
 	});
+
 
 	// Formulario Laboratorio
 
@@ -109,6 +130,11 @@ $(document).ready(function() {
 		EliminaRowClase();
 	});
 
+	$('#LabModal').on('hide.bs.modal', function (e) {
+		// do something...
+		EliminaRowClase();
+	});
+
 
 	$('.multi_lab').click(function() {
 		// body...
@@ -157,7 +183,6 @@ function Tratamiento(nom,clase) {
 						'sab':'Secuestrantes de ácidos biliares (resinas)'
 					}
 
-	console.log(nom);
 	var tratamientos_ot = {
 						'otro1':'Otro',
 						'otro2':'Otro',
@@ -173,11 +198,9 @@ function Tratamiento(nom,clase) {
 						'cr':'Cálculos renales'
 					}
 
-	if (tratamientos[nom] == undefined) {
-		var id = "#id_" + clase + "_" + nom + "_cual";
-		tx = tratamientos_ot[nom] + " " + $(id).val();
-	}else{
+	if (tratamientos[nom] != undefined) {
 		tx = tratamientos[nom];
+		$("#tratamiento").attr('disabled','disabled');
 	};
 	return tx
 }
@@ -199,105 +222,112 @@ function ObtenClase(cls) {
 	return clase
 }
 
-function CreaRow(tx,temp) {
+function CreaRow(prods) {
+	console.log(prods);
+	for (i = 0; i < prods; i++) {
 
-	$("#tratamientos").find('tbody')
-	.append($('<tr>')
-		.attr('id','temporal')
-		//Input de tratamiento
-		.append($('<td>')
-			.append($('<input>')
-				.attr({
-					type:'text',
-					id: 'clase',
-					disabled: 'disabled',
-					class: 'tratamiento'
-				})
+		$("#tratamientos").find('tbody')
+		.append($('<tr>')
+			.attr('id','temporal')
+			//Input de clase y temps
+			.append($('<td>')
+				.append($('<input>')
+					.attr({
+						type:'hidden',
+						id: 'clase',
+						disabled: 'disabled',
+					})
+				)
+				.append($('<input>')
+					.attr({
+						type:'hidden',
+						id: 'temp',
+						disabled: 'disabled',
+					})
+				)
 			)
-		)
-		//Input de tratamiento
-		.append($('<td>')
-			.append($('<input>')
-				.attr({
-					type:'text',
-					id: 'tratamiento',
-					disabled: 'disabled',
-					class: 'tratamiento'
-				})
+			//Input de tratamiento
+			.append($('<td>')
+				.append($('<input>')
+					.attr({
+						type:'text',
+						id: 'tratamiento',
+						class: 'tx'
+					})
+				)
 			)
-		)
-		//Input de temporalidad
-		.append($('<td>')
-			.append($('<input>')
-				.attr({
-					type:'text',
-					id: 'temp',
-					disabled: 'disabled',
-					class: 'habilitado'
-				})
+			//Input de fecha
+			.append($('<td>')
+				.append($('<input>')
+					.attr({
+						type:'text',
+						id: 'fecha',
+						class: 'fecha_tx'
+					})
+				)
 			)
-		)
-		//Input de temporalidad
-		.append($('<td>')
-			.append($('<input>')
-				.attr({
-					type:'text',
-					id: 'fecha',
-					class: 'fecha_tx'
-				})
+			//Input de dosis
+			.append($('<td>')
+				.append($('<input>')
+					.attr({
+						type:'text',
+						id: 'dosis',
+						class: 'habilitado'
+					})
+				)
 			)
-		)
-		//Input de dosis
-		.append($('<td>')
-			.append($('<input>')
-				.attr({
-					type:'text',
-					id: 'dosis',
-					class: 'habilitado'
-				})
+			//Input de cada cuantas horas
+			.append($('<td>')
+				.append($('<input>')
+					.attr({
+						type:'text',
+						id: 'c_horas',
+						class: 'habilitado'
+					})
+				)
 			)
-		)
-		//Input de ciclo
-		.append($('<td>')
-			.append($('<input>')
-				.attr({
-					type:'text',
-					id: 'ciclo',
-					class: 'habilitado'
-				})
+			//Input de durante cuantas horas
+			.append($('<td>')
+				.append($('<input>')
+					.attr({
+						type:'text',
+						id: 'd_horas',
+						class: 'habilitado'
+					})
+				)
 			)
-		)
-		//Input de intervalos
-		.append($('<td>')
-			.append($('<input>')
-				.attr({
-					type:'text',
-					id: 'intervalos',
-					class: 'habilitado'
-				})
+			//Input de intervalos entre ciclos
+			.append($('<td>')
+				.append($('<input>')
+					.attr({
+						type:'text',
+						id: 'intervalos',
+						class: 'habilitado'
+					})
+				)
 			)
-		)
-		//Input de ciclos
-		.append($('<td>')
-			.append($('<input>')
-				.attr({
-					type:'text',
-					id: 'ciclos',
-					class: 'habilitado'
-				})
+			//Input de ciclos anuales
+			.append($('<td>')
+				.append($('<input>')
+					.attr({
+						type:'text',
+						id: 'n_ciclos',
+						class: 'habilitado'
+					})
+				)
 			)
-		)
-		//Input de cateterismo
-		.append($('<td>')
-			.append($('<input>')
-				.attr({
-					type:'checkbox',
-					id: 'cateterismo',
-					class: 'habilitado'
-				})
+			//Input de cateterismo
+			.append($('<td>')
+				.append($('<input>')
+					.attr({
+						type:'checkbox',
+						id: 'cateterismo',
+						class: 'check'
+					})
+				)
 			)
-		)
-	);
+		);
+	};
 }
 
 function NewRow(clase,tx,temp) {
@@ -401,7 +431,17 @@ function CreaRowLab (pruebas,nombre,mes) {
 
 function EliminaRowClase () {
 	// body...
-	$('#Laboratorio > tbody  > tr.temporal').each(
+	$('table > tbody  > tr.temporal').each(
+		function(){
+			var tr = $(this);
+			tr.remove();
+		}
+	);
+}
+
+function EliminaRowTx () {
+	// body...
+	$('#tratamientos > tbody  > tr').each(
 		function(){
 			var tr = $(this);
 			tr.remove();

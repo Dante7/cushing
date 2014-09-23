@@ -7,17 +7,18 @@
 <form action="" method="post" class="form-inline" role="form" id="FrmComorb">{% csrf_token %}
 	{{form.folio}}
 	{{form.tx}}
+	<input type="hidden" value="{{f_diag|date:'d/m/Y'}}" id="f_diag">
 	<table class="table table-condensed table-striped table-bordered">
 		<thead>
 			<tr class="th_principal">
-				<th>Comorbilidades</th>
-				<th>En los últimos 6 meses</th>
-				<th>Entre 6 y 12 meses</th>
+				<td>Comorbilidades</td>
+				<td>De 0 a 6 meses</td>
+				<td>De 7 a 12 meses</td>
 			</tr>
 			<tr class="th_secundario">
-				<th>9.6	Mentales</th>
-				<th>Si = 1 / No = 2</th>
-				<th>Si = 1 / No = 2</th>
+				<td colspan="3">9.6	Mentales</td>
+				<!-- <td></td>
+				<td></td> -->
 			</tr>
 		</thead>
 		<tr>
@@ -36,9 +37,9 @@
 			<td>{{form.ment_psico_12}}</td>
 		</tr>
 		<tr class="th_secundario">
-			<th>9.7	Otras</th>
-			<th>Si = 1 / No = 2</th>
-			<th>Si = 1 / No = 2</th>
+			<td colspan="3">9.7	Otras</td>
+			<!--<td></td>
+			<td></td> -->
 		</tr>
 		<tr>
 			<td>9.7.1 Cálculos renales. ¿Cuál?{{form.ot_cr_cual}}</td>
@@ -65,9 +66,6 @@
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">
-					<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-				</button>
 				<h4 class="modal-title">Captura de tratamientos</h4>
 			</div>
 			<div class="modal-body">

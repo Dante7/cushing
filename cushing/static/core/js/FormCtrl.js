@@ -1,4 +1,4 @@
-function Begin(msj, folio, usuario, espe) {
+function Begin(msj, folio, usuario, espe, f_diag) {
 	// body...
 	Deshabilita(msj);
 	
@@ -14,6 +14,7 @@ function Begin(msj, folio, usuario, espe) {
 	if (espe != 'espe') {
 		$('#id_espe_medica').val(espe);
 	};
+	MinDatePick(f_diag);
 }
 
 function Deshabilita(valor) {
@@ -26,6 +27,8 @@ function Deshabilita(valor) {
 			$(this).prop("disabled", true);
 		});
 		$('#btn_siguiente').prop("disabled", false);
+		$('#btn_guardar').hide();
+		$('#btn_siguiente').show();
 	}else{
 		$.each($('input'),function(){
 			$(this).prop("disabled", false);
@@ -33,7 +36,25 @@ function Deshabilita(valor) {
 		$.each($('select'),function(){
 			$(this).prop("disabled", false);
 		});
-		$('#btn_siguiente').prop("disabled", true);
+		$('#btn_siguiente').prop("disabled", false);
+		$('#btn_siguiente').hide();
+		$('#btn_guardar').show();
+	};
+}
+
+function MinDatePick (f_diag) {
+	// body...
+	if (f_diag != false) {
+		var pos  = f_diag.search("/");
+		var d = f_diag.substring(0,pos);
+		var temp = f_diag.substring(pos+1);
+		pos = temp.search("/");
+		var m = temp.substring(0,pos);
+		var y = temp.substring(pos+1);
+
+		$( ".fecha" ).datepicker("option", "minDate", new Date(y, m - 1, d));
+		$( ".FechaLab" ).datepicker("option", "minDate", new Date(y, m - 1, d));
+		$( ".fecha_tx" ).datepicker("option", "minDate", new Date(y, m - 1, d));
 	};
 }
 
@@ -80,7 +101,8 @@ $(document).ready(function() {
 	});
 
 	$.datepicker.setDefaults( $.datepicker.regional[ "es" ] );
-	$( "#id_fecha_diag" ).datepicker({ 
+	
+	$( ".main_fecha" ).datepicker({ 
 		dateFormat: "dd/mm/yy",
 		changeMonth: true,
 		changeYear: true
@@ -89,14 +111,17 @@ $(document).ready(function() {
 	$( "#id_fecha_llenado" ).datepicker({ 
 		dateFormat: "dd/mm/yy",
 		changeMonth: true,
-		changeYear: true
+		changeYear: true,
+		maxDate: '+10Y',
 	});
 	$( ".fecha" ).datepicker({ 
 		dateFormat: "dd/mm/yy",
 		changeMonth: true,
-		changeYear: true
+		changeYear: true,
+		maxDate: '+10Y',
 	});
 
+	$('.numerico').NumBox({type: 'integer'});
 
 	//Selcccion
 	$('#id_tiempo_endo').NumBox({type: 'integer'});
@@ -150,4 +175,30 @@ $(document).ready(function() {
 	$('#id_adrena_veces_12').NumBox({type: 'integer'});
 
 	
+	$('#LabModal').on('show.bs.modal', function (e) {
+		// do something...
+		$( ".FechaLab" ).datepicker({ 
+			dateFormat: "dd/mm/yy",
+			changeMonth: true,
+			changeYear: true,
+			maxDate: '+10Y',
+		});
+		var f_diag = $('#f_diag').val();
+		MinDatePick(f_diag);
+
+	})
+	$('#TxModal').on('show.bs.modal', function (e) {
+		// do something...
+		var a = $('#dosis')
+		$('.habilitado').NumBox({type: 'integer'});
+		$( ".fecha_tx" ).datepicker({ 
+			dateFormat: "dd/mm/yy",
+			changeMonth: true,
+			changeYear: true,
+			maxDate: '+10Y',
+		});
+		var f_diag = $('#f_diag').val();
+		MinDatePick(f_diag);
+	})
+
 });
