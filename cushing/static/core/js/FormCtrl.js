@@ -189,7 +189,6 @@ $(document).ready(function() {
 	})
 	$('#TxModal').on('show.bs.modal', function (e) {
 		// do something...
-		var a = $('#dosis')
 		$('.habilitado').NumBox({type: 'integer'});
 		$( ".fecha_tx" ).datepicker({ 
 			dateFormat: "dd/mm/yy",

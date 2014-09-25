@@ -14,7 +14,7 @@ $(document).ready(function() {
 		var pos = valor.search("_");
 		var nom = valor.substring(0,pos);
 		var temp = valor.substring(pos+1);
-		clase_str = ObtenClase(clase);
+		clase_str = ObtenClase(clase,nom);
 		var n_tx = $("#id_" + clase + "_" + nom + "_cuantos").val();
 		if (n_tx == undefined) 
 		{
@@ -23,45 +23,53 @@ $(document).ready(function() {
 
 		if (control == 1) {
 			CreaRow(n_tx);
-			var tx = Tratamiento(nom,clase);
+			var tx = Tratamiento(nom);
 			$('#TxModal').modal('show');
-			Validar(clase_str,tx,temp);
+			Validar(clase_str,tx,temp,n_tx,nom);
 		};
 	});
 
 	$('#GuardarModal').click(function() {
-		//var hidden
-		var clase = $('#clase').val();
-		var tx = $('#tratamiento').val();
-		var temp = $('#temp').val();
-		//var no hidden
-		var fecha = $('#fecha').val();
-		var dosis = $('#dosis').val();
-		var c_horas = $('#c_horas').val();
-		var d_horas = $('#d_horas').val();
-		var intervalos = $('#intervalos').val();
-		var n_ciclos = $('#n_ciclos').val();
 
-		var cateter = $('#cateterismo').is(':checked');
-
-		//var arr = [tx + "_" + temp];
-		var nuevo = {
-					"clase":clase,
-					"tx":tx,
-					"temp":temp,
-					"fecha":fecha,
-					"dosis":dosis,
-					"c_horas":c_horas,
-					"d_horas":d_horas,
-					"intervalos":intervalos,
-					"n_ciclos":n_ciclos,
-					"cateter":cateter
+		$('#tratamientos > tbody  > tr').each(function(){
+			var tr = $(this);
+			var elementos = []
+			tr.children("td").each(function(){
+				var ctrl = $(this).children("input");
+				if (ctrl[0].type == "checkbox") {
+					var tx_dict = {
+								key: ctrl[0].id,
+								value: ctrl[0].checked 
+							}
+				}else{
+					var tx_dict = {
+								key: ctrl[0].id,
+								value: ctrl[0].value
+							}
 				};
 
-		console.log(nuevo);
-		//arr.push(nuevo);
-		JsonTx.push(nuevo);
+				elementos.push(tx_dict);
+			});
 
+			//var arr = [tx + "_" + temp];
+			var nuevo = {
+				"clase":elementos[0].value,
+				"temp":elementos[1].value,
+				"tratamiento":elementos[2].value,
+				"fecha":elementos[3].value,
+				"dosis":elementos[4].value,
+				"choras":elementos[5].value,
+				"dhoras":elementos[6].value,
+				"intervalos":elementos[7].value,
+				"nciclos":elementos[8].value,
+				"cateter":elementos[9].value
+			};
+
+			//arr.push(nuevo);
+			JsonTx.push(nuevo);
+
+
+		});
 		$("#id_tx").val(JSON.stringify(JsonTx));
 		$('#TxModal').modal('hide')
 
@@ -166,11 +174,11 @@ function Tratamiento(nom,clase) {
 						'tiazo':'Tiazolidinedionas',
 						'dpp4':'Inhibidores DPP-4',
 						'glp1':'Análogos del GLP-1',
-						'insu_rapida':'Insulinas de acción rápida',
-						'insu_lenta':'Insulinas de acción lenta',
+						'insuRapida':'Insulinas de acción rápida',
+						'insuLenta':'Insulinas de acción lenta',
 						'ieca':'Inhibidores enzima convertidora angiotensina',
 						'bra':'Bloqueadores receptores de la angiotensina',
-						'beta_bloq':'Beta bloqueadores',
+						'betaBloq':'Beta bloqueadores',
 						'fibratos':'Fibratos',
 						'bcc':'Bloqueadores de los canales de calcio',
 						'diuretico':'Diurético',
@@ -178,34 +186,34 @@ function Tratamiento(nom,clase) {
 						'vit':'Niacina (Vitamina B3)',
 						'nitrato':'Nitratos',
 						'antiplaq':'Antiplaquetarios',
-						'acido_acetil':'Ácido acetilsalicílico',
+						'acidoAcetil':'Ácido acetilsalicílico',
 						'estatina':'Estatinas',
 						'sab':'Secuestrantes de ácidos biliares (resinas)'
 					}
 
-	var tratamientos_ot = {
-						'otro1':'Otro',
-						'otro2':'Otro',
-						'otro3':'Otro',
-						'sepsis':'Sepsis',
-						'neumonia':'Neumonía',
-						'vias':'Vías urinarias',
-						'ptb':'Piel y tejidos blandos',
-						'fungi':'Fúngicas',
-						'depre':'Depresión',
-						'ansi':'Ansiedad',
-						'psico':'Psicosis',
-						'cr':'Cálculos renales'
-					}
 
 	if (tratamientos[nom] != undefined) {
 		tx = tratamientos[nom];
-		$("#tratamiento").attr('disabled','disabled');
+		$("#tratamiento_1").attr('disabled','disabled');
 	};
 	return tx
 }
 
-function ObtenClase(cls) {
+function ObtenClase(cls,tx) {
+
+	var tratamiento
+	var tx_ot = {
+					'otro':'Otro',
+					'sepsis':'Sepsis',
+					'neumonia':'Neumonía',
+					'vias':'Vías urinarias',
+					'ptb':'Piel y tejidos blandos',
+					'fungi':'Fúngicas',
+					'depre':'Depresión',
+					'ansi':'Ansiedad',
+					'psico':'Psicosis',
+					'cr':'Cálculos renales'
+				}
 
 	var clase
 	var clases = {
@@ -217,14 +225,17 @@ function ObtenClase(cls) {
 						'ot':'Otras'
 					}
 
-	clase = clases[cls];
+	if (tx_ot[tx] != undefined) {
+		clase = clases[cls] + "-" + tx_ot[tx];
+	}else{
+		clase = clases[cls];
+	};
 
 	return clase
 }
 
 function CreaRow(prods) {
-	console.log(prods);
-	for (i = 0; i < prods; i++) {
+	for (i = 1; i <= prods; i++) {
 
 		$("#tratamientos").find('tbody')
 		.append($('<tr>')
@@ -234,25 +245,31 @@ function CreaRow(prods) {
 				.append($('<input>')
 					.attr({
 						type:'hidden',
-						id: 'clase',
+						id: 'clase_'+ i,
 						disabled: 'disabled',
+						class: 'clase'
 					})
 				)
+			)
+			//Input de temps
+			.append($('<td>')
 				.append($('<input>')
 					.attr({
 						type:'hidden',
-						id: 'temp',
+						id: 'temp_'+i,
 						disabled: 'disabled',
+						class: 'temp'
 					})
 				)
+				
 			)
 			//Input de tratamiento
 			.append($('<td>')
 				.append($('<input>')
 					.attr({
 						type:'text',
-						id: 'tratamiento',
-						class: 'tx'
+						id: 'tratamiento_'+i,
+						class: 'tratamiento'
 					})
 				)
 			)
@@ -261,7 +278,7 @@ function CreaRow(prods) {
 				.append($('<input>')
 					.attr({
 						type:'text',
-						id: 'fecha',
+						id: 'fecha_'+i,
 						class: 'fecha_tx'
 					})
 				)
@@ -271,8 +288,8 @@ function CreaRow(prods) {
 				.append($('<input>')
 					.attr({
 						type:'text',
-						id: 'dosis',
-						class: 'habilitado'
+						id: 'dosis_'+i,
+						class: 'dosis'
 					})
 				)
 			)
@@ -281,8 +298,8 @@ function CreaRow(prods) {
 				.append($('<input>')
 					.attr({
 						type:'text',
-						id: 'c_horas',
-						class: 'habilitado'
+						id: 'choras_'+i,
+						class: 'choras'
 					})
 				)
 			)
@@ -291,8 +308,8 @@ function CreaRow(prods) {
 				.append($('<input>')
 					.attr({
 						type:'text',
-						id: 'd_horas',
-						class: 'habilitado'
+						id: 'dhoras_'+i,
+						class: 'dhoras'
 					})
 				)
 			)
@@ -301,8 +318,8 @@ function CreaRow(prods) {
 				.append($('<input>')
 					.attr({
 						type:'text',
-						id: 'intervalos',
-						class: 'habilitado'
+						id: 'intervalos_'+i,
+						class: 'intervalos'
 					})
 				)
 			)
@@ -311,8 +328,8 @@ function CreaRow(prods) {
 				.append($('<input>')
 					.attr({
 						type:'text',
-						id: 'n_ciclos',
-						class: 'habilitado'
+						id: 'nciclos_'+i,
+						class: 'nciclos'
 					})
 				)
 			)
@@ -321,8 +338,8 @@ function CreaRow(prods) {
 				.append($('<input>')
 					.attr({
 						type:'checkbox',
-						id: 'cateterismo',
-						class: 'check'
+						id: 'cateterismo_'+i,
+						class: 'cateterismo'
 					})
 				)
 			)
@@ -330,43 +347,86 @@ function CreaRow(prods) {
 	};
 }
 
-function NewRow(clase,tx,temp) {
+function NewRow(clase,tx,temp,n_tx) {
 	// body...
-	$('#clase').val(clase);
-	$('#tratamiento').val(tx);
-	$('#temp').val(temp);
+	$('input.clase').each(function(){
+		$(this).val(clase);
+	});
+	//$('#clase').val(clase);
+
+	$('input.tratamiento').each(function(){
+		$(this).val(tx);
+	});
+	//$('#tratamiento').val(tx);
+
+	$('input.temp').each(function(){
+		$(this).val(temp);
+	});
+	//$('#temp').val(temp);
+	$('#GuardarModal').removeAttr('disabled');
 }
 
 function ExistRow(array) {
 	// body...
-	$('#tratamiento').val(array.tx);
-	$('#temp').val(array.temp);
-	$('#dosis').val(array.dosis);
-	$('#ciclo').val(array.ciclo);
-	$('#intervalos').val(array.inter);
-	$('#ciclos').val(array.ciclos);
-	$('#cateterismo').attr('checked',array.cateter);
+	$('#clase_1').val(array.clase);
+	$('#tratamiento_1').val(array.tx);
+	$('#temp_1').val(array.temp);
+	$('#fecha_1').val(array.fecha);
+	$('#dosis_1').val(array.dosis);
+	$('#choras_1').val(array.c_horas);
+	$('#dhoras_1').val(array.d_horas);
+	$('#intervalos_1').val(array.intervalos);
+	$('#nciclos_1').val(array.n_ciclos);
+	$('#cateterismo_1').attr('checked',array.cateter);
+	$('#GuardarModal').attr('disabled','disabled');
+	
 }
 
-function EliminaRow(id) {
+function ExistRows(array,prods) {
 	// body...
-	var tabla = document.getElementById(id).parentNode;
-	tabla.removeChild(document.getElementById(id));
+	var i = 0;
+		$('#tratamientos > tbody  > tr').each(function(){
+			var tr = $(this);
+			var elementos = []
+			tr.children("td").each(function(){
+				var ctrl = $(this).children("input");
+				var id = ctrl[0].id;
+				var clase = ctrl[0].classList[0];
+				var pos = id.search("_");
+				var id2 = id.substring(0,pos);
+				//$("#"+id).css("background-color", "red");
+				$("#"+id).val(array[i][id2]);
+				//console.log(id2);
+				//console.log(array[i][id2]);
+			});
+			i++
+			//console.log(array[i]);
+		});
+	$('#GuardarModal').attr('disabled','disabled');
 }
 
-function Validar(clase,tx,temp) {
+function Validar(clase,tx,temp,n_tx,nom) {
 	// body...
 	var vacio = Object.keys(JsonTx).length
 	if (vacio != 0) {
 		for (var key in JsonTx) {
-			if (JsonTx[key].tx == tx && JsonTx[key].temp == temp) {
+			if (JsonTx[key].clase == clase && JsonTx[key].tratamiento == tx && JsonTx[key].temp == temp) {
 				ExistRow(JsonTx[key]);
+			}else if (JsonTx[key].clase == clase && tx == undefined && JsonTx[key].temp == temp){
+				var Grupo = []
+				Grupo.items = $.grep(JsonTx, function(element, index){
+					return element.clase == clase;
+				});
+				var prods = Object.keys(Grupo.items).length;
+				ExistRows(Grupo.items, prods);
+				// Crear una nueva funcion enviando JsonTx.items similar a ExistRow
+				// Con esa funcion vamos a llenar los campos creados
 			}else{
-				NewRow(clase,tx,temp);
+				NewRow(clase,tx,temp,n_tx);
 			};
 		};
 	}else{
-		NewRow(clase,tx,temp);
+		NewRow(clase,tx,temp,n_tx);
 	};
 }
 

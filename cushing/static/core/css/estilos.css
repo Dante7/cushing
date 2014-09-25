@@ -390,15 +390,11 @@ ul {
 	vertical-align: top;
 	width: 50px;
 }
-.habilitado
+.tratamiento,
 {
-	width: 80px;
+	width: 90px;	
 }
-.fecha_tx
-{
-	width: 100px;	
-}
-.tratamiento
+.fecha_tx, .dosis, .choras, .dhoras, .intervalos, .nciclos
 {
 	width: 80px;
 }

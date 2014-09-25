@@ -22,14 +22,14 @@ def GuardaTratamientos(tx, folio):
 		farma = TxCompleto()
 		farma.folio = folio
 		farma.clase = item.get('clase')
-		farma.tratamiento = item.get('tx')
+		farma.tratamiento = item.get('tratamiento')
 		farma.meses = item.get('temp')
 		farma.fecha = item.get('fecha')
 		farma.dosis = item.get('dosis')
-		farma.c_horas = item.get('c_horas')
-		farma.d_horas = item.get('d_horas')
+		farma.c_horas = item.get('choras')
+		farma.d_horas = item.get('dhoras')
 		farma.intervalos = item.get('intervalos')
-		farma.n_ciclos = item.get('n_ciclos')
+		farma.n_ciclos = item.get('nciclos')
 		farma.cateterismo = item.get('cateter')
 		farma.save()
 	pass
@@ -412,11 +412,8 @@ def CapTx(request):
 			print request.session['folio']
 			formulario.save()
 			msg = 'true'
-			try:
-				GuardaTratamientos(request.POST['tx'], request.POST['folio'])
-				pass
-			except:
-				pass
+			
+			GuardaTratamientos(request.POST['tx'], request.POST['folio'])
 			resultado = {'form':formulario, 'msg':msg, 'folio': request.session['folio'], 'f_diag':request.session['f_diag']}
 			return render_to_response(template, resultado, context_instance=RequestContext(request))
 	else:
